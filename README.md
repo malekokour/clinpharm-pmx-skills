@@ -70,15 +70,14 @@ evaluations; none publishes the shape of the job those skills are for, so none
 can tell you what fraction of your work it touches. This one can, and the answer
 today is *less than a third*.
 
-![Click Band B, then Study delivery, then Design, on the 167-task job map](site/assets/map-walkthrough.gif)
+![One subdomain: Study delivery / Design. Each task maps to a skill.](site/assets/job-to-skill-mapping.gif)
 
-GitHub will not run a live tree in this README, so the recording is the drill:
-Band → Domain → Subdomain → task. Do the same click path in
-[`map/`](map/): [A](map/bands/A.md) · [B](map/bands/B.md) · [C](map/bands/C.md).
-Machine-readable: [`map/job-model.json`](map/job-model.json). HTML rendering:
-[`site/map/`](site/map/). Live site:
+That is the product: a job, then a task, then a skill you can run. Open the
+same path in [`map/`](map/): [A](map/bands/A.md) · [B](map/bands/B.md) ·
+[C](map/bands/C.md). Live tree:
 [malekokour.github.io/clinpharm-pmx-skills](https://malekokour.github.io/clinpharm-pmx-skills).
-Both are generated from [`catalog/job-model-167.tsv`](catalog/job-model-167.tsv).
+Machine-readable: [`map/job-model.json`](map/job-model.json). Generated from
+[`catalog/job-model-167.tsv`](catalog/job-model-167.tsv).
 
 ## Current evidence status
 
