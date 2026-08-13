@@ -1,0 +1,76 @@
+name: Prepare draft release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing signed tag to draft a GitHub Release from. The tag must already exist; this workflow never creates one.
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  id-token: write
+  attestations: write
+
+concurrency:
+  group: release-assets
+  cancel-in-progress: false
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install locked tooling
+        run: python -m pip install --requirement requirements.lock
+      - name: Verify source
+        run: python scripts/check_all.py
+      - name: Build release assets
+        run: python scripts/build_release.py --output dist
+      - name: Attest release assets
+        uses: actions/attest@508db95dd578ae2727ebd6217d5ba78e4fbda05d # v4.2.1
+        with:
+          subject-path: "dist/*"
+      - name: Upload draft assets
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: clinpharm-pmx-skills-${{ inputs.tag }}
+          path: dist/
+          if-no-files-found: error
+          retention-days: 14
+      - name: Create or refresh draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          if ! git rev-parse --verify "refs/tags/${RELEASE_TAG}" >/dev/null 2>&1; then
+            echo "Signed tag ${RELEASE_TAG} must exist before preparing the draft."
+            exit 1
+          fi
+          if gh release view "${RELEASE_TAG}" >/dev/null 2>&1; then
+            is_draft="$(gh release view "${RELEASE_TAG}" --json isDraft --jq .isDraft)"
+            if [ "${is_draft}" != "true" ]; then
+              echo "Refusing to modify a published release."
+              exit 1
+            fi
+            gh release upload "${RELEASE_TAG}" dist/* --clobber
+            gh release edit "${RELEASE_TAG}" \
+              --title "ClinPharm PMx Skills ${RELEASE_TAG}" \
+              --notes-file CHANGELOG.md
+          else
+            gh release create "${RELEASE_TAG}" \
+              --draft \
+              --verify-tag \
+              --title "ClinPharm PMx Skills ${RELEASE_TAG}" \
+              --notes-file CHANGELOG.md \
+              dist/*
+          fi

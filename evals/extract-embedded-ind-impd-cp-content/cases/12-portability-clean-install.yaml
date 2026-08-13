@@ -1,0 +1,8 @@
+id: "extract-embedded-ind-impd-cp-content-12-portability-clean-install"
+layer: "portability"
+prompt: "The skill was extracted from a ZIP into an empty directory with no repository, shared folder, or sibling skills. Start an IND inventory."
+assertions:
+  judged:
+    - "Uses only package-local SKILL, references, asset, and scripts"
+    - "Names the package-local inventory script and template"
+    - "Does not request an upward repository or shared-file dependency"

@@ -1,0 +1,11 @@
+id: "reconcile-dsur-annual-report-coverage-03-execution-missing-input"
+layer: "execution"
+mode: "BASELINE"
+prompt: "The inventory lists DSUR-2026 with dates 2025-04-03 through 2026-03-31, but I do not have the page or section where those dates appear. Complete the coverage review."
+assertions:
+  mechanical:
+    - classification: "NEEDS_INPUT"
+  judged:
+    - "Names the missing exact source locator and explains that it prevents an assessable record"
+    - "Does not count the record as clean or invent a locator"
+    - "States the assessed-reports numerator separately from the supplied-reports denominator"

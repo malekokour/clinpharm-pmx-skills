@@ -1,0 +1,28 @@
+# Pre-commit hooks for ClinPharm PMx Skills
+#
+# These wrap gates that already run in `make check`. They fire before a commit,
+# not instead of CI. Install once: `pre-commit install`.
+#
+# A missing hook is a blocker: if `ruff` or `python3` is not on PATH, the hook
+# fails rather than skipping.
+
+repos:
+  - repo: local
+    hooks:
+      - id: ruff
+        name: ruff
+        entry: ruff check scripts tests skills
+        language: system
+        pass_filenames: false
+        types: [python]
+      - id: validate-repo
+        name: validate public surface
+        entry: python3 scripts/validate_repo.py
+        language: system
+        pass_filenames: false
+      - id: claim-ledger
+        name: claim ledger
+        entry: python3 scripts/check_claim_ledger.py --check
+        language: system
+        pass_filenames: false
+        files: '^(README\.md|ROADMAP\.md|site/index\.html|CLAIM-LEDGER\.md|collections/.+/collection\.json)$'

@@ -1,0 +1,8 @@
+id: "review-module-5-placement-01-activation-declared-trigger"
+layer: "activation"
+prompt: "Are our clinical pharmacology study reports placed in the right Module 5 subsections? We want to verify before the eCTD build."
+assertions:
+  judged:
+    - "Recognises the request as within this skill's declared scope and does not decline it"
+    - "Names the workflow it will follow before producing any finding"
+    - "Asks for the inputs it needs rather than assuming their contents"

@@ -1,0 +1,11 @@
+id: "review-human-pk-prediction-14-execution-spot-check"
+layer: "execution"
+mode: "SPOT-CHECK"
+prompt: "One thing only: the report scales CL from 1.0 L/h at 1 kg to 70 kg using an exponent of 0.75 and reports 24.2 L/h. Check it."
+assertions:
+  mechanical:
+    - denominator_stated: true
+  judged:
+    - "Recomputes the relation and compares it against the reported value with a stated tolerance"
+    - "Limits the response to the nominated relation rather than expanding into a full review"
+    - "Does not judge whether the resulting clearance is plausible"

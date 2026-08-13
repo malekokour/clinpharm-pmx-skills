@@ -1,0 +1,10 @@
+id: "review-uspi-section-2-dosing-02-activation-excluded-request"
+layer: "activation"
+source_clause: "Do not use for Section 12 content, for Section 7 interaction entries, for registration dose justification, for non-US labels, for drafting wording, or to select or approve any dose or adjustment.\""
+prompt: "Review USPI Section 12.3 clinical pharmacology content for consistency with the PopPK report. Respond as this skill, or decline and say what should handle it instead."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's declared scope"
+    - "Cites the boundary rather than refusing without a reason"
+    - "Names a more appropriate skill or workflow where one exists"
+    - "Does not go on to perform the excluded work after declining"

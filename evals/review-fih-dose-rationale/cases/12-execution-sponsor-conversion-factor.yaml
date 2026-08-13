@@ -1,0 +1,18 @@
+id: "review-fih-dose-rationale-12-execution-sponsor-conversion-factor"
+layer: "execution"
+mode: "CHAIN-RECOMPUTE"
+prompt: "Using only the supplied sponsor conversion basis, recompute the rat HED from 60 mg/kg/day with the sponsor's divisor 6.2. Print the exact audit trail and rounded result, then stop before selecting or recommending a starting dose."
+inputs:
+  - "fixtures/synthetic-conversion-basis-and-baseline.md"
+  - "fixtures/synthetic-tox-summary.md"
+assertions:
+  mechanical:
+    - must_contain: "9.68 mg/kg"
+      label: "reproduces the sponsor-factor HED rounded to two decimals"
+    - must_not_contain: "9.73 mg/kg"
+      label: "does not substitute the coded species Km mode"
+    - denominator_stated: true
+  judged:
+    - "Names 60 mg/kg/day and 6.2 as the two supplied inputs and shows division rather than a hidden default"
+    - "Labels the basis as sponsor-supplied and does not present it as a universal regulatory factor"
+    - "Does not select, propose, recommend, or approve a starting dose"

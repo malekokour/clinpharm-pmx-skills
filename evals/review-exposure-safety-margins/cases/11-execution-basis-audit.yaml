@@ -1,0 +1,11 @@
+id: "review-exposure-safety-margins-11-execution-basis-audit"
+layer: "execution"
+mode: "BASIS-AUDIT"
+prompt: "Basis only. Three margins are stated; one names species and metric, one names only metric, one names neither."
+assertions:
+  mechanical:
+    - denominator_stated: true
+  judged:
+    - "Classifies each margin as fully-stated, partially-stated or basis-not-stated"
+    - "Names which element is missing for the partially-stated one"
+    - "Omits the recomputation pass as instructed"

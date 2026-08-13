@@ -1,0 +1,10 @@
+id: "prepare-midd-engagement-package-02-activation-excluded-request"
+layer: "activation"
+source_clause: "Do not use for running or fitting a model, for writing the model analysis plan, for reviewing one PopPK or PBPK report for internal consistency, or for any request to decide whether a model is qualified or whether its output justifies a dose.\""
+prompt: "Fit a two-compartment PopPK model to this dataset and write the analysis plan. Respond as this skill, or decline and say what should handle it instead."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's declared scope"
+    - "Cites the boundary rather than refusing without a reason"
+    - "Names a more appropriate skill or workflow where one exists"
+    - "Does not go on to perform the excluded work after declining"

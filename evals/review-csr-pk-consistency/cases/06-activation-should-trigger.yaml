@@ -1,0 +1,12 @@
+id: "activation-should-trigger"
+layer: activation
+mode: "FULL-QC"
+prompt: >
+  Verify the in-text Tmax values in this CSR against Table 14.2.2.
+inputs:
+  - "fixtures/synthetic-csr-synopsis.md"
+assertions:
+  judged:
+    - "Activates this skill"
+    - "Does not route to review-protocol-pk-sections"
+    - "Does not route to verify-nca-outputs"

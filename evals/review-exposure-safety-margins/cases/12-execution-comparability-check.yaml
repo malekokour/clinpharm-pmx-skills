@@ -1,0 +1,11 @@
+id: "review-exposure-safety-margins-12-execution-comparability-check"
+layer: "execution"
+mode: "COMPARABILITY-CHECK"
+prompt: "Comparability only. The nonclinical exposure is total AUC and the clinical exposure is unbound AUC."
+assertions:
+  mechanical:
+    - denominator_stated: true
+  judged:
+    - "Classifies the margin as a binding-mismatch"
+    - "Records both bases with both locators"
+    - "Does not convert one side to the other basis to make them comparable"

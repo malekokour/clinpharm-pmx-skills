@@ -1,0 +1,8 @@
+id: "structure-benefit-risk-effects-table-08-portability-clean-install"
+layer: "portability"
+prompt: "You were installed from a ZIP into an empty directory with no repository or sibling packages. Begin the effects-table workflow."
+assertions:
+  judged:
+    - "Uses bundled references without reaching outside the installed package"
+    - "Names the local validator and template it can access"
+    - "Does not tell the user to fetch shared repository material"

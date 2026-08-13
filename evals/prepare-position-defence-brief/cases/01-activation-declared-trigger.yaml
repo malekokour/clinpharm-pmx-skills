@@ -1,0 +1,8 @@
+id: "prepare-position-defence-brief-01-activation-declared-trigger"
+layer: "activation"
+prompt: "We need to defend our DDI waiver position at the agency meeting. Build the evidence brief and identify vulnerabilities."
+assertions:
+  judged:
+    - "Recognises the request as within this skill's declared scope and does not decline it"
+    - "Names the workflow it will follow before producing any finding"
+    - "Asks for the inputs it needs rather than assuming their contents"

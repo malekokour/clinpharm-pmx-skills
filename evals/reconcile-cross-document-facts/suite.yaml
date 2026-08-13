@@ -1,0 +1,11 @@
+skill: "reconcile-cross-document-facts"
+version: "0.2.0"
+qualification_profile: "MEDIUM"
+qualification_policy: "PS-D024-v1"
+fixture_key: "fixtures/EXPERT-KEY.md"
+note: "Twelve diagnostic cases across activation, safety, portability, programme execution, privacy structure, ethics-submission trace, topline snapshot, and PD/biomarker trace. The original execution case retains a provisional expert key; the four extension routes use synthetic diagnostic fixtures and are not MEDIUM qualification evidence. Recall and precision remain diagnostic only; the skill stays built until PS-D024 MEDIUM qualification, practitioner review, and fresh held-out scoring are complete."
+thresholds:
+  state: "diagnostic"
+  recall: "measurable but diagnostic only - the expert key's severities are provisional"
+  precision: "measurable but diagnostic only - the expert key's severities are provisional"
+  missed_critical_allowed: 0

@@ -1,0 +1,13 @@
+id: "activation-should-not-trigger-neighbours"
+layer: activation
+mode: "FULL-QC"
+prompt: >
+  Review the clinical pharmacology sections of this Phase 1 protocol before the study
+  starts.
+inputs:
+  - "fixtures/synthetic-protocol.md"
+assertions:
+  judged:
+    - "Does NOT activate this skill"
+    - "Names review-protocol-pk-sections as the correct route"
+    - "Explains the distinction rather than silently declining"

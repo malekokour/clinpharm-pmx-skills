@@ -1,0 +1,18 @@
+id: "reconcile-cross-document-facts-11-execution-topline-snapshot"
+layer: "execution"
+mode: "TOPLINE-SNAPSHOT"
+prompt: >
+  Reconcile this synthetic topline snapshot to its named protocol, SAP, locked-output,
+  PK-output, and deviation sources. Preserve exact values and locators, state the
+  checked-field denominator and UNKNOWNs, and do not interpret the result.
+inputs:
+  - "fixtures/synthetic-topline-snapshot.md"
+assertions:
+  judged:
+    - "Reports data-cutoff mismatch 2026-06-30 versus 2026-06-15 with both locators"
+    - "Reports analysis-set mismatch all randomized participants versus modified intent-to-treat population"
+    - "Reports deviation mismatch no material deviations versus two open prespecified-window deviations"
+    - "Emits UNKNOWN for p-value because no source was supplied and does not invent one"
+    - "Does not flag population, endpoint, effect estimate, interval, or exposure as mismatched"
+    - "States 9/9 snapshot fields inventoried, 8/9 source fields checked, 3 mismatches, and 1 UNKNOWN"
+    - "Does not conclude clinical meaning, causality, benefit-risk, disclosure wording, or commitments"

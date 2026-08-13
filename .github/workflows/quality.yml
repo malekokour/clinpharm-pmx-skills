@@ -1,0 +1,89 @@
+name: Quality
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Python ${{ matrix.python-version }} / Ubuntu
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          # Default depth is 1, which would make the commit-message scan read
+          # a single commit and pass vacuously.
+          fetch-depth: 0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install locked tooling
+        run: python -m pip install --requirement requirements.lock
+      - name: Reject AI attribution in commit messages
+        run: |
+          # Commits here are authored by Malek Okour. A tool used to produce a
+          # change is not a co-author, and such trailers are permanent in a
+          # public scientific repository. The .githooks/commit-msg hook catches
+          # this locally; this step catches anything that reached the remote.
+          pattern='co-authored-by:.*(claude|codex|cursor|copilot|gpt|gemini|anthropic|openai)|generated with .*(claude|codex|cursor)|assisted-by:'
+          if git log --format='%H %B' | grep -qiE "$pattern"; then
+            echo "Found AI attribution in commit messages:"
+            git log --format='%h %B' | grep -inE "$pattern"
+            exit 1
+          fi
+          echo "No AI attribution found in $(git rev-list --count HEAD) commit(s)."
+
+      - name: Lint Python
+        run: ruff check scripts tests skills
+      - name: Validate every Agent Skill package
+        run: |
+          # Validate every package, not one. This previously named
+          # skills/build-work-context alone, so fifteen packages were pushed
+          # without the reference validator ever seeing them.
+          status=0
+          for d in skills/*/; do
+            echo "== ${d%/}"
+            skills-ref validate "${d%/}" || status=1
+          done
+          exit $status
+      - name: Run full quality gate
+        run: python scripts/check_all.py
+
+  portable-smoke:
+    name: Python 3.12 / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          # Default depth is 1, which would make the commit-message scan read
+          # a single commit and pass vacuously.
+          fetch-depth: 0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install locked tooling
+        run: python -m pip install --requirement requirements.lock
+      - name: Run portable quality gate
+        run: python scripts/check_all.py

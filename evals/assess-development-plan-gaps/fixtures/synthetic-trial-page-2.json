@@ -1,0 +1,10 @@
+{
+  "studies": [
+    {
+      "protocolSection": {
+        "identificationModule": {"nctId": "NCT00000003", "briefTitle": "Synthetic trial three"},
+        "statusModule": {"overallStatus": "RECRUITING"}
+      }
+    }
+  ]
+}

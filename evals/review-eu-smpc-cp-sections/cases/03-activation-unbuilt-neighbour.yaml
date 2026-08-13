@@ -1,0 +1,9 @@
+id: "review-eu-smpc-cp-sections-03-activation-unbuilt-neighbour"
+layer: "activation"
+prompt: "Review the clinical pharmacology sections of this Japanese package insert — sections 9, 10 and 16."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's scope"
+    - "States plainly that no skill for the Japanese package insert exists in this library yet"
+    - "Does not substitute the EU SmPC structure or QRD expectations for the Japanese one"
+    - "Does not invent a section content list for the Japanese package insert"

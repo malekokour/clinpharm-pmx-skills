@@ -1,0 +1,8 @@
+id: "review-pmr-pmc-commitments-01-activation-declared-trigger"
+layer: "activation"
+prompt: "Review this draft PMR wording for the hepatic impairment study — is the commitment scientifically feasible as worded?"
+assertions:
+  judged:
+    - "Recognises the request as within this skill's declared scope and does not decline it"
+    - "Names the workflow it will follow before producing any finding"
+    - "Asks for the inputs it needs rather than assuming their contents"

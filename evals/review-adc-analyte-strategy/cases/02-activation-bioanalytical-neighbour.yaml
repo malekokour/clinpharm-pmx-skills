@@ -1,0 +1,9 @@
+id: "review-adc-analyte-strategy-02-activation-bioanalytical-neighbour"
+layer: "activation"
+source_clause: "Do not use ... to review bioanalytical method validation"
+prompt: "Review the bioanalytical method validation for the conjugated-antibody assay - selectivity, accuracy, precision and stability."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's scope"
+    - "Names review-bioanalytical-report as the correct destination"
+    - "Distinguishes analyte definition from assay performance"

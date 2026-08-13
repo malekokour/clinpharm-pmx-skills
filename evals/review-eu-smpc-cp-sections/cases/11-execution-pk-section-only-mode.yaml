@@ -1,0 +1,11 @@
+id: "review-eu-smpc-cp-sections-11-execution-pk-section-only-mode"
+layer: "execution"
+mode: "PK-SECTION-ONLY"
+prompt: "Section 4.2 is still being drafted. Review 5.2 only, against the CSR and popPK report I am supplying."
+assertions:
+  mechanical:
+    - denominator_stated: true
+  judged:
+    - "Scopes the run to 5.2 and says which checks are out of scope for this mode"
+    - "Does not report cross-section consistency findings against a section it did not review"
+    - "States that this is a scoped mode rather than a degraded full pass"

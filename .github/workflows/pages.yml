@@ -1,0 +1,55 @@
+name: Pages
+
+# Manual-only until GitHub Pages is actually enabled on this repository.
+#
+# The push trigger is commented out rather than deleted, because the deferral is
+# temporary and the exact trigger is the thing to restore. On 2026-08-13 the
+# repository was created and this workflow fired on the first push (the slug
+# rename touched `site/`), then failed with:
+#
+#     Get Pages site failed. Please verify that the repository has Pages enabled
+#
+# which is accurate — Pages is not configured yet. A workflow that cannot
+# succeed produces a red mark on every commit, and a red mark that means
+# "unconfigured" rather than "broken" trains readers to ignore red marks. That
+# is worse than no badge at all, and it was live while the launch post was going
+# out.
+#
+# TO RESTORE: enable Pages (Settings → Pages → Source: GitHub Actions), run this
+# workflow once via workflow_dispatch to confirm it deploys, then uncomment the
+# push trigger in the same commit that records the successful run.
+on:
+  # push:
+  #   branches: [main]
+  #   paths:
+  #     - "site/**"
+  #     - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: site
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0

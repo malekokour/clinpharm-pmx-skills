@@ -1,0 +1,33 @@
+id: "review-uspi-section-12-content-11-execution-source-value-route"
+layer: "execution"
+mode: "FULL-LABEL-REVIEW"
+prompt: "Run the bundled source-value comparison route on the synthetic label, source-value file, and Module 2.7.2 extract using the supplied exact comparison specification. Return open findings with both locators and the comparison denominator."
+inputs:
+  - "fixtures/synthetic-uspi-draft.md"
+  - "fixtures/synthetic-source-values.md"
+  - "fixtures/synthetic-module-272-extract.md"
+  - "fixtures/synthetic-label-source-comparison-spec.json"
+assertions:
+  mechanical:
+    - defect: "D2"
+      severity: "Critical"
+      detected_by: "script"
+      observed: "1840 ng·h/mL"
+      expected: "1480 ng·h/mL"
+      locator_required: true
+    - defect: "D5"
+      severity: "Critical"
+      detected_by: "script"
+      observed: "1.9-fold"
+      expected: "2.9-fold"
+      locator_required: true
+    - defect: "D6"
+      severity: "Major"
+      detected_by: "script"
+      observed: "58%"
+      expected: "48%"
+      locator_required: true
+    - denominator_stated: true
+  judged:
+    - "Reports three declared and three executed comparisons with both locators"
+    - "Leaves every disposition open and writes no replacement label language"

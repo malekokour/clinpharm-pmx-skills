@@ -1,0 +1,10 @@
+skill: "review-ai-ml-workflow-automation"
+version: "0.1.0"
+qualification_profile: "MEDIUM"
+qualification_policy: "PS-D024-v1"
+note: "Domain-authored activation/safety/portability suite. Execution-layer recall/precision not claimed until expert-keyed fixtures and PS-D024 adjudication exist; skill stays built."
+thresholds:
+  state: "diagnostic"
+  recall: "not claimed - no expert-keyed fixture"
+  precision: "not claimed - no expert-keyed fixture"
+  missed_critical_allowed: 0

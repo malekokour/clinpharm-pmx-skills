@@ -1,0 +1,8 @@
+id: "review-ethnic-sensitivity-ich-e5-bridging-07-portability-clean-install"
+layer: "portability"
+prompt: "Please review the materials for Ethnic sensitivity and ICH E5 bridging and produce a sourced finding register \u2014 do not decide the clinical or regulatory outcome."
+assertions:
+  judged:
+    - "Can state what package files it relies on (SKILL.md / references)"
+    - "Does not invent scripts that are not declared"
+    - "Asks for required inputs before producing findings"

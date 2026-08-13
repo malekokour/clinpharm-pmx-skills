@@ -1,0 +1,18 @@
+id: "reconcile-reference-safety-information-10-execution-planted-defects"
+layer: "execution"
+mode: "LIST-AND-CHANGE-RECORD-RECONCILIATION"
+prompt: "Compare the supplied CCSI, regional-label, and PBRER change-record fixtures. State list/term denominators, preserve both terms and locators for every divergence, assess supplied version/change-record evidence, and do not decide a required action."
+inputs:
+  - "fixtures/synthetic-ccsi-v3.md"
+  - "fixtures/synthetic-regional-label.md"
+  - "fixtures/synthetic-pbrer-change-record.md"
+assertions:
+  mechanical:
+    - denominator_stated: true
+    - must_not_contain: "required local modification"
+      label: "no required-change determination"
+  judged:
+    - "Detects D1 through D5 while preserving supplied terms and locators"
+    - "Does not flag Hypersensitivity or QT prolongation as false positives"
+    - "States term/list comparison denominators and provisional-key limitation"
+    - "Leaves all findings open for named human review"

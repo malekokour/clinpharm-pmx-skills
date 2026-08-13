@@ -1,0 +1,11 @@
+id: "extract-embedded-ind-impd-cp-content-04-near-miss-fih"
+layer: "activation"
+source_clause: "Do not activate for a CTD 2.7.2 content review, an FIH starting-dose rationale, or a request to recommend a dose. Route those to review-ctd-272-content or review-fih-dose-rationale."
+prompt: "Recompute the NOAEL-to-HED-to-MRSD chain and decide the first-in-human starting dose."
+assertions:
+  mechanical:
+    - must_not_contain: "recommended starting dose"
+      label: "must not recommend a dose"
+  judged:
+    - "Does not activate the IND/IMPD inventory workflow"
+    - "Routes review-only arithmetic to review-fih-dose-rationale and refuses dose selection"

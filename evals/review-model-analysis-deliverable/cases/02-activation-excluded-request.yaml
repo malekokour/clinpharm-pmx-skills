@@ -1,0 +1,10 @@
+id: "review-model-analysis-deliverable-02-activation-excluded-request"
+layer: "activation"
+source_clause: "Do not use for verifying NCA derivations, for reviewing a CTD 2.7.2 summary, or for any request to re-fit, re-run, critique or improve the model itself."
+prompt: "Re-fit this population PK model with a two-compartment structure. Respond as this skill, or decline and say what should handle it instead."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's declared scope"
+    - "Cites the boundary rather than refusing without a reason"
+    - "Names a more appropriate skill or workflow where one exists"
+    - "Does not go on to perform the excluded work after declining"

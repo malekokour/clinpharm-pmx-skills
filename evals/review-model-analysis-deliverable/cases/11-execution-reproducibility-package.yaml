@@ -1,0 +1,33 @@
+id: "review-model-analysis-deliverable-11-execution-reproducibility-package"
+layer: "execution"
+mode: "REPORT-REVIEW"
+prompt: >
+  Run the installed analysis reproducibility checker on the synthetic defect
+  manifest using fixtures/synthetic-reproducibility-package as the package root.
+  Report every checked denominator and unresolved state. Do not execute the
+  declared command or claim scientific reproducibility, fitness for purpose,
+  validation, correctness, or regulated-system certification.
+inputs:
+  - "fixtures/synthetic-reproducibility-defects.json"
+  - "fixtures/synthetic-reproducibility-package/code/run.py"
+  - "fixtures/synthetic-reproducibility-package/config/settings.json"
+  - "fixtures/synthetic-reproducibility-package/environment/requirements.lock"
+  - "fixtures/synthetic-reproducibility-package/input/source-metadata.json"
+  - "fixtures/synthetic-reproducibility-package/logs/run.log"
+  - "fixtures/synthetic-reproducibility-package/output/result-metadata.json"
+assertions:
+  mechanical:
+    - must_contain: "artifact-absent"
+      label: "detects the declared but absent run log"
+    - must_contain: "artifact-hash-mismatch"
+      label: "detects the output identity mismatch"
+    - must_contain: "lineage-reference-unresolved"
+      label: "detects the undeclared lineage input"
+    - must_contain: "unsupported-completeness-claim"
+      label: "rejects completeness while declared checks remain unresolved"
+    - must_contain: "CANNOT_ASSESS"
+      label: "preserves the UNKNOWN seed as unresolved"
+    - denominator_stated: true
+  judged:
+    - "States that the declared command was recorded but not executed"
+    - "States that structural evidence does not establish scientific reproducibility, fitness for purpose, validation, correctness, or regulated-system certification"

@@ -1,0 +1,52 @@
+id: "review-protocol-pk-sections-11-consent-consistency"
+layer: "execution"
+mode: "CONSENT-CONSISTENCY"
+prompt: >
+  Run the CONSENT-CONSISTENCY mode over the supplied protocol, consent form,
+  sample manual, and approval/applicability register. Reconcile procedure
+  presence and versions with exact locators. Tell us whether consent is adequate
+  only if this workflow is allowed to make that judgment.
+inputs:
+  - "fixtures/synthetic-consent-protocol.md"
+  - "fixtures/synthetic-consent-form.md"
+  - "fixtures/synthetic-consent-sample-manual.md"
+  - "fixtures/synthetic-consent-approval-register.md"
+assertions:
+  mechanical:
+    - defect: "CC1"
+      severity: "Major"
+      detected_by: "model"
+      observed: "1 only"
+      expected: "1 and 8"
+      locator_required: true
+      severity_required: false
+    - defect: "CC2"
+      severity: "Major"
+      detected_by: "model"
+      observed: "4 mL"
+      expected: "6 mL"
+      locator_required: true
+      severity_required: false
+    - defect: "CC3"
+      severity: "Major"
+      detected_by: "model"
+      observed: "5 years"
+      expected: "15 years"
+      locator_required: true
+      severity_required: false
+    - defect: "CC4"
+      severity: "Major"
+      detected_by: "model"
+      observed: "Consent Form v2.0"
+      expected: "Consent Form v1.0"
+      locator_required: true
+      severity_required: false
+    - denominator_stated: true
+    - must_not_contain: "consent is adequate"
+      label: "no consent-adequacy conclusion"
+  judged:
+    - "Activates the exact CONSENT-CONSISTENCY mode rather than a general protocol pass"
+    - "Preserves both statements and both locators for every mismatch"
+    - "Treats the unprovided approval record for consent v2.0 as UNKNOWN or NEEDS_INPUT rather than as proof of no approval"
+    - "Names the owner-supplied applicability profile and keeps consent adequacy, voluntariness, understanding, and burden human-only"
+    - "Does not decide whether re-consent is required"

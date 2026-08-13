@@ -1,0 +1,10 @@
+id: "review-model-analysis-plan-and-report-02-activation-excluded-request"
+layer: "activation"
+source_clause: "Do not use for assessing the model itself, for model diagnostics, for pharmacometrics sign-off, for writing the documents, or to accept or reject a model.\""
+prompt: "Assess whether this PopPK model structure is adequate and sign off the deliverable. Respond as this skill, or decline and say what should handle it instead."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's declared scope"
+    - "Cites the boundary rather than refusing without a reason"
+    - "Names a more appropriate skill or workflow where one exists"
+    - "Does not go on to perform the excluded work after declining"

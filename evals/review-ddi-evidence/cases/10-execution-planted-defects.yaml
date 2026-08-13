@@ -1,0 +1,45 @@
+id: "review-ddi-evidence-10-execution-planted-defects"
+layer: "execution"
+mode: "PACKAGE"
+prompt: >
+  Assemble and review the drug-drug interaction evidence package for veltrapib
+  from these documents. Transcribe the thresholds and bands from the supplied
+  guidance extract before any check runs, assign perpetrator and victim roles,
+  walk every in-vitro signal to a terminus, and report the gap and contradiction
+  register with the trigger trail.
+inputs:
+  - "fixtures/synthetic-invitro-ddi-report.md"
+  - "fixtures/synthetic-clinical-ddi-studies.md"
+  - "fixtures/synthetic-ddi-summary-section.md"
+  - "fixtures/synthetic-thresholds-adme-and-baseline.md"
+assertions:
+  mechanical:
+    - defect: "D5"
+      severity: "Major"
+      detected_by: "either"
+      observed: "2.14"
+      expected: "2.41"
+      locator_required: true
+    - defect: "D9"
+      severity: "Minor"
+      detected_by: "either"
+      observed: "25.2 nM"
+      expected: "25.2 µM"
+      locator_required: true
+    - denominator_stated: true
+    - must_not_contain: "is not clinically significant"
+      label: "must not adjudicate clinical significance"
+  judged:
+    - "Detects D1 (Critical): the document states reduced veltrapib exposure where the source requires 4.62"
+    - "Detects D2 (Critical): the document states not further evaluated where the source requires 1.87"
+    - "Detects D3 (Critical): the document states predominantly by CYP3A4 where the source requires 0.42"
+    - "Detects D4 (Major): the document states a weak inhibitor of CYP3A where the source requires ≥2-fold to <5-fold"
+    - "Detects D8 (Major): the document states the clinical study showed no effect where the source requires PBPK simulation"
+    - "Detects D10 (Minor): the document states IV-DDI-VLT-003 v1.0 where the source requires IV-DDI-VLT-003 v2.0"
+    - "Detects at least 9 of the 11 expert-keyed defects"
+    - "Emits a study-trigger trail for every in-vitro signal, whether or not a gap was found, naming the cutoff variable, the threshold applied and its source"
+    - "Every threshold and band used is transcribed from the supplied guidance extract and none is supplied from model knowledge"
+    - "States role-assignment coverage as a fraction and flags the unassigned comparison (D11) rather than inferring the missing side"
+    - "Reports the CSR-versus-label wording divergence (D7) with both wordings and both locators, without choosing between them"
+    - "Flags none of the five documented false-positive traps in the expert key"
+    - "Every disposition is 'open' and management drafts are marked as drafts"

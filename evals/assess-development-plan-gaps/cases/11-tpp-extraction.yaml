@@ -1,0 +1,13 @@
+id: "assess-development-plan-gaps-11-tpp-extraction"
+layer: "execution"
+mode: "TPP-EXTRACTION"
+prompt: "Run TPP-EXTRACTION on the supplied synthetic TPP and source set. Produce the field/source ledger and denominators. Do not judge the proposed claims or recommend a strategy."
+inputs:
+  - "fixtures/synthetic-tpp-and-sources.md"
+assertions:
+  judged:
+    - "Extracts each proposed TPP field exactly as written with its TPP locator"
+    - "Resolves each declared source only against the supplied source set and preserves source identities, versions and locators"
+    - "Marks the safety concept NEEDS_INPUT because no source is cited instead of inventing support"
+    - "States both the field and source-link denominators"
+    - "Does not decide claim desirability, feasibility, achievability, or development strategy"

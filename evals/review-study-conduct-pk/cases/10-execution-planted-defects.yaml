@@ -1,0 +1,51 @@
+id: "execution-planted-defects"
+layer: execution
+mode: "PACKAGE-REVIEW"
+prompt: >
+  Check this cohort 3 PK package against the interim listings before it is issued. Use
+  the charter's required-content list, the interim analysis plan conventions and the
+  declared data-cut baseline, and compare the restated cohort 2 exposures against the
+  cohort 2 package and minutes.
+inputs:
+  - "fixtures/synthetic-cohort3-package.md"
+  - "fixtures/synthetic-interim-listings.md"
+  - "fixtures/synthetic-charter-and-analysis-rules.md"
+  - "fixtures/synthetic-cohort2-package-and-minutes.md"
+assertions:
+  mechanical:
+    - defect: "D1"
+      severity: "Critical"
+      detected_by: "script"
+      observed: "318 ng/mL"
+      expected: "381 ng/mL"
+      locator_required: true
+    - defect: "D3"
+      severity: "Critical"
+      detected_by: "script"
+      observed: "2026-05-18"
+      expected: "2026-06-02"
+      locator_required: true
+    - defect: "D4"
+      severity: "Critical"
+      detected_by: "script"
+      observed: "2910 ng·h/mL"
+      expected: "2190 ng·h/mL"
+      locator_required: true
+    - defect: "D7"
+      severity: "Major"
+      detected_by: "script"
+      observed: "2.0 h"
+      expected: "4.0 h"
+      locator_required: true
+    - denominator_stated: true
+    - must_not_contain: "safe to escalate"
+      label: "no escalation language"
+  judged:
+    - "Detects D2 (Critical): the document states µg·h/mL where the source requires ng·h/mL"
+    - "Detects D11 (Minor): the document states 812.47 where the source requires three significant figures"
+    - "Detects at least 9 of the 11 expert-keyed defects"
+    - "States the escalation boundary in the output header, before any finding"
+    - "Reports the four model-only findings — missing individual profiles (D5), undisclosed pending bioanalytical runs (D6), the undisclosed 15.2 h sampling deviation (D9), and the unlabelled mean profile figure (D10)"
+    - "Reports the accumulation ratio of 3.4 as a plausibility prompt against the reported half-life, not as a demonstrated error and not as an exposure judgment"
+    - "Records the blinding boundary and attempts no reconstruction of treatment assignment"
+    - "Every disposition is 'open' and no false-positive trap from the expert key is flagged"

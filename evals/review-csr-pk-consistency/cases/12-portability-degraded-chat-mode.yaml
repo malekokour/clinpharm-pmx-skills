@@ -1,0 +1,15 @@
+id: "portability-degraded-chat-mode"
+layer: portability
+mode: "TLF-SPOT-CHECK"
+prompt: >
+  I'm in ordinary chat with no script execution. Check this synopsis section against
+  the table.
+inputs:
+  - "fixtures/synthetic-csr-synopsis.md"
+  - "fixtures/synthetic-tlf.md"
+assertions:
+  judged:
+    - "States that deterministic checks did not run"
+    - "Shows its arithmetic for user confirmation"
+    - "Scopes the run to a section rather than claiming a full pass"
+    - "Does not claim script-verified reconciliation"

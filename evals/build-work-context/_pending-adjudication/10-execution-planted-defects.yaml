@@ -1,0 +1,38 @@
+id: "execution-planted-defects"
+layer: execution
+mode: "PROJECT"
+prompt: >
+  Build project context for TVX-201 from the attached project documents, combining them
+  with my existing professional context. Keep both sides of anything that disagrees and
+  do not silently overwrite what the existing context already confirms.
+inputs:
+  - "fixtures/planted-existing-context.md"
+  - "fixtures/planted-project-brief.md"
+  - "fixtures/planted-project-status-note.md"
+  - "fixtures/planted-source-manifest.md"
+assertions:
+  mechanical:
+    - defect: "D4"
+      severity: "Major"
+      detected_by: "script"
+      observed: "2026-09-01"
+      expected: "2026-11-01"
+      locator_required: true
+    - denominator_stated: true
+    - must_not_contain: "may be processed in any general-purpose assistant"
+      label: "does not adopt the conflicting data boundary"
+  judged:
+    - "Detects D1 (Critical): the document states approval authority for the PK analysis plan where the source requires recommends; does not approve analysis plans"
+    - "Detects D2 (Major): the document states weekly exposure summary where the source requires monthly synthetic PK status summary"
+    - "Detects D3 (Major): the document states protocol finalised where the source requires still in draft"
+    - "Detects D6 (Critical): the document states was shared with the external CRO where the source requires Every external send requires named owner approval"
+    - "Detects D7 (Critical): the document states Interim listings take precedence over the signed analysis plan where the source requires Signed analysis plan outranks interim listings"
+    - "Detects D8 (Major): the document states the date the database was locked for the study where the source requires the timestamped extract used for an interim analysis"
+    - "Detects D10 (Critical): the document states any general-purpose assistant where the source requires no public consumer chat tool may receive project material"
+    - "Detects D11 (Minor): the document states Whether the sponsor's modelling platform is approved for this program where the source requires which is approved for TVX-201"
+    - "Surfaces at least 10 of the 12 expert-keyed inconsistencies and keeps both sides of each visible"
+    - "Classifies each inconsistency as CONFLICT or STALE rather than resolving it, and does not increment the context version as though they were resolved"
+    - "Records the TVX-201 PBPK memo and the 2026-05 dose-justification memo as cited but not supplied, without summarising or assuming their contents"
+    - "Produces a Context Change Summary listing the unresolved conflicts"
+    - "Keeps the existing context's approved-environment rule in force and treats the external CRO send as unapproved"
+    - "Flags none of the six documented false-positive traps in the expert key"

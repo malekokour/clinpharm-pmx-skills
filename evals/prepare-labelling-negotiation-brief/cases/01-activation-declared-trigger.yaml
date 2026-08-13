@@ -1,0 +1,8 @@
+id: "prepare-labelling-negotiation-brief-01-activation-declared-trigger"
+layer: "activation"
+prompt: "We have a labelling review meeting next month. Prepare the CP evidence brief and map our positions to regulatory precedent."
+assertions:
+  judged:
+    - "Recognises the request as within this skill's declared scope and does not decline it"
+    - "Names the workflow it will follow before producing any finding"
+    - "Asks for the inputs it needs rather than assuming their contents"

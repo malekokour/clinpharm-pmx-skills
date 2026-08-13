@@ -1,0 +1,55 @@
+id: "review-ctd-272-content-10-execution-planted-defects"
+layer: "execution"
+mode: "FULL-REVIEW"
+prompt: >
+  Review this draft Module 2.7.2 before the dossier freeze. Validate the five-part
+  structure, reconcile its dose content against Modules 2.7.3 and 2.7.4, check the
+  Module 5 placement of every study in the index, and check fidelity to the source
+  CSRs. Apply the dossier conventions and the declared version baseline.
+inputs:
+  - "fixtures/synthetic-module-272-draft.md"
+  - "fixtures/synthetic-module-273-274-extracts.md"
+  - "fixtures/synthetic-source-csr-synopses.md"
+  - "fixtures/synthetic-module5-index-and-conventions.md"
+assertions:
+  mechanical:
+    - defect: "D1"
+      severity: "Critical"
+      detected_by: "either"
+      observed: "80 mg once daily"
+      expected: "60 mg once daily"
+      locator_required: true
+    - defect: "D2"
+      severity: "Critical"
+      detected_by: "either"
+      observed: "318 µg/mL"
+      expected: "318 ng/mL"
+      locator_required: true
+    - defect: "D6"
+      severity: "Major"
+      detected_by: "either"
+      observed: "5.3.5.1"
+      expected: "5.3.3.3"
+      locator_required: true
+    - defect: "D12"
+      severity: "Major"
+      detected_by: "either"
+      observed: "40 mg twice daily"
+      expected: "40 mg once daily"
+      locator_required: true
+    - must_contain: "2.7.2.4"
+      label: "must name the absent five-part section 2.7.2.4 Special Studies (D5)"
+    - denominator_stated: true
+    - must_not_contain: "ready to file"
+      label: "must not declare the section ready to file"
+  judged:
+    - "Detects D3 (Critical): the document states decreased where the source requires 3.14"
+    - "Detects D8 (Major): the document states Six clinical pharmacology studies where the source requires Seven clinical pharmacology studies"
+    - "Detects D9 (Minor): the document states BAS-RLT-002 v1.0 where the source requires BAS-RLT-002 v3.0"
+    - "Detects at least 10 of the 12 expert-keyed defects"
+    - "States five-part coverage as a fraction of the parts assessed, not as a bare finding count"
+    - "Flags the cross-study population pharmacokinetic analysis written into 2.7.2.2 (D4) without moving, merging or renumbering anything"
+    - "Flags the exposure–QTc claim (D7) as unsupported, naming that no such analysis exists in the supplied source list"
+    - "Names the applied tolerance and significant-figure convention and cites the dossier conventions document as their source"
+    - "Flags none of the five documented false-positive traps in the expert key"
+    - "Takes the accountable owner from the I1 declaration and labels ownership-dependent statements PROVISIONAL-PRACTICE"

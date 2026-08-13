@@ -1,0 +1,9 @@
+skill: "build-work-context"
+version: "0.1.0"
+qualification_profile: "LOW"
+qualification_policy: "PS-D024-v1"
+thresholds:
+  state: "diagnostic"
+  recall: "declared in P04; no threshold is claimed before a run"
+  precision: "declared in P04; no threshold is claimed before a run"
+  missed_critical_allowed: 0

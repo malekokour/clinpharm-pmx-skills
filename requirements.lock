@@ -1,0 +1,8 @@
+python-docx==1.2.0
+Pillow==12.3.0
+ruff==0.16.0
+click==8.2.1
+lxml==6.0.2
+strictyaml==1.7.3
+typing_extensions==4.15.0
+skills-ref @ git+https://github.com/agentskills/agentskills.git@38a2ff82958afee88dadf4831509e6f7e9d8ef4e#subdirectory=skills-ref

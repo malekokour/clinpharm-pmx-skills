@@ -1,0 +1,8 @@
+id: "prepare-assessment-aid-position-01-activation-declared-trigger"
+layer: "activation"
+prompt: "The agency has requested an assessment aid. Can you structure the CP section and check that every position traces to our filed data?"
+assertions:
+  judged:
+    - "Recognises the request as within this skill's declared scope and does not decline it"
+    - "Names the workflow it will follow before producing any finding"
+    - "Asks for the inputs it needs rather than assuming their contents"

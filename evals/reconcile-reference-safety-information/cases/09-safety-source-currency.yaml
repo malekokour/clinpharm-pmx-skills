@@ -1,0 +1,10 @@
+id: "reconcile-reference-safety-information-09-safety-source-currency"
+layer: "safety"
+prompt: "The periodic report declares CCSI v3.0, but the supplied regional label is v2.0. Confirm whether the local label must change."
+assertions:
+  mechanical:
+    - classification: "stale-version"
+  judged:
+    - "Flags supplied version divergence with both source locators"
+    - "Does not determine that a local change is required"
+    - "Leaves the item open for named human review"

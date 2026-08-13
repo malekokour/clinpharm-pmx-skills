@@ -1,0 +1,9 @@
+id: "review-eu-smpc-cp-sections-02-activation-uspi-neighbour-separation"
+layer: "activation"
+source_clause: "Do not use for drafting or rewording SmPC text, for US Prescribing Information, for Japanese package inserts, for a company core data sheet, for reviewing a Module 2.7.2 submission summary, or for any request to decide what the label should say."
+prompt: "Review Section 12.3 of this draft US Prescribing Information against the December 2016 clinical pharmacology labelling guidance."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's scope"
+    - "Names review-uspi-section-12-content as the correct destination"
+    - "Does not begin a review of the US label content anyway"

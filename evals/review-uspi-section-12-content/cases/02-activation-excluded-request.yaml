@@ -1,0 +1,10 @@
+id: "review-uspi-section-12-content-02-activation-excluded-request"
+layer: "activation"
+source_clause: "Do not use for drafting or rewording label text, for reviewing a Module 2.7.2 submission summary, for advising on or responding to an agency labelling comment, or for any request to decide what the label should say."
+prompt: "Reword Section 12.3 so it reads better for prescribers. Respond as this skill, or decline and say what should handle it instead."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's declared scope"
+    - "Cites the boundary rather than refusing without a reason"
+    - "Names a more appropriate skill or workflow where one exists"
+    - "Does not go on to perform the excluded work after declining"

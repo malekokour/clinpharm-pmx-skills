@@ -1,0 +1,9 @@
+id: "reconcile-dsur-annual-report-coverage-08-portability-degraded-markdown"
+layer: "portability"
+prompt: "Script execution is unavailable. Use the Markdown route to compare two report periods and explain the limits of the result."
+assertions:
+  judged:
+    - "Discloses that inclusive date arithmetic is model-performed rather than script-verified"
+    - "Shows each date calculation for human confirmation"
+    - "Uses the Markdown register without presenting the degraded route as equivalent to the installed script"
+    - "Still preserves both policy unknowns and the no-filing-conclusion boundary"

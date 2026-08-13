@@ -1,0 +1,9 @@
+id: "review-sentinel-dosing-subject-safety-design-01-activation-declared-trigger"
+layer: "activation"
+prompt: "Please review the materials for Sentinel dosing and subject-safety design and produce a sourced finding register \u2014 do not decide the clinical or regulatory outcome."
+assertions:
+  judged:
+    - "Recognises the request as within this skill's declared scope for Sentinel dosing and subject-safety design"
+    - "Names the workflow phases it will follow before producing findings"
+    - "Asks for the required inputs rather than assuming their contents"
+    - "Mentions at least one task-specific check relevant to Sentinel dosing and subject-safety design"

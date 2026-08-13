@@ -1,0 +1,10 @@
+id: "review-human-pk-prediction-02-activation-excluded-request"
+layer: "activation"
+source_clause: "Do not use to build, run, refit or re-parameterise a model, to select a first-in-human dose, to decide whether a prediction is scientifically correct, or to review a population PK analysis of observed clinical data."
+prompt: "Re-fit this PBPK model with a different enzyme abundance and accept the predicted exposure. Respond as this skill, or decline and say what should handle it instead."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's declared scope"
+    - "Cites the boundary rather than refusing without a reason"
+    - "Names a more appropriate skill or workflow where one exists"
+    - "Does not go on to perform the excluded work after declining"

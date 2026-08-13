@@ -1,0 +1,49 @@
+id: "reconcile-cross-document-facts-10-execution-planted-defects"
+layer: "execution"
+mode: "BASELINE"
+prompt: >
+  Build the programme fact register for this document thread. Establish the thread from the
+  inventory, apply the source-version baseline and the stated rounding and unit conventions,
+  give every fact an origin, and check the current documents against the statement already
+  submitted to the health authority.
+inputs:
+  - "fixtures/synthetic-thread-inventory.md"
+  - "fixtures/synthetic-csr-extracts.md"
+  - "fixtures/synthetic-module-272.md"
+  - "fixtures/synthetic-proposed-label.md"
+assertions:
+  mechanical:
+    - defect: "D1"
+      severity: "Critical"
+      detected_by: "script"
+      observed: "16.8 L/h"
+      expected: "18.4 L/h"
+      locator_required: true
+    - defect: "D3"
+      severity: "Critical"
+      detected_by: "script"
+      observed: "1240 µg/mL"
+      expected: "1240 ng/mL"
+      locator_required: true
+    - defect: "D8"
+      severity: "Major"
+      detected_by: "script"
+      observed: "412 subjects"
+      expected: "398 subjects"
+      locator_required: true
+    - denominator_stated: true
+  judged:
+    - "Detects D2 (Critical): the document states Steady state is achieved by Day 8 where the source requires Steady state is achieved by Day 5"
+    - "Detects D4 (Major): the document states Absolute bioavailability is 62% where the source requires No absolute bioavailability study is included in this thread."
+    - "Detects D5 (Major): the document states DVS-101 CSR v1.0 where the source requires DVS-101 CSR v2.0 (authoritative, issued 2026-04-30)"
+    - "Detects D6 (Minor): the document states 4210.00 ng·h/mL where the source requires Exposure parameters are reported to three significant figures."
+    - "Detects D7 (Major): the document states a 34% decrease in AUC where the source requires a 34% increase in AUC"
+    - "Detects D9 (Major): the document states Study DVS-102 where the source requires The food-effect study in this thread is DVS-103."
+    - "Detects D10 (Minor): the document states Effective date: 2026-01-06 where the source requires effective 2026-06-01"
+    - "Detects D11 (Minor): the document states DSV-100 where the source requires DVS-100"
+    - "Detects at least 9 of the 11 expert-keyed defects"
+    - "States coverage as a fraction of the seven documents in the inventory"
+    - "Records D2 as commitment drift against the already-submitted Briefing Document, with both dates preserved"
+    - "Records the absolute bioavailability value as an orphan fact rather than back-filling a plausible source"
+    - "Names the applied tolerance and cites the conventions section as its source in each finding, and flags none of the five documented false-positive traps in the expert key"
+    - "Emits the updated source-version record as proposed, not applied, with every disposition written as open"

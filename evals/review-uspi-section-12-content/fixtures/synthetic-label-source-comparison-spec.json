@@ -1,0 +1,46 @@
+{
+  "pairs": [
+    {
+      "id": "D2",
+      "severity": "Critical",
+      "left": {
+        "document": "label",
+        "pattern": "AUC0-24 at steady state was \\*\\*(?P<value>\\d+) (?P<unit>ng·h/mL)",
+        "locator": "USPI draft §12.3 Absorption"
+      },
+      "right": {
+        "document": "sources",
+        "pattern": "AUC0-24, geometric mean \\(CV%\\)\\*\\* \\| \\*\\*(?P<value>\\d+) (?P<unit>ng·h/mL)",
+        "locator": "CSR QLX-101 Table 14.2.1"
+      }
+    },
+    {
+      "id": "D5",
+      "severity": "Critical",
+      "left": {
+        "document": "label",
+        "pattern": "AUC was increased \\*\\*(?P<value>\\d+(?:\\.\\d+)?)(?P<unit>-fold)",
+        "locator": "USPI draft §8.7"
+      },
+      "right": {
+        "document": "sources",
+        "pattern": "Moderate \\(Child-Pugh B\\)\\*\\* \\| \\*\\*(?P<value>\\d+(?:\\.\\d+)?)(?P<unit>-fold)",
+        "locator": "CSR QLX-105 Table 14.2.3"
+      }
+    },
+    {
+      "id": "D6",
+      "severity": "Major",
+      "left": {
+        "document": "label",
+        "pattern": "bioavailability is approximately \\*\\*(?P<value>\\d+)(?P<unit>%)",
+        "locator": "USPI draft §12.3 Absorption"
+      },
+      "right": {
+        "document": "module272",
+        "pattern": "bioavailability was (?P<value>\\d+)(?P<unit>%)",
+        "locator": "Module 2.7.2 extract, Absorption and bioavailability"
+      }
+    }
+  ]
+}

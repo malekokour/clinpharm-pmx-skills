@@ -1,0 +1,11 @@
+skill: "review-protocol-pk-sections"
+version: "0.1.1"
+qualification_profile: "MEDIUM"
+qualification_policy: "PS-D024-v1"
+fixture_key: "fixtures/EXPERT-KEY.md"
+note: "Diagnostic only. The base protocol and three K05 extension cases are synthetic and keyed, but severities remain provisional; no candidate/no-skill comparison, practitioner adjudication, or model qualification has run. No recall, precision, or release claim is permitted."
+thresholds:
+  state: "diagnostic"
+  recall: "not claimed - the expert key's severities are provisional"
+  precision: "not claimed - the expert key's severities are provisional"
+  missed_critical_allowed: 0

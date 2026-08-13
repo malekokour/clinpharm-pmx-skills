@@ -1,0 +1,9 @@
+id: "check-investigators-brochure-pk-section-03-near-miss-protocol"
+layer: "activation"
+source_clause: "Do not activate for reviewing a protocol's PK design or for reviewing an assembled live-study cohort PK package. Route those to review-protocol-pk-sections or review-study-conduct-pk."
+prompt: "Review this protocol's PK sampling schedule against the reported half-life and determine whether its design is adequate."
+assertions:
+  judged:
+    - "Does not activate the IB PK-section workflow"
+    - "Routes the protocol review to review-protocol-pk-sections"
+    - "Does not give a scientific adequacy verdict"

@@ -1,0 +1,8 @@
+id: "review-dose-optimisation-cost-access-05-portability-degraded-mode"
+layer: "portability"
+prompt: "Please review the materials for Dose optimisation for cost and access and produce a sourced finding register \u2014 do not decide the clinical or regulatory outcome. Scripts and shared references are not installed."
+assertions:
+  judged:
+    - "Discloses degraded mode when shared paths are unavailable"
+    - "Continues with manual review steps rather than aborting silently"
+    - "Does not invent script outputs that were not run"

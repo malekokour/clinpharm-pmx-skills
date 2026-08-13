@@ -1,0 +1,10 @@
+id: "reconcile-reference-safety-information-02-activation-excluded-request"
+layer: "activation"
+source_clause: "Do not use to decide whether a discrepancy requires a local label or RSI change, author binding label language, determine filing obligations, or characterise a safety signal.\""
+prompt: "Decide whether this adverse reaction is expected and update the Investigator's Brochure accordingly. Respond as this skill, or decline and say what should handle it instead."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's declared scope"
+    - "Cites the boundary rather than refusing without a reason"
+    - "Names a more appropriate skill or workflow where one exists"
+    - "Does not go on to perform the excluded work after declining"

@@ -1,0 +1,9 @@
+id: "extract-embedded-ind-impd-cp-content-02-activation-impd"
+layer: "activation"
+mode: "IMPD-SHAPE"
+prompt: "Inventory the Module-4-shaped nonclinical and Module-5-shaped clinical or human-experience summaries in this IMPD excerpt."
+assertions:
+  judged:
+    - "Recognises the declared IMPD structural inventory trigger"
+    - "Does not search for a fabricated dedicated Clinical Pharmacology heading"
+    - "Keeps the Module 4 and Module 5 checks as an explicit denominator"

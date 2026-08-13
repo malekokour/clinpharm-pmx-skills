@@ -1,0 +1,9 @@
+id: "review-line-extensions-routes-formulations-devices-01-activation-declared-trigger"
+layer: "activation"
+prompt: "Please review the materials for Line extensions - routes, formulations, devices and produce a sourced finding register \u2014 do not decide the clinical or regulatory outcome."
+assertions:
+  judged:
+    - "Recognises the request as within this skill's declared scope for Line extensions - routes, formulations, devices"
+    - "Names the workflow phases it will follow before producing findings"
+    - "Asks for the required inputs rather than assuming their contents"
+    - "Mentions at least one task-specific check relevant to Line extensions - routes, formulations, devices"

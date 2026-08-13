@@ -1,0 +1,39 @@
+{
+  "source_set": [
+    "Synthetic Protocol VUL-101 v1.0",
+    "Synthetic participant-material register v1.0",
+    "Synthetic committee register v1.0"
+  ],
+  "applicability": {
+    "profile_id": "VUL-US-EU-v1",
+    "profile_version": "1.0",
+    "as_of": "2026-08-11",
+    "jurisdictions": ["US", "EU"],
+    "owner": "Synthetic participant-protection owner"
+  },
+  "populations": [
+    {
+      "population_id": "POP-01",
+      "population_label": "Minors declared by the protocol owner",
+      "source_locator": "Synthetic Protocol VUL-101 section 4.1",
+      "artifacts": {
+        "rationale": "Synthetic Protocol VUL-101 section 4.1",
+        "assent_or_representative": "Synthetic participant-material register rows 2-3",
+        "compensation": null,
+        "specialist_input": "Synthetic specialist register row 5",
+        "committee_record": "Synthetic committee register row 8"
+      }
+    },
+    {
+      "population_id": "POP-02",
+      "population_label": "Adults unable to consent declared by the protocol owner",
+      "source_locator": "Synthetic Protocol VUL-101 section 4.2",
+      "artifacts": {
+        "rationale": "Synthetic Protocol VUL-101 section 4.2",
+        "assent_or_representative": "Synthetic participant-material register row 4",
+        "compensation": "Synthetic compensation schedule row 2",
+        "committee_record": "Synthetic committee register row 9"
+      }
+    }
+  ]
+}

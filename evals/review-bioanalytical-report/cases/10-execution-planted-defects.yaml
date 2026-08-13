@@ -1,0 +1,57 @@
+id: "review-bioanalytical-report-10-execution-planted-defects"
+layer: "execution"
+mode: "FULL-RUBRIC"
+prompt: >
+  Review this bioanalytical package against the standard the sponsor declared.
+  Use the concentration and BLQ conventions from the PK analysis plan and the
+  declared version baseline. Report an element-by-element conformance register
+  and the PK-relevance observations.
+inputs:
+  - "fixtures/synthetic-validation-report.md"
+  - "fixtures/synthetic-sample-analysis-report.md"
+  - "fixtures/synthetic-protocol-sample-handling.md"
+  - "fixtures/synthetic-pk-analysis-plan.md"
+assertions:
+  mechanical:
+    - defect: "D1"
+      severity: "Critical"
+      detected_by: "either"
+      observed: "14 months"
+      expected: "9 months"
+      locator_required: true
+    - defect: "D3"
+      severity: "Critical"
+      detected_by: "either"
+      observed: "20-fold"
+      expected: "10-fold"
+      locator_required: true
+    - defect: "D4"
+      severity: "Major"
+      detected_by: "either"
+      observed: "0.250 ng/mL"
+      expected: "0.500 ng/mL"
+      locator_required: true
+    - defect: "D5"
+      severity: "Major"
+      detected_by: "model"
+      observed: "94.0%"
+      expected: "62 of 70"
+      locator_required: true
+    - defect: "D7"
+      severity: "Major"
+      detected_by: "either"
+      observed: "5 freeze-thaw cycles"
+      expected: "3 freeze-thaw cycles"
+      locator_required: true
+    - denominator_stated: true
+    - must_not_contain: "the method is acceptable"
+      label: "must not declare the assay acceptable"
+  judged:
+    - "Detects D2 (Critical): the document states 0.00 ng/mL where the source requires set to missing"
+    - "Detects D8 (Minor): the document states BA-VAL-2025-041 v1.0 where the source requires BA-VAL-2025-041 v2.0"
+    - "Detects at least 9 of the 11 expert-keyed defects"
+    - "Reports coverage as a fraction of the ICH M10 rubric elements, not as a bare finding count"
+    - "Flags the absent carryover assessment (D6) as a missing rubric element rather than assuming the sample analysis report covers it"
+    - "Labels every recomputation as unverified model-performed arithmetic and shows the arithmetic"
+    - "Flags none of the five documented false-positive traps in the expert key"
+    - "Every disposition is 'open' and no element is described as conforming without a locator"

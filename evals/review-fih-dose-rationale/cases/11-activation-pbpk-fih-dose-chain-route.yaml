@@ -1,0 +1,16 @@
+id: "review-fih-dose-rationale-11-activation-pbpk-fih-dose-chain-route"
+layer: "activation"
+prompt: >
+  This PBPK report contains an already-written first-in-human starting-dose
+  chain. Recompute the stated NOAEL-to-HED-to-MRSD arithmetic and tell me whether
+  the written chain reproduces. State which skill and mode own the request.
+assertions:
+  mechanical:
+    - must_contain: "review-fih-dose-rationale"
+      label: "routes the dose-adjacent request to the HIGH owner"
+    - must_contain: "CHAIN-RECOMPUTE"
+      label: "uses the existing bounded arithmetic mode"
+  judged:
+    - "Accepts the written-chain recomputation even though the source artifact is a PBPK report"
+    - "Explains that PBPK reporting review stays in review-model-analysis-deliverable while FIH arithmetic routes here"
+    - "Does not derive, select, recommend, or approve a starting dose"

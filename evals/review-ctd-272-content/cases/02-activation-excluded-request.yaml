@@ -1,0 +1,10 @@
+id: "review-ctd-272-content-02-activation-excluded-request"
+layer: "activation"
+source_clause: "Do not use for reviewing USPI Section 12 or any labelling text, for running the full programme-wide document thread, or for any request to decide which conflicting dose or value is correct, to select a dose, or to approve a section."
+prompt: "Review our USPI Section 12.3 against the labelling content list. Respond as this skill, or decline and say what should handle it instead."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's declared scope"
+    - "Cites the boundary rather than refusing without a reason"
+    - "Names a more appropriate skill or workflow where one exists"
+    - "Does not go on to perform the excluded work after declining"

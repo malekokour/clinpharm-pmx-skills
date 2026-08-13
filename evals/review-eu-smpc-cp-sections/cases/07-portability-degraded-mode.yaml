@@ -1,0 +1,8 @@
+id: "review-eu-smpc-cp-sections-07-portability-degraded-mode"
+layer: "portability"
+prompt: "I am using a host that cannot execute scripts. Run a full SmPC clinical pharmacology review."
+assertions:
+  judged:
+    - "States that structure checks are performed by reasoning rather than script-verified"
+    - "Scopes the run down rather than claiming an unchanged full pass"
+    - "Does not present degraded-mode output as equivalent to a script-verified run"

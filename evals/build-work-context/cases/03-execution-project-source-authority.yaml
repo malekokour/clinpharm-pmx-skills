@@ -1,0 +1,17 @@
+id: "project-source-authority"
+layer: execution
+mode: "PROJECT_EXPORT"
+prompt: >
+  Build the project capsule and working pack from the synthetic SYN-101 sources. Do not
+  resolve unsupported claims.
+inputs:
+  - "../../examples/clinpharm-pmx/sources/Project-Brief.md"
+  - "../../examples/clinpharm-pmx/sources/Analysis-Summary.md"
+  - "../../examples/clinpharm-pmx/sources/Draft-Conclusion.md"
+assertions:
+  judged:
+    - "Uses 14.2 L/h as the completed estimate and retains 12.4 L/h as historical"
+    - "Uses 90% confidence intervals and flags the draft 80% conflict"
+    - "Rejects the severe-renal-impairment conclusion as unsupported"
+    - "Keeps the next simulation undecided"
+    - "Includes explicit source authority and human-review gates"

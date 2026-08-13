@@ -1,0 +1,11 @@
+skill: "review-eu-smpc-cp-sections"
+version: "0.1.0"
+qualification_profile: "HIGH"
+qualification_policy: "PS-D024-v1"
+note: "Nine diagnostic cases across all four layers, authored with the package under plan packet P06. Deliberately activation-, safety- and boundary-weighted: this skill's two nearest neighbours are other labelling reviewers, and its distinctive check (4.2/4.5 instructions against their 5.2 basis, in both directions) is a reporting contract rather than a defect-detection task. No expert-keyed fixture, no paired runs, no practitioner review, no holdout. No recall or precision figure may be quoted and the skill stays built."
+thresholds:
+  state: "diagnostic"
+  recall: "not claimed - no expert-keyed fixture exists for this package yet"
+  precision: "not claimed - no expert-keyed fixture exists for this package yet"
+  missed_critical_allowed: 0
+  diagnostic_reason: "Authored alongside the package on 2026-08-11. Qualifying evidence requires a synthetic SmPC fixture with adjudicated planted defects, which P10/P11 own."

@@ -1,0 +1,2 @@
+# Synthetic environment identity only; no installation is required.
+python==3.11.synthetic

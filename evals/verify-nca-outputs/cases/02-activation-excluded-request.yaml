@@ -1,0 +1,10 @@
+id: "verify-nca-outputs-02-activation-excluded-request"
+layer: "activation"
+source_clause: "Do not use when the request is to review a report that merely quotes NCA values, to review bioanalytical assay validation, to rerun or re-derive the analysis, or to decide which of two conflicting values is scientifically correct."
+prompt: "Review this clinical study report, which quotes NCA values in its text. Respond as this skill, or decline and say what should handle it instead."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's declared scope"
+    - "Cites the boundary rather than refusing without a reason"
+    - "Names a more appropriate skill or workflow where one exists"
+    - "Does not go on to perform the excluded work after declining"

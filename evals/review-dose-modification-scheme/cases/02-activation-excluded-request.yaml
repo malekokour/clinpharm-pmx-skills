@@ -1,0 +1,10 @@
+id: "review-dose-modification-scheme-02-activation-excluded-request"
+layer: "activation"
+source_clause: "Do not use for selecting or proposing a dose modification, for reviewing the full dose justification evidence package, for the MIDD engagement package, for label review, or for any request to set, adjust, or endorse a threshold or a dose.\""
+prompt: "Propose a dose modification scheme for Grade 3 toxicity based on this exposure-response analysis. Respond as this skill, or decline and say what should handle it instead."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's declared scope"
+    - "Cites the boundary rather than refusing without a reason"
+    - "Names a more appropriate skill or workflow where one exists"
+    - "Does not go on to perform the excluded work after declining"

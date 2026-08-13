@@ -1,0 +1,18 @@
+{
+  "pairs": [
+    {
+      "id": "D1",
+      "severity": "Critical",
+      "left": {
+        "document": "module272",
+        "pattern": "recommended Phase 3 dose is (?P<value>\\d+(?:\\.\\d+)?) (?P<unit>mg once daily)",
+        "locator": "Module 2.7.2 draft §2.7.2.1"
+      },
+      "right": {
+        "document": "modules273274",
+        "pattern": "dose selected for Phase 3[\\s\\S]{0,60}?is (?P<value>\\d+(?:\\.\\d+)?) (?P<unit>mg once daily)",
+        "locator": "Module 2.7.3 draft dose-selection passage"
+      }
+    }
+  ]
+}

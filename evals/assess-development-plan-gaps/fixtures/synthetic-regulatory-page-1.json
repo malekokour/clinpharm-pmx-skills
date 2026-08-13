@@ -1,0 +1,15 @@
+{
+  "meta": {"results": {"skip": 0, "limit": 2, "total": 3}},
+  "results": [
+    {
+      "application_number": "NDA000001",
+      "sponsor_name": "Synthetic Therapeutics",
+      "products": [{"brand_name": "SYNTHETIN-A", "marketing_status": "Prescription"}]
+    },
+    {
+      "application_number": "BLA000002",
+      "sponsor_name": "Synthetic Therapeutics",
+      "products": [{"brand_name": "SYNTHETIN-B", "marketing_status": "Prescription"}]
+    }
+  ]
+}

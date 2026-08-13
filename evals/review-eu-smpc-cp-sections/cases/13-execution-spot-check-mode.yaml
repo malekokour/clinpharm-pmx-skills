@@ -1,0 +1,11 @@
+id: "review-eu-smpc-cp-sections-13-execution-spot-check-mode"
+layer: "execution"
+mode: "SPOT-CHECK"
+prompt: "Just check one thing: 5.2 says clearance is 15.2 L/h. The popPK report table 12 says 15.2 L/h. Anything else I should know about that statement?"
+assertions:
+  mechanical:
+    - denominator_stated: true
+  judged:
+    - "Confirms the value traces, citing both locators"
+    - "Limits the response to the nominated statement rather than expanding into a full review"
+    - "Does not draw a scientific conclusion about whether the clearance value is appropriate"

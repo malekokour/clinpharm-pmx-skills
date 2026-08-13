@@ -1,0 +1,30 @@
+id: "check-investigators-brochure-pk-section-05-execution-planted-check"
+layer: "execution"
+mode: "FULL-CHECK"
+prompt: "Check the synthetic IB and supplied version register. State content and version denominators, preserve both version/date values and locators, and do not approve content or decide an action."
+inputs:
+  - "fixtures/Synthetic-IB.md"
+  - "fixtures/Synthetic-Version-Register.json"
+assertions:
+  mechanical:
+    - defect: "D3"
+      severity: "Major"
+      detected_by: "script"
+      observed: "IB-v2"
+      expected: "IB-v3"
+      locator_required: true
+    - defect: "D4"
+      severity: "Major"
+      detected_by: "script"
+      observed: "2026-01-15"
+      expected: "2026-07-01"
+      locator_required: true
+    - must_contain: "plasma-protein-binding-absent"
+      label: "planted missing declaration D1"
+    - must_contain: "bioavailability-absent"
+      label: "planted missing declaration D2"
+    - denominator_stated: true
+  judged:
+    - "Reports D1 through D4 with bounded mechanical language and locators"
+    - "Does not approve the IB or infer a filing/live-study action"
+    - "States that expert-key severities are provisional and no performance is established"

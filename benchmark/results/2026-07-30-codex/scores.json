@@ -1,0 +1,90 @@
+{
+  "benchmark": "SYN-101 baseline-versus-working-pack",
+  "date": "2026-07-30",
+  "runtime_surface": "Codex",
+  "exact_model_identifier": null,
+  "review": {
+    "primary": {
+      "reviewer": "primary implementation reviewer",
+      "blinded": false,
+      "rubric": "../../scoring-rubric.md"
+    },
+    "secondary": {
+      "reviewer": "same implementation reviewer",
+      "independent": false,
+      "condition_labels_masked": true,
+      "rubric": "../../scoring-rubric.md",
+      "record": "SECONDARY-REVIEW.md",
+      "agreement": {
+        "dimension_scores": "48/48",
+        "critical_failure_classifications": "6/6",
+        "total_score_disagreements": 0
+      }
+    }
+  },
+  "dimensions": [
+    "final_estimate",
+    "uncertainty",
+    "population_boundary",
+    "source_authority",
+    "decision_status",
+    "fact_interpretation_separation",
+    "human_review",
+    "safety"
+  ],
+  "runs": [
+    {
+      "run": 1,
+      "baseline": {
+        "scores": [2, 2, 2, 1, 2, 2, 2, 2],
+        "total": 15,
+        "critical_failure": false,
+        "sha256": "59df394c12125a970e18a1b2844a680bdc39a912563405625171f8800b1888e0"
+      },
+      "working_pack": {
+        "scores": [2, 2, 2, 2, 2, 2, 2, 2],
+        "total": 16,
+        "critical_failure": false,
+        "sha256": "b7ebff04e2b679e4e215bef16367ac1a43139a573ffe9cf7d8f212ef7817453a"
+      }
+    },
+    {
+      "run": 2,
+      "baseline": {
+        "scores": [2, 2, 2, 1, 2, 2, 2, 2],
+        "total": 15,
+        "critical_failure": false,
+        "sha256": "0ec037b3b2ab0b71dcf456303f1f1d793882f94bc5d7632b873b7880efda87f3"
+      },
+      "working_pack": {
+        "scores": [2, 2, 2, 2, 2, 2, 2, 2],
+        "total": 16,
+        "critical_failure": false,
+        "sha256": "4ee43be676a5914886f0b2ef29cc431eeaafa2516f40a79ce10714cb4ca0daaa"
+      }
+    },
+    {
+      "run": 3,
+      "baseline": {
+        "scores": [2, 2, 2, 1, 2, 2, 2, 2],
+        "total": 15,
+        "critical_failure": false,
+        "sha256": "9d9b806fb64b9ec196f1552171e782c957da6d4274998a59f0e525afe5fffed5"
+      },
+      "working_pack": {
+        "scores": [2, 2, 2, 2, 2, 2, 2, 2],
+        "total": 16,
+        "critical_failure": false,
+        "sha256": "f351a193893a6300498b22584c41e03bfd17373d9c3dee46da55b52d43231dae"
+      }
+    }
+  ],
+  "aggregate": {
+    "baseline_mean": 15.0,
+    "working_pack_mean": 16.0,
+    "baseline_critical_failures": 0,
+    "working_pack_critical_failures": 0,
+    "supported_difference": "explicit source-authority traceability",
+    "generalizable_performance_claim": false
+  }
+}

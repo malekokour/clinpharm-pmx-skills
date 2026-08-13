@@ -1,0 +1,11 @@
+id: "review-adc-analyte-strategy-13-execution-consistency-check"
+layer: "execution"
+mode: "CONSISTENCY-CHECK"
+prompt: "Consistency only. In the CSR, conjugated antibody AUC is 1600 ug*h/mL and total antibody AUC is 1400 ug*h/mL, same units, same table set."
+assertions:
+  mechanical:
+    - denominator_stated: true
+  judged:
+    - "Reports a containment violation because a conjugated species cannot exceed its total"
+    - "Records both values with both locators"
+    - "States that at least one of the two is wrong without deciding which"

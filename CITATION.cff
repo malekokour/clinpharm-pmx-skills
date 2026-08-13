@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use ClinPharm PMx Skills, please cite this repository."
+title: "ClinPharm PMx Skills"
+type: software
+authors:
+  - family-names: "Okour"
+    given-names: "Malek"
+license: MIT
+repository-code: "https://github.com/malekokour/clinpharm-pmx-skills"
+url: "https://github.com/malekokour/clinpharm-pmx-skills"
+abstract: "Portable Agent Skills that teach AI how pharmaceutical professionals work."

@@ -1,0 +1,9 @@
+id: "review-human-pk-prediction-02-activation-observed-data-neighbour"
+layer: "activation"
+source_clause: "Do not use ... to review a population PK analysis of observed clinical data."
+prompt: "Review the population PK analysis of our Phase 1 data - model selection, diagnostics and parameter precision."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's scope"
+    - "Names review-model-analysis-deliverable as the correct destination"
+    - "Distinguishes an analysis of observed data from a prediction with no human data"

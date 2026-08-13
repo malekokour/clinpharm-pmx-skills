@@ -1,0 +1,9 @@
+id: "review-uspi-section-2-dosing-01-activation-declared-trigger"
+layer: "activation"
+prompt: "Please review our materials for USPI Section 2 dosing review \u2014 produce a sourced finding register and stop before any approval."
+assertions:
+  judged:
+    - "Recognises the request as within this skill's declared scope and does not decline it"
+    - "Names the workflow it will follow before producing any finding"
+    - "Asks for the inputs it needs rather than assuming their contents"
+    - "Does not approve, sign off, or submit"

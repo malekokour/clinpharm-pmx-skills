@@ -1,0 +1,11 @@
+id: "review-human-pk-prediction-11-execution-assumption-audit"
+layer: "execution"
+mode: "ASSUMPTION-AUDIT"
+prompt: "Only the assumptions please - declared versus operative. Skip traceability."
+assertions:
+  mechanical:
+    - denominator_stated: true
+  judged:
+    - "Classifies every assumption into declared-and-used, declared-not-used, or operative-not-declared"
+    - "Omits the input traceability pass as instructed"
+    - "Reports declared-not-used assumptions rather than silently dropping them"

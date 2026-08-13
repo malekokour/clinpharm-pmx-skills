@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/malekokour/clinpharm-pmx-skills/raw/main/evals/_traces/schema.json",
+  "title": "Router selection trace",
+  "description": "One record per selection decision. Traces are what make the confusion matrix in docs/SELECTION-SLO.md possible. They deliberately record a case identifier rather than the utterance text: committed evidence must not carry raw prompts, because a prompt can contain material the data boundary excludes from this repository.",
+  "type": "object",
+  "required": ["case_id", "complexity_class", "decision", "reason_code"],
+  "additionalProperties": false,
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "description": "Identifier of the selection case. NOT the utterance text — see the description above.",
+      "minLength": 1
+    },
+    "complexity_class": {
+      "type": "string",
+      "enum": ["SIMPLE", "SINGLE", "AMBIGUOUS", "MULTI"],
+      "description": "Classified before ranking. MULTI never becomes a silent multi-skill run; it asks or offers a documented workflow."
+    },
+    "nav_path": {
+      "type": "string",
+      "description": "The job-tree branch narrowed to before ranking. Absent when the router searched globally."
+    },
+    "candidates": {
+      "type": "array",
+      "description": "Ranked candidates considered. Present even when the decision was refuse, because what was considered is part of why.",
+      "items": {
+        "type": "object",
+        "required": ["id", "score"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "score": { "type": "number" },
+          "excluded_by": {
+            "type": "string",
+            "description": "Populated when a candidate was removed by a conflict rule, a refuse tag, or a disabled-skill setting."
+          }
+        }
+      }
+    },
+    "margin": {
+      "type": "number",
+      "description": "Score gap between the top two candidates. The quantity that decides top-1 versus ask, and the one to inspect first when selection degrades."
+    },
+    "decision": {
+      "type": "string",
+      "enum": ["top_1", "ask", "refuse", "forced"],
+      "description": "forced = the user named a skill explicitly. A forced selection still honours refuse tags and the data boundary."
+    },
+    "selected_id": {
+      "type": "string",
+      "description": "Present for top_1 and forced. Absent for ask and refuse."
+    },
+    "refuse_reason": {
+      "type": "string",
+      "enum": ["human_only", "boundary", "data_boundary", "safety", "out_of_scope"],
+      "description": "Required when decision is refuse. Enumerated so refusal correctness can be counted rather than read."
+    },
+    "human_role_named": {
+      "type": "boolean",
+      "description": "For a human_only refusal, whether the accountable role was named. A refusal that does not say who should do it is incomplete."
+    },
+    "contexts_attached": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Context ids attached AFTER selection. Contexts are never candidates; their presence here and absence from `candidates` is the invariant that keeps them out of the ranking."
+    },
+    "reason_code": {
+      "type": "string",
+      "description": "Short machine-comparable reason, e.g. clear_margin, close_top_2, refuse_human_only, forced_by_user, multi_offered_workflow."
+    },
+    "alias_resolved_from": {
+      "type": "string",
+      "description": "Set when the request named a retired id. If this is present AND a live id also matched, that is a double-activation defect."
+    }
+  }
+}

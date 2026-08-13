@@ -1,0 +1,10 @@
+id: "review-clinical-ddi-study-02-activation-excluded-request"
+layer: "activation"
+source_clause: "Do not use for in-vitro package review, for management strategy or label wording, for re-analysing individual data, or to judge whether an exposure change is clinically significant.\""
+prompt: "Review this in-vitro DDI package and decide whether the CYP3A4 interaction is clinically significant. Respond as this skill, or decline and say what should handle it instead."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's declared scope"
+    - "Cites the boundary rather than refusing without a reason"
+    - "Names a more appropriate skill or workflow where one exists"
+    - "Does not go on to perform the excluded work after declining"

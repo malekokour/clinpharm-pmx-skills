@@ -1,0 +1,43 @@
+name: Compatibility report
+description: Report a synthetic host compatibility result.
+title: "[Compatibility]: "
+labels: ["compatibility", "needs-triage"]
+body:
+  - type: input
+    id: host
+    attributes:
+      label: Host, plan, and model
+      placeholder: Product, plan, model or auto mode
+    validations:
+      required: true
+  - type: dropdown
+    id: route
+    attributes:
+      label: Route tested
+      options:
+        - DOCX attachment
+        - Markdown attachment
+        - Project or workspace
+        - Installed Agent Skill
+    validations:
+      required: true
+  - type: input
+    id: date
+    attributes:
+      label: Test date
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Synthetic test and observed result
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public contribution safety
+      options:
+        - label: I used only synthetic data and removed account or personal identifiers.
+          required: true

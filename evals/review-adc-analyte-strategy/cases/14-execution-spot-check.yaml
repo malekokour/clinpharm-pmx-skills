@@ -1,0 +1,11 @@
+id: "review-adc-analyte-strategy-14-execution-spot-check"
+layer: "execution"
+mode: "SPOT-CHECK"
+prompt: "One analyte only: check that total antibody carries the same unit in the protocol, the bioanalytical plan and the CSR."
+assertions:
+  mechanical:
+    - denominator_stated: true
+  judged:
+    - "Checks only the nominated analyte and reports the unit found in each document with its locator"
+    - "Does not expand into a full definition or coverage review"
+    - "States the denominator of documents actually checked"

@@ -1,0 +1,10 @@
+id: "review-bioanalytical-plan-02-activation-excluded-request"
+layer: "activation"
+source_clause: "Do not use for the bioanalytical report and its validation results, for sampling times, for multi-analyte conjugate strategy, or to accept the method.\""
+prompt: "Review this completed bioanalytical validation report and its incurred sample reanalysis results. Respond as this skill, or decline and say what should handle it instead."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's declared scope"
+    - "Cites the boundary rather than refusing without a reason"
+    - "Names a more appropriate skill or workflow where one exists"
+    - "Does not go on to perform the excluded work after declining"

@@ -1,0 +1,8 @@
+id: "structure-benefit-risk-effects-table-07-portability-degraded-markdown"
+layer: "portability"
+prompt: "Use only the Markdown starter. Script execution and bundled references are unavailable. Build the effects table anyway."
+assertions:
+  judged:
+    - "Discloses degraded Markdown mode"
+    - "Does not present structural-script validation as completed"
+    - "Completes only manual transcription with source/locator limitations stated"

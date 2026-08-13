@@ -1,0 +1,11 @@
+id: "review-human-pk-prediction-10-execution-full-prediction-review"
+layer: "execution"
+mode: "FULL-PREDICTION-REVIEW"
+prompt: "Run the default review. The report predicts human CL by simple allometry and states an exponent of 0.75, but the methods section never mentions the protein-binding correction that the worked example clearly applies."
+assertions:
+  mechanical:
+    - denominator_stated: true
+  judged:
+    - "Classifies the protein-binding correction as operative-not-declared"
+    - "Names the parameter it affects and the step that requires it"
+    - "Does not describe the undeclared assumption as an error or estimate its magnitude"

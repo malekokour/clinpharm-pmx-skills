@@ -1,0 +1,8 @@
+id: "reconcile-reference-safety-information-08-portability-clean-install"
+layer: "portability"
+prompt: "You were installed from a ZIP into an empty directory with no repository or sibling packages. Begin a CCSI-to-label comparison."
+assertions:
+  judged:
+    - "Uses bundled references without repository reach-through"
+    - "Names its local comparator and reconciliation template"
+    - "Does not request a shared repository file"

@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "selection_mode": "ask",
+  "ambiguity_policy": "ask_user",
+  "allow_agent_auto_select": false,
+  "eligible_statuses": ["released"],
+  "force_skill": null,
+  "force_skill_scope": "per_invocation",
+  "disabled_skills": [],
+  "risk_ceiling": "MEDIUM",
+  "show_selection_reasons": true,
+  "notes": [
+    "Copy to settings.json locally if your host supports user overrides.",
+    "Preferences cannot bypass safety, human-only, or OOS refuse paths.",
+    "Unknown keys/types must fail closed.",
+    "Auto-select stays off until the library router is qualification-proven.",
+    "Default recommendations use released skills only; force built with warning."
+  ]
+}

@@ -1,0 +1,17 @@
+id: "export-without-docx-capability"
+layer: portability
+mode: "EXPORT"
+prompt: >
+  Export the working pack. The host cannot create files, so return complete content
+  suitable for pasting into Word and state what was not created.
+inputs:
+  - "fixtures/unsupported-docx-host.md"
+  - "../../examples/clinpharm-pmx/outputs/My-Pharma-Work-Context.md"
+  - "../../examples/clinpharm-pmx/outputs/Project-Context-SYN-101.md"
+assertions:
+  judged:
+    - "Returns the complete AI Working Pack content"
+    - "States that no DOCX file was created"
+    - "Says the content is ready to paste into Word"
+    - "Preserves source authority and unknowns"
+    - "Keeps human review and external action gates"

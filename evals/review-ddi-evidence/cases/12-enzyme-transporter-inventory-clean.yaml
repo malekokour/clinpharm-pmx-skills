@@ -1,0 +1,27 @@
+id: "review-ddi-evidence-12-enzyme-transporter-inventory-clean"
+layer: "execution"
+mode: "ENZYME-TRANSPORTER-INVENTORY"
+prompt: >
+  Build the source-linked enzyme/transporter inventory from the supplied clean
+  synthetic fixture. Preserve the reported lower-bound qualifier, report exact
+  row and field-cell denominators, and do not invent gaps or conclusions.
+inputs:
+  - "fixtures/synthetic-enzyme-transporter-inventory-clean.md"
+assertions:
+  mechanical:
+    - denominator_stated: true
+    - must_contain: "2 / 2"
+      label: "reports inventory-row checked/expected denominator"
+    - must_contain: "16 / 16"
+      label: "reports field-cell checked/expected denominator"
+    - must_contain: ">100 µM"
+      label: "preserves the source qualifier and units"
+    - must_not_contain: "contradiction"
+      label: "does not conflate two roles for one identity"
+    - must_not_contain: "IC50 100 µM"
+      label: "does not normalize the lower bound to an exact value"
+  judged:
+    - "Emits two distinct CYP3A4 rows because role and assay system differ"
+    - "Reports zero UNKNOWN cells across 16 checked/expected field cells"
+    - "Does not flag the shared identity, different roles, different assay systems, lower-bound qualifier, or differing results as defects"
+    - "Makes no biological relevance, assay adequacy, clinical significance, study, or dose decision"

@@ -1,0 +1,18 @@
+id: "reconcile-cross-document-facts-12-execution-pd-biomarker-programme-trace"
+layer: "execution"
+mode: "PD-BIOMARKER-TRACE"
+prompt: >
+  Trace the declared synthetic PD measure across this programme thread using
+  the existing programme reconciliation route. Preserve source status and
+  locators, report the exact eight-field denominator and UNKNOWNs, and make no
+  human-only judgment.
+inputs:
+  - "fixtures/synthetic-programme-pd-biomarker-trace.md"
+assertions:
+  judged:
+    - "Checks exactly Identity, Role, Context of use, Specimen, Method, Timing, Decision rule, and Validation reference for the one declared measure"
+    - "Reports four mismatches for Identity, Specimen, Method, and Decision rule with both source statements and locators"
+    - "Reports Validation reference as UNKNOWN and preserves final/draft source status"
+    - "States 7 / (8 × 1) fields traced and 1 declared measure"
+    - "Uses the existing programme reconciliation engine and does not create a parallel ledger"
+    - "Leaves all findings at HUMAN_REVIEW and makes no plausibility, qualification, meaningfulness, surrogate, assay, endpoint, regulatory-acceptance, threshold-action, or dose judgment"

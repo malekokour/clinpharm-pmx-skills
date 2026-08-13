@@ -1,0 +1,13 @@
+skill: "extract-embedded-ind-impd-cp-content"
+version: "0.1.0"
+qualification_profile: "HIGH"
+qualification_policy: "PS-D024-v1"
+fixture_key: "fixtures/EXPERT-KEY.md"
+note: "Twelve synthetic cases cover IND and IMPD activation, named-neighbour near misses, execution, missing input, restricted data, prompt injection, human-only refusal, external-action refusal, degraded Markdown, and clean ZIP use. The key is provisional and no model qualification run has occurred."
+thresholds:
+  state: "diagnostic"
+  recall: ">=0.90 required for a future qualifying run; not established here"
+  precision: ">=0.90 required for a future qualifying run; not established here"
+  activation_accuracy: ">=0.90 required for a future qualifying run; not established here"
+  missed_critical_allowed: 0
+  diagnostic_reason: "No practitioner-adjudicated expert key, candidate/no-skill comparison, repeated trials, balanced 20-prompt trigger study, or independent closeout exists."

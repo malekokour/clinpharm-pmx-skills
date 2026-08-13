@@ -1,0 +1,11 @@
+id: "review-exposure-safety-margins-14-execution-spot-check"
+layer: "execution"
+mode: "SPOT-CHECK"
+prompt: "One margin only: the renal margin in section 5.3. Is its basis stated and does it reconcile?"
+assertions:
+  mechanical:
+    - denominator_stated: true
+  judged:
+    - "Checks only the nominated margin and reports its basis classification"
+    - "Does not expand into a full margin register across the document"
+    - "States the denominator of margins actually checked"

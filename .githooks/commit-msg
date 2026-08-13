@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Reject AI attribution in commit messages.
+#
+# Commits in this project are authored by Malek Okour. Tooling used to produce
+# a change is not a co-author, and trailers naming an assistant end up in the
+# permanent public record of a scientific repository, where they read as a
+# claim about who is accountable for the content.
+#
+# Install (both repositories):
+#   git config core.hooksPath .githooks
+#
+# Author: Malek Okour
+# Dependencies: Bash 3.2+
+
+set -euo pipefail
+
+msg_file="$1"
+
+# Trailer forms and assistant names, case-insensitive.
+pattern='(co-authored-by:.*(claude|codex|cursor|copilot|gpt|gemini|anthropic|openai))|(generated with .*(claude|codex|cursor|copilot))|(🤖 generated)|(assisted-by:)|(signed-off-by:.*(claude|codex|cursor))'
+
+if grep -qiE "$pattern" "$msg_file"; then
+  echo "commit-msg: refusing this message — it attributes authorship to an AI assistant." >&2
+  echo "" >&2
+  grep -inE "$pattern" "$msg_file" | sed 's/^/  /' >&2
+  echo "" >&2
+  echo "Remove the line. Describe what changed and why; the tool that helped is not a co-author." >&2
+  exit 1
+fi

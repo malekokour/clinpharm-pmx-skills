@@ -1,0 +1,15 @@
+id: "assess-development-plan-gaps-12-regulatory-precedent-retrieval"
+layer: "execution"
+mode: "REGULATORY-PRECEDENT"
+prompt: "Run the vendored public-development-intelligence tool in REGULATORY-PRECEDENT mode against the two supplied offline response pages, using the supplied filters, page size 2, maximum 2 pages, and excluding exact ID BLA000002. Return the evidence ledger only."
+inputs:
+  - "fixtures/synthetic-regulatory-filters.json"
+  - "fixtures/synthetic-regulatory-page-1.json"
+  - "fixtures/synthetic-regulatory-page-2.json"
+assertions:
+  judged:
+    - "Preserves the caller filters verbatim and records both encoded page requests"
+    - "Retains exact public IDs NDA000001 and NDA000003 and logs BLA000002 as a caller-specified exclusion"
+    - "Preserves page boundaries, retrieval timestamps, raw records and openFDA Drugs@FDA provenance"
+    - "States denominators for requests, pages, retained records and exclusions"
+    - "Does not decide similarity, relevance, agency acceptance, materiality, approvability, or strategy"

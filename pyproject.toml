@@ -1,0 +1,13 @@
+[project]
+name = "clinpharm-pmx-skills-tooling"
+version = "0.1.0"
+description = "Development and validation tooling for ClinPharm PMx Skills"
+requires-python = ">=3.11"
+dependencies = [
+  "python-docx>=1.1,<2",
+  "Pillow>=12.2,<13",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 96

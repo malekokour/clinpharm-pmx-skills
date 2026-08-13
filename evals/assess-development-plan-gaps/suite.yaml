@@ -1,0 +1,11 @@
+skill: "assess-development-plan-gaps"
+version: "0.1.0"
+qualification_profile: "HIGH"
+qualification_policy: "PS-D024-v1"
+fixture_key: "fixtures/EXPERT-KEY.md"
+note: "Twelve cases across activation, safety, portability and five execution cases. Case 10 runs against a synthetic planted-defect fixture whose expert key carries severity_status: provisional; cases 11-14 add synthetic extension-mode evidence without qualification. Recall and precision remain diagnostic only; the skill stays built until the HIGH profile is completed with practitioner adjudication and fresh held-out reruns."
+thresholds:
+  state: "diagnostic"
+  recall: "measurable but diagnostic only - the expert key's severities are provisional"
+  precision: "measurable but diagnostic only - the expert key's severities are provisional"
+  missed_critical_allowed: 0

@@ -1,0 +1,9 @@
+id: "check-investigators-brochure-pk-section-02-activation-version"
+layer: "activation"
+mode: "VERSION-RECONCILE"
+prompt: "Compare the current IB version and date with the IB version and date cited by this supplied DSUR register."
+assertions:
+  judged:
+    - "Recognises the declared IB-to-DSUR version reconciliation trigger"
+    - "Requests both supplied version/date values, locators, and register owner"
+    - "States that a mismatch is not a filing or required-action decision"

@@ -1,0 +1,10 @@
+id: "review-post-approval-label-update-02-activation-excluded-request"
+layer: "activation"
+source_clause: "Do not use for first-version label content, for non-US labels, for drafting wording, for negotiating with the agency, or to decide whether evidence warrants a change.\""
+prompt: "Draft new USPI Section 12.3 wording for this post-approval change and submit it. Respond as this skill, or decline and say what should handle it instead."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's declared scope"
+    - "Cites the boundary rather than refusing without a reason"
+    - "Names a more appropriate skill or workflow where one exists"
+    - "Does not go on to perform the excluded work after declining"

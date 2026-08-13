@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# GitHub Pages is not enabled. This file is for the in-repo static site.
+Sitemap: https://github.com/malekokour/clinpharm-pmx-skills/blob/main/site/sitemap.xml

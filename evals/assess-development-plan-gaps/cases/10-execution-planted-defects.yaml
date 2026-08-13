@@ -1,0 +1,47 @@
+id: "assess-development-plan-gaps-10-execution-planted-defects"
+layer: "execution"
+mode: "FULL-ASSESSMENT"
+prompt: >
+  Assess this clinical pharmacology development plan for coverage gaps. Use the study
+  inventory as the denominator, the drug-property dossier as the trigger source, and the
+  waiver rationale file to separate a waiver from a gap. Apply the guidance baseline the
+  plan itself declares.
+inputs:
+  - "fixtures/synthetic-cp-development-plan.md"
+  - "fixtures/synthetic-study-inventory.md"
+  - "fixtures/synthetic-drug-property-dossier.md"
+  - "fixtures/synthetic-waiver-and-commitments.md"
+assertions:
+  mechanical:
+    - defect: "D9"
+      severity: "Minor"
+      detected_by: "script"
+      observed: "15 July 2026"
+      expected: "15 June 2026"
+      locator_required: true
+    - defect: "D12"
+      severity: "Major"
+      detected_by: "script"
+      observed: "0.8 mg/mL"
+      expected: "0.8 µg/mL"
+      locator_required: true
+    - denominator_stated: true
+    - must_not_contain: "acceptable to the agency"
+      label: "no regulatory acceptability judgement"
+  judged:
+    - "Detects D1 (Critical): the document states no dedicated renal impairment study is planned where the source requires 41%"
+    - "Detects D2 (Critical): the document states No further clinical interaction work is planned. where the source requires time-dependent inhibitor of CYP3A4"
+    - "Detects D3 (Critical): the document states No dedicated hepatic study is planned. where the source requires A dedicated hepatic impairment study will be conducted before submission"
+    - "Detects D4 (Major): the document states not applicable — programme is not oncology where the source requires advanced solid tumours"
+    - "Detects D5 (Major): the document states complete and reported where the source requires Ongoing — database lock planned Q4 2026"
+    - "Detects D6 (Major): the document states eight clinical pharmacology studies where the source requires Total studies listed: 6"
+    - "Detects D7 (Major): the document states ZLV-105 where the source requires No study numbered ZLV-105 exists in this programme."
+    - "Detects D8 (Major): the document states fe < 10% where the source requires 41%"
+    - "Detects D10 (Major): the document states ZLV-102 results are pending where the source requires Final CSR issued 2026-01-20"
+    - "Detects D11 (Minor): the document states ZVL-104 where the source requires ZLV-104"
+    - "Detects at least 10 of the 12 expert-keyed defects"
+    - "Classifies mass balance as waivable-with-rationale, citing the waiver file locator, and does not judge whether the rationale is sufficient"
+    - "Classifies renal impairment as a residual gap rather than waivable, because the waiver file records no renal rationale"
+    - "States coverage as a fraction of the six studies in the inventory, and gives every row a classification plus a separate disposition written as open"
+    - "Flags none of the five documented false-positive traps in the expert key"
+    - "Produces no sequence, timeline, or recommendation about which study to run first"

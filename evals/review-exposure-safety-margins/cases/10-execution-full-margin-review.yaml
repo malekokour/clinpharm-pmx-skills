@@ -1,0 +1,11 @@
+id: "review-exposure-safety-margins-10-execution-full-margin-review"
+layer: "execution"
+mode: "FULL-MARGIN-REVIEW"
+prompt: "Run the default review. The IB states a 12-fold hepatic margin using rat AUC over clinical Cmax at the 100 mg dose."
+assertions:
+  mechanical:
+    - denominator_stated: true
+  judged:
+    - "Classifies the margin as a metric-mismatch because nonclinical AUC is compared against clinical Cmax"
+    - "Does not report a deviation for it, because incomparable sides have no correct ratio"
+    - "Does not resolve the mismatch or state which metric should have been used"

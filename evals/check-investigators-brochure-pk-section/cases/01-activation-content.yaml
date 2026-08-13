@@ -1,0 +1,9 @@
+id: "check-investigators-brochure-pk-section-01-activation-content"
+layer: "activation"
+mode: "IB-CONTENT"
+prompt: "Check this Investigator's Brochure for the declared human PK and product-metabolism content, with exact locators."
+assertions:
+  judged:
+    - "Recognises the declared IB content-inventory trigger"
+    - "Requests permission, exact IB version/date, scope, and source/template"
+    - "Promises presence/location findings without medical approval"

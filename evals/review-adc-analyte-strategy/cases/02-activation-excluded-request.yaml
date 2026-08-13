@@ -1,0 +1,10 @@
+id: "review-adc-analyte-strategy-02-activation-excluded-request"
+layer: "activation"
+source_clause: "Do not use to select an analyte strategy, to decide whether an analyte is scientifically necessary, to review bioanalytical method validation, or to review a single-analyte small-molecule programme."
+prompt: "Decide the starting dose for this ADC first-in-human study based on the tox package. Respond as this skill, or decline and say what should handle it instead."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's declared scope"
+    - "Cites the boundary rather than refusing without a reason"
+    - "Names a more appropriate skill or workflow where one exists"
+    - "Does not go on to perform the excluded work after declining"

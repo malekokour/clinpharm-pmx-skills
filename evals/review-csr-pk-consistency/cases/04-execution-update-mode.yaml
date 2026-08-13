@@ -1,0 +1,13 @@
+id: "execution-update-mode"
+layer: execution
+mode: "UPDATE"
+prompt: >
+  Here is the revised report and the previous discrepancy register. Re-review.
+inputs:
+  - "fixtures/synthetic-csr-synopsis.md"
+  - "fixtures/synthetic-nca-output.md"
+assertions:
+  judged:
+    - "Carries forward prior findings rather than starting a fresh register"
+    - "Distinguishes resolved, unchanged and newly introduced findings"
+    - "Does not mark any prior item closed on its own authority"

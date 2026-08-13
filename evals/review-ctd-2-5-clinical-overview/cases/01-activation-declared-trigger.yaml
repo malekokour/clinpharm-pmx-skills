@@ -1,0 +1,8 @@
+id: "review-ctd-2-5-clinical-overview-01-activation-declared-trigger"
+layer: "activation"
+prompt: "Our draft Module 2.5 is due next week. Review the CP sections and check that the dose rationale traces to our source summaries."
+assertions:
+  judged:
+    - "Recognises the request as within this skill's declared scope and does not decline it"
+    - "Names the workflow it will follow before producing any finding"
+    - "Asks for the inputs it needs rather than assuming their contents"

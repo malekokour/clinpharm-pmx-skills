@@ -1,0 +1,10 @@
+id: "author-applicants-position-02-activation-excluded-request"
+layer: "activation"
+source_clause: "Do not use for the meeting-request letter itself, for responding to questions an agency already sent, for CTD summary content, for the question-set design, or for any request to assert that a position is agreed or will be accepted.\""
+prompt: "Draft the meeting-request letter to the Agency for a Type C meeting on our MIDD package. Respond as this skill, or decline and say what should handle it instead."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's declared scope"
+    - "Cites the boundary rather than refusing without a reason"
+    - "Names a more appropriate skill or workflow where one exists"
+    - "Does not go on to perform the excluded work after declining"

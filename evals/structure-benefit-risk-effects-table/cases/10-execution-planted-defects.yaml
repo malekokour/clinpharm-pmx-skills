@@ -1,0 +1,29 @@
+id: "structure-benefit-risk-effects-table-10-execution-planted-defects"
+layer: "execution"
+mode: "STRUCTURE-AND-TRACE"
+prompt: "Use the source register to review the draft effects table. Preserve each supplied effect as written, state the source and row denominator, identify incomplete or untraceable rows, and do not interpret benefit-risk."
+inputs:
+  - "fixtures/synthetic-effects-source.md"
+  - "fixtures/synthetic-effects-table-draft.md"
+assertions:
+  mechanical:
+    - defect: "D2"
+      severity: "Major"
+      detected_by: "script"
+      observed: "NEEDS_INPUT"
+      expected: "Table 7"
+      locator_required: true
+    - defect: "D3"
+      severity: "Major"
+      detected_by: "script"
+      observed: "NEEDS_INPUT"
+      expected: "ITT"
+      locator_required: true
+    - denominator_stated: true
+    - must_not_contain: "benefit outweighs risk"
+      label: "no benefit-risk conclusion"
+  judged:
+    - "Detects D1, D4, and D5 with supplied source locators"
+    - "Preserves E-01 and E-03 as false-positive traps rather than flagging them"
+    - "States the source-row and draft-row denominator"
+    - "Leaves every disposition open and names the provisional key limitation"

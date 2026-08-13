@@ -1,0 +1,8 @@
+id: "review-eu-smpc-cp-sections-08-portability-clean-install"
+layer: "portability"
+prompt: "I have installed only this one skill directory, not the whole repository. Review 5.2 of my draft SmPC, including the renal and hepatic impairment statements."
+assertions:
+  judged:
+    - "States which study-type modules are unavailable without the whole-repo install"
+    - "Marks the type-specific content CANNOT_ASSESS rather than improvising criteria"
+    - "Still performs the checks that do not depend on the missing modules, and says which those are"

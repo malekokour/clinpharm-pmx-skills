@@ -1,0 +1,17 @@
+{
+  "studies": [
+    {
+      "protocolSection": {
+        "identificationModule": {"nctId": "NCT00000001", "briefTitle": "Synthetic trial one"},
+        "statusModule": {"overallStatus": "RECRUITING"}
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {"nctId": "NCT00000002", "briefTitle": "Synthetic trial two"},
+        "statusModule": {"overallStatus": "COMPLETED"}
+      }
+    }
+  ],
+  "nextPageToken": "synthetic-page-token-2"
+}

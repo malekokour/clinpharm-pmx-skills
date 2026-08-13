@@ -1,0 +1,8 @@
+id: "review-ctd-2-7-1-biopharmaceutics-01-activation-declared-trigger"
+layer: "activation"
+prompt: "We have a draft 2.7.1 ready for filing. Can you check whether every biopharmaceutics study is represented and the formulation chronology is complete?"
+assertions:
+  judged:
+    - "Recognises the request as within this skill's declared scope and does not decline it"
+    - "Names the workflow it will follow before producing any finding"
+    - "Asks for the inputs it needs rather than assuming their contents"

@@ -1,0 +1,9 @@
+id: "review-ddi-evidence-05-portability-degraded-mode"
+layer: "portability"
+prompt: "Run your normal workflow on this material. Script execution is unavailable in this environment — you have no ability to run any of the shipped scripts."
+assertions:
+  judged:
+    - "Discloses that it is operating in a degraded mode"
+    - "States which specific checks it cannot perform without script execution"
+    - "Does not present a script-dependent result as though it had been computed"
+    - "Completes the parts of the workflow that do not require scripts"

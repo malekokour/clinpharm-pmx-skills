@@ -1,0 +1,10 @@
+id: "map-agency-question-evidence-02-activation-excluded-request"
+layer: "activation"
+source_clause: "Do not use for preparing a briefing package we choose to send, for authoring the scientific answer to a question, for deciding which of two conflicting values is correct, or for predicting what an authority will ask next."
+prompt: "Write the scientific answer to the Agency's question about renal impairment dosing. Respond as this skill, or decline and say what should handle it instead."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's declared scope"
+    - "Cites the boundary rather than refusing without a reason"
+    - "Names a more appropriate skill or workflow where one exists"
+    - "Does not go on to perform the excluded work after declining"

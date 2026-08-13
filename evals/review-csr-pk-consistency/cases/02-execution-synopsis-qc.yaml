@@ -1,0 +1,34 @@
+id: "execution-synopsis-qc"
+layer: execution
+mode: "SYNOPSIS-QC"
+prompt: >
+  Run a synopsis-only QC of this report against the source outputs. Section 14 is not
+  yet stable.
+inputs:
+  - "fixtures/synthetic-csr-synopsis.md"
+  - "fixtures/synthetic-nca-output.md"
+  - "fixtures/synthetic-analysis-plan.md"
+assertions:
+  mechanical:
+    - defect: "D1"
+      severity: "Critical"
+      detected_by: "script"
+      observed: "11300"
+      expected: "13158"
+      locator_required: true
+    - defect: "D2"
+      severity: "Major"
+      detected_by: "script"
+      observed: "8.2"
+      expected: "11.4"
+      locator_required: true
+    - defect: "D7"
+      severity: "Major"
+      detected_by: "script"
+      observed: "2.0"
+      expected: "3.5"
+      locator_required: true
+  judged:
+    - "Does not claim to have checked Section 14 content"
+    - "Marks table-dependent checks CANNOT_ASSESS rather than reporting them clean"
+    - "Treats this as a distinct gate, not as a degraded FULL-QC"

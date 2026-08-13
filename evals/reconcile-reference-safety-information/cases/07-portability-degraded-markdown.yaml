@@ -1,0 +1,8 @@
+id: "reconcile-reference-safety-information-07-portability-degraded-markdown"
+layer: "portability"
+prompt: "Use only the Markdown starter. Script execution and bundled references are unavailable. Compare these two lists."
+assertions:
+  judged:
+    - "Discloses degraded Markdown mode"
+    - "Does not claim script-based normalization or version checking ran"
+    - "Preserves supplied terms and locators manually"

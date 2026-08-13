@@ -1,0 +1,9 @@
+id: "extract-embedded-ind-impd-cp-content-03-near-miss-ctd"
+layer: "activation"
+source_clause: "Do not activate for a CTD 2.7.2 content review, an FIH starting-dose rationale, or a request to recommend a dose. Route those to review-ctd-272-content or review-fih-dose-rationale."
+prompt: "Review this CTD Module 2.7.2 summary against its five-part structure and reconcile its dose statements."
+assertions:
+  judged:
+    - "Does not activate the IND/IMPD inventory workflow"
+    - "Routes the request to review-ctd-272-content"
+    - "Does not treat a CTD 2.7.2 as an IND or IMPD"

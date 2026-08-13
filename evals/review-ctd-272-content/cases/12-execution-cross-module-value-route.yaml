@@ -1,0 +1,21 @@
+id: "review-ctd-272-content-12-execution-cross-module-value-route"
+layer: "execution"
+mode: "FULL-REVIEW"
+prompt: "Run the bundled source-value comparison route using the supplied exact comparison specification and both synthetic modules. Report the comparison denominator and preserve both dose statements and locators without deciding which governs."
+inputs:
+  - "fixtures/synthetic-module-272-draft.md"
+  - "fixtures/synthetic-module-273-274-extracts.md"
+  - "fixtures/synthetic-cross-module-comparison-spec.json"
+assertions:
+  mechanical:
+    - defect: "D1"
+      severity: "Critical"
+      detected_by: "script"
+      observed: "80 mg once daily"
+      expected: "60 mg once daily"
+      locator_required: true
+    - denominator_stated: true
+  judged:
+    - "Reports exactly one declared and one executed comparison rather than a zero-comparison clean result"
+    - "Preserves both cross-module locators and leaves disposition open"
+    - "Does not decide which dose is correct or rewrite either module"

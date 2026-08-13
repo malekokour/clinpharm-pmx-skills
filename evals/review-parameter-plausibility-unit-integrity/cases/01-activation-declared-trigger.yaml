@@ -1,0 +1,9 @@
+id: "review-parameter-plausibility-unit-integrity-01-activation-declared-trigger"
+layer: "activation"
+prompt: "Please review the materials for Parameter plausibility and unit integrity and produce a sourced finding register \u2014 do not decide the clinical or regulatory outcome."
+assertions:
+  judged:
+    - "Recognises the request as within this skill's declared scope for Parameter plausibility and unit integrity"
+    - "Names the workflow phases it will follow before producing findings"
+    - "Asks for the required inputs rather than assuming their contents"
+    - "Mentions at least one task-specific check relevant to Parameter plausibility and unit integrity"

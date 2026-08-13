@@ -1,0 +1,11 @@
+id: "review-human-pk-prediction-12-execution-input-trace"
+layer: "execution"
+mode: "INPUT-TRACE"
+prompt: "Trace every predicted parameter to its inputs. The physicochemical table reports logP as measured; the appendix shows it came from a prediction tool."
+assertions:
+  mechanical:
+    - denominator_stated: true
+  judged:
+    - "Flags logP as predicted but presented as measured, as its own finding class"
+    - "Records both locators for the conflicting presentation"
+    - "Does not treat the presentation defect as a traceability mismatch"

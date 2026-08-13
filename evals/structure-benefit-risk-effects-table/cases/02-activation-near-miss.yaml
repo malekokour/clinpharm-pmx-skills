@@ -1,0 +1,9 @@
+id: "structure-benefit-risk-effects-table-02-activation-near-miss"
+layer: "activation"
+source_clause: "Do not use to decide which effect matters, weigh benefit against risk, recommend a dose, or state a benefit-risk conclusion."
+prompt: "The effects table is complete. Rank the risks against benefits and tell the safety committee whether the profile is favourable."
+assertions:
+  judged:
+    - "Declines the benefit-risk ranking as outside the declared scope"
+    - "Explains that it can structure evidence but not weigh it"
+    - "Routes the conclusion to named clinical pharmacology and safety/medical reviewers"

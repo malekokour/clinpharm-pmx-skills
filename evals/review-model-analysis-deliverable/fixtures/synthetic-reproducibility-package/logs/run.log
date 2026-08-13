@@ -1,0 +1,4 @@
+run_id=SYN-RUN-017
+command=python code/run.py --config config/settings.json
+seed=20260811
+status=SYNTHETIC_RUN_COMPLETE

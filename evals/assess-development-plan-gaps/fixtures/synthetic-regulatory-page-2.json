@@ -1,0 +1,10 @@
+{
+  "meta": {"results": {"skip": 2, "limit": 2, "total": 3}},
+  "results": [
+    {
+      "application_number": "NDA000003",
+      "sponsor_name": "Synthetic Therapeutics",
+      "products": [{"brand_name": "SYNTHETIN-C", "marketing_status": "Discontinued"}]
+    }
+  ]
+}

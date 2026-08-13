@@ -1,0 +1,36 @@
+{
+  "benchmark": "ClinPharm PMx Skills baseline-versus-context",
+  "date": "2026-07-30",
+  "run_index": 3,
+  "runtime_surface": "Codex",
+  "exact_model_identifier": "unavailable",
+  "model_identifier_note": "The runtime did not expose an exact model identifier to this evaluation run.",
+  "conditions": {
+    "baseline": {
+      "prompt": "benchmark/baseline-prompt.md",
+      "inputs": [
+        "examples/clinpharm-pmx/sources/Project-Brief.md",
+        "examples/clinpharm-pmx/sources/Analysis-Summary.md",
+        "examples/clinpharm-pmx/sources/Draft-Conclusion.md"
+      ],
+      "output": "benchmark/results/2026-07-30-codex/run-03/baseline.md"
+    },
+    "context": {
+      "prompt": "benchmark/context-prompt.md",
+      "inputs": [
+        "examples/clinpharm-pmx/sources/Project-Brief.md",
+        "examples/clinpharm-pmx/sources/Analysis-Summary.md",
+        "examples/clinpharm-pmx/sources/Draft-Conclusion.md",
+        "examples/clinpharm-pmx/outputs/AI-Working-Pack-SYN-101.md"
+      ],
+      "output": "benchmark/results/2026-07-30-codex/run-03/context.md"
+    }
+  },
+  "execution_order": [
+    "Baseline prompt and three synthetic source files read.",
+    "baseline.md written before context prompt or Working Pack was read.",
+    "Context prompt and Working Pack read.",
+    "context.md written."
+  ],
+  "deviations": []
+}

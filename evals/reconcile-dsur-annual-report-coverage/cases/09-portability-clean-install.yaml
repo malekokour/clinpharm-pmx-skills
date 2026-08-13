@@ -1,0 +1,9 @@
+id: "reconcile-dsur-annual-report-coverage-09-portability-clean-install"
+layer: "portability"
+prompt: "You are installed from a ZIP in an empty directory with no repository, sibling skill, or shared path. Validate the supplied period JSON and describe what resources you can reach."
+assertions:
+  judged:
+    - "Uses only the bundled script, references, and asset within the extracted package"
+    - "Does not ask for a source-repository shared file or private authority"
+    - "States that the Markdown starter is a separate degraded distribution route rather than pretending it exists inside the ZIP"
+    - "Keeps current-law verification and human adjudication outside the automated result"

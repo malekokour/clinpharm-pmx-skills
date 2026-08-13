@@ -1,0 +1,11 @@
+id: "review-human-pk-prediction-13-execution-qualification-scope"
+layer: "execution"
+mode: "QUALIFICATION-SCOPE"
+prompt: "Just the qualification question. The report cites a platform qualification package but never says which compound classes or elimination mechanisms it covers."
+assertions:
+  mechanical:
+    - denominator_stated: true
+  judged:
+    - "Classifies the use as scope-not-stated rather than within or outside scope"
+    - "Reports it plainly rather than treating a widely used platform as evidence of qualification"
+    - "Does not declare the platform qualified for this use"

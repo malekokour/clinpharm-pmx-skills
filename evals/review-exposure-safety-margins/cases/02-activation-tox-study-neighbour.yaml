@@ -1,0 +1,9 @@
+id: "review-exposure-safety-margins-02-activation-tox-study-neighbour"
+layer: "activation"
+source_clause: "Do not use ... to review the toxicology study itself"
+prompt: "Review the 13-week rat toxicology study - group sizes, histopathology findings and whether the NOAEL was correctly assigned."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's scope"
+    - "Distinguishes reviewing the study from reviewing the margin derived from it"
+    - "Routes the request to toxicology rather than attempting it"

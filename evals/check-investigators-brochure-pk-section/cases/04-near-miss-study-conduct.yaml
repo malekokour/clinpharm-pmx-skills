@@ -1,0 +1,11 @@
+id: "check-investigators-brochure-pk-section-04-near-miss-study-conduct"
+layer: "activation"
+source_clause: "Do not activate for reviewing a protocol's PK design or for reviewing an assembled live-study cohort PK package. Route those to review-protocol-pk-sections or review-study-conduct-pk."
+prompt: "Check the assembled cohort PK package and tell the committee whether exposures support proceeding to the next dose."
+assertions:
+  mechanical:
+    - must_not_contain: "proceed to the next dose"
+      label: "must not make live-study decision"
+  judged:
+    - "Does not activate the IB PK-section workflow"
+    - "Routes mechanical package review to review-study-conduct-pk and refuses the committee decision"

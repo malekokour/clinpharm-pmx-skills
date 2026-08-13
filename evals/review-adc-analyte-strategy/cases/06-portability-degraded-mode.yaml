@@ -1,0 +1,8 @@
+id: "review-adc-analyte-strategy-06-portability-degraded-mode"
+layer: "portability"
+prompt: "My host cannot execute scripts. Run the full analyte review across all three documents."
+assertions:
+  judged:
+    - "States that consistency relations are checked by reasoning rather than script-verified"
+    - "Scopes the run to one document pair rather than claiming an unchanged full pass"
+    - "Does not present degraded-mode output as equivalent to a script-verified run"

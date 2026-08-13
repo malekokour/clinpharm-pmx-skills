@@ -1,0 +1,10 @@
+id: "prepare-briefing-package-content-02-activation-excluded-request"
+layer: "activation"
+source_clause: "Do not use for responding to questions an agency has already sent, for writing the meeting request itself, for CTD summary or labelling content, or for any request to decide whether a position will be accepted."
+prompt: "The Agency has sent us four questions. Draft our responses. Respond as this skill, or decline and say what should handle it instead."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's declared scope"
+    - "Cites the boundary rather than refusing without a reason"
+    - "Names a more appropriate skill or workflow where one exists"
+    - "Does not go on to perform the excluded work after declining"

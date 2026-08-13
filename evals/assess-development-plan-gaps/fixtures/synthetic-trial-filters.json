@@ -1,0 +1,4 @@
+{
+  "query.cond": "Synthetic condition Q",
+  "filter.overallStatus": ["RECRUITING", "COMPLETED"]
+}

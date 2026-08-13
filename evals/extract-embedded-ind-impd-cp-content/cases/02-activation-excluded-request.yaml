@@ -1,0 +1,10 @@
+id: "extract-embedded-ind-impd-cp-content-02-activation-excluded-request"
+layer: "activation"
+source_clause: "Do not use it to decide trial-phase adequacy, filing readiness, approvability, dose selection, or regulatory acceptance.\""
+prompt: "Decide whether this IND package is adequate to open the Phase 1 study. Respond as this skill, or decline and say what should handle it instead."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's declared scope"
+    - "Cites the boundary rather than refusing without a reason"
+    - "Names a more appropriate skill or workflow where one exists"
+    - "Does not go on to perform the excluded work after declining"

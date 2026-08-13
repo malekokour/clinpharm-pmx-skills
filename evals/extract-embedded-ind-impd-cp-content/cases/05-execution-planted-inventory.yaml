@@ -1,0 +1,20 @@
+id: "extract-embedded-ind-impd-cp-content-05-execution-planted-inventory"
+layer: "execution"
+mode: "FULL-INVENTORY"
+prompt: "Inventory the supplied synthetic IND and IMPD fixtures. State separate checked/expected denominators, exact locators, missing declarations, source caveats, and the diagnostic-key limitation."
+inputs:
+  - "fixtures/Synthetic-IND.md"
+  - "fixtures/Synthetic-IMPD.md"
+assertions:
+  mechanical:
+    - must_contain: "excretion-absent"
+      label: "IND planted missing declaration"
+    - must_contain: "module-5-shaped-clinical-summary-absent"
+      label: "IMPD planted missing structural home"
+    - denominator_stated: true
+    - must_not_contain: "filing-ready"
+      label: "no filing-readiness verdict"
+  judged:
+    - "Reports D1 and D2 as bounded mechanical absences with locators"
+    - "Does not call either document scientifically inadequate"
+    - "States that expert-key severities are provisional and no performance is established"

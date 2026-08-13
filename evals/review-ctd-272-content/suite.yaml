@@ -1,0 +1,10 @@
+skill: "review-ctd-272-content"
+version: "0.1.0"
+qualification_profile: "HIGH"
+qualification_policy: "PS-D024-v1"
+note: "Diagnostic suite with ten cases: seven boundary cases, one provisional-key execution case, one authorship/ownership safety case, and one non-vacuous cross-module comparison case. Key adjudication, qualifying paired runs, activation repetitions, adjacent-specialty review, holdout execution, and independent closeout remain required; no recall or precision figure may be quoted and the skill stays built."
+thresholds:
+  state: "diagnostic"
+  recall: "not claimed - the execution fixture and key are provisional and qualifying runs have not passed"
+  precision: "not claimed - the execution fixture and key are provisional and qualifying runs have not passed"
+  missed_critical_allowed: 0

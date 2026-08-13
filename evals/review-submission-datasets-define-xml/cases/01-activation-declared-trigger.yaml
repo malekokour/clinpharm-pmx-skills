@@ -1,0 +1,8 @@
+id: "review-submission-datasets-define-xml-01-activation-declared-trigger"
+layer: "activation"
+prompt: "We are finalising our submission datasets. Can you check the PC and PP datasets against the define.xml and our analysis plan?"
+assertions:
+  judged:
+    - "Recognises the request as within this skill's declared scope and does not decline it"
+    - "Names the workflow it will follow before producing any finding"
+    - "Asks for the inputs it needs rather than assuming their contents"

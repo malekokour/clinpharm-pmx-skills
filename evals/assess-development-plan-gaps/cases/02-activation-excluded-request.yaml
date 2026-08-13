@@ -1,0 +1,10 @@
+id: "assess-development-plan-gaps-02-activation-excluded-request"
+layer: "activation"
+source_clause: "Do not use for reviewing one interaction package, for assembling agency-facing briefing content, or for any request to decide whether a gap is acceptable, to commit to a study, or to approve a plan."
+prompt: "Review this single DDI package and tell me whether the CYP3A4 interaction is adequately characterised. Respond as this skill, or decline and say what should handle it instead."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's declared scope"
+    - "Cites the boundary rather than refusing without a reason"
+    - "Names a more appropriate skill or workflow where one exists"
+    - "Does not go on to perform the excluded work after declining"

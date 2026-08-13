@@ -1,0 +1,9 @@
+id: "build-work-context-08-activation-declared-trigger"
+layer: "activation"
+prompt: "I want ChatGPT to actually understand my job. I'm a clinical pharmacologist, I work across three programmes, and I keep re-explaining the same background every time I open a new chat. Can you build me something reusable? State whether this skill applies, then begin its workflow."
+assertions:
+  judged:
+    - "Recognises the request as within this skill's declared scope and does not decline it"
+    - "Names the workflow it will follow before producing any artifact"
+    - "Interviews for the inputs it needs rather than inventing a role, programmes or terminology"
+    - "Does not fabricate programme names, compounds or employer details the user did not supply"

@@ -1,0 +1,17 @@
+id: "update-conflicting-context"
+layer: execution
+mode: "UPDATE"
+prompt: >
+  Update the attached context. My recurring deliverable changed from monthly to
+  quarterly, but another note still says monthly. Show the conflict and do not silently
+  overwrite it.
+inputs:
+  - "fixtures/update-existing-context.md"
+  - "fixtures/update-new-note.md"
+assertions:
+  judged:
+    - "Classifies the cadence change as CONFLICT until confirmed"
+    - "Preserves the prior statement"
+    - "Produces a Context Change Summary"
+    - "Does not increment the context version as though the conflict were resolved"
+    - "Keeps external actions approval-gated"

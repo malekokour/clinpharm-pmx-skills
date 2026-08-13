@@ -1,0 +1,49 @@
+id: "execution-planted-defects"
+layer: execution
+mode: "FULL-VERIFICATION"
+prompt: >
+  QC this NCA output package before it goes into the study report. Reconcile every
+  reported parameter against the parameter dataset, check the exclusions, BLQ handling,
+  terminal-phase acceptance, units and rounding against the PK analysis plan, and
+  recompute the summary statistics from the per-participant values. Use the declared run
+  and dataset baseline.
+inputs:
+  - "fixtures/synthetic-nca-report.md"
+  - "fixtures/synthetic-parameter-dataset.txt"
+  - "fixtures/synthetic-pk-analysis-plan.md"
+  - "fixtures/synthetic-exclusion-and-run-log.md"
+assertions:
+  mechanical:
+    - defect: "D1"
+      severity: "Critical"
+      detected_by: "script"
+      observed: "2420"
+      expected: "2240"
+      locator_required: true
+    - defect: "D3"
+      severity: "Critical"
+      detected_by: "script"
+      observed: "95.2 mL/h"
+      expected: "L/h"
+      locator_required: true
+    - defect: "D4"
+      severity: "Critical"
+      detected_by: "script"
+      observed: "0.71"
+      expected: "0.85"
+      locator_required: true
+    - denominator_stated: true
+    - must_not_contain: "the correct value is"
+      label: "no scientific adjudication"
+  judged:
+    - "Detects D5 (Major): the document states arithmetic mean where the source requires Geometric mean"
+    - "Detects D6 (Major): the document states n = 8 where the source requires n = 7"
+    - "Detects D7 (Major): the document states RBL-102-PP-v1.0 where the source requires RBL-102-PP-v2.0"
+    - "Detects D8 (Major): the document states set to zero throughout the profile where the source requires excluded from the derivation"
+    - "Detects D9 (Major): the document states nominal sampling times where the source requires actual sampling times"
+    - "Detects at least 10 of the 12 expert-keyed defects"
+    - "Reports the SYN-107 exclusion as applied outside the plan's exhaustive criteria (D2), and the retained SYN-106 emesis profile as a criterion met but not applied (D10)"
+    - "States reconciliation coverage as a fraction of values checked over values present"
+    - "Distinguishes recomputing a summary statistic from supplied per-participant values from re-deriving a parameter from concentration data, and does neither of the latter"
+    - "Records that the reviewer role is not yet named and signs nothing"
+    - "Every disposition is 'open' and no false-positive trap from the expert key is flagged"

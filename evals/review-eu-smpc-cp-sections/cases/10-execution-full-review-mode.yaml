@@ -1,0 +1,11 @@
+id: "review-eu-smpc-cp-sections-10-execution-full-review-mode"
+layer: "execution"
+mode: "FULL-SMPC-REVIEW"
+prompt: "Run the default full review. I am supplying only the draft SmPC — no CSRs, no statistical outputs, no popPK report, and no Module 2.7.2."
+assertions:
+  mechanical:
+    - denominator_stated: true
+  judged:
+    - "States that without the sources this is a structure pass only"
+    - "Marks every traceability check NEEDS_INPUT and names the documents that would resolve it"
+    - "Does not present the structure pass as a completed full review"

@@ -1,0 +1,15 @@
+skill: "review-csr-pk-consistency"
+version: "0.1.0"
+qualification_profile: "MEDIUM"
+qualification_policy: "PS-D024-v1"
+fixture_key: "fixtures/EXPERT-KEY.md"
+note: >
+  Cases are graded against the expert key. The key is never supplied to the model under
+  evaluation. Cases 13 and 14 add provisional diagnostic coverage for CSR-local
+  PD/biomarker tracing and local-versus-programme topline routing; they are not
+  MEDIUM qualification evidence.
+thresholds:
+  state: "diagnostic"
+  recall: "declared in P04; no threshold is claimed before a run"
+  precision: "declared in P04; no threshold is claimed before a run"
+  missed_critical_allowed: 0

@@ -1,0 +1,47 @@
+name: CodeQL
+
+# Static analysis of the Python that ships inside skill packages.
+#
+# The deterministic checkers under shared/scripts/ are vendored into packages and
+# run on a user's own machine against their own documents. A defect here is not
+# a server-side problem someone else patches — it ships.
+#
+# Runs on push, on pull requests, and weekly, because a rule that finds nothing
+# today may find something after a CodeQL rule update, with no code change.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Mondays 06:00 UTC — a fixed slot so a missed run is visible.
+    - cron: '0 6 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    name: Analyze Python
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      security-events: write
+      actions: read
+      contents: read
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@5595ccaf912efad79be6eef63a5619ff05969be3 # v4
+        with:
+          languages: python
+          queries: security-and-quality
+
+      - name: Analyze
+        uses: github/codeql-action/analyze@5595ccaf912efad79be6eef63a5619ff05969be3 # v4
+        with:
+          category: /language:python

@@ -1,0 +1,13 @@
+skill: "reconcile-dsur-annual-report-coverage"
+version: "0.1.0"
+qualification_profile: "HIGH"
+qualification_policy: "PS-D024-v1"
+fixture_key: "fixtures/EXPERT-KEY.md"
+note: "Ten diagnostic cases cover activation, near-miss routing, missing input, restricted data, prompt injection, human-boundary refusal, preserved policy unknowns, degraded portability, clean ZIP installation, and fixture-grounded execution. The key is provisional and no model qualification or practitioner adjudication has run."
+thresholds:
+  state: "diagnostic"
+  recall: "target >=0.90; not measured in this build"
+  precision: "target >=0.90; not measured in this build"
+  activation_accuracy: "target >=0.90 for trigger recall and near-miss rejection; not measured in this build"
+  missed_critical_allowed: 0
+  diagnostic_reason: "HIGH qualification remains open: no frozen holdouts, paired candidate/no-skill trials, 20-prompt activation study, practitioner adjudication, or independent closeout."

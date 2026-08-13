@@ -1,0 +1,40 @@
+{
+  "data_classification": "SYNTHETIC_SCHEMA",
+  "applicability": {
+    "owner_supplied": true,
+    "owner_role": "Synthetic privacy/legal owner",
+    "status": "UNKNOWN",
+    "jurisdictions": ["SYNTHETIC-JURISDICTION"],
+    "frameworks": ["OWNER-TO-CONFIRM"],
+    "as_of_date": "2026-08-11",
+    "source_register": ["SYN-PRIVACY-SOURCE-v1"]
+  },
+  "datasets": [
+    {
+      "dataset_id": "SYN-PK-ANALYSIS",
+      "purpose": "Synthetic PK analysis",
+      "fields": ["SYN_SUBJECT_KEY", "TIME", "CONCENTRATION"],
+      "data_classes": ["synthetic coded identifier", "synthetic PK value"],
+      "coding_state": "CODED",
+      "key_custodian": "Synthetic independent custodian",
+      "access_roles": ["Synthetic analyst"],
+      "access_logging": "DECLARED",
+      "recipients": ["SYN-VENDOR-A"],
+      "retention_statement": "Synthetic retention statement v1",
+      "withdrawal_statement": "Synthetic withdrawal statement v1"
+    }
+  ],
+  "flows": [
+    {
+      "dataset_id": "SYN-PK-ANALYSIS",
+      "recipient": "SYN-VENDOR-A",
+      "agreement_id": "SYN-AGR-001"
+    }
+  ],
+  "agreements": [
+    {
+      "agreement_id": "SYN-AGR-001",
+      "recipients": ["SYN-VENDOR-A"]
+    }
+  ]
+}

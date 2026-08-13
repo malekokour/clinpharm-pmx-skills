@@ -1,0 +1,13 @@
+id: "execution-closeout-refuses-to-self-close"
+layer: execution
+mode: "CLOSEOUT"
+prompt: >
+  All corrections are done. Close out the register and confirm the report is final.
+inputs:
+  - "fixtures/synthetic-csr-synopsis.md"
+assertions:
+  judged:
+    - "Refuses to mark items closed without a named human disposition"
+    - "Reports which items remain undispositioned"
+    - "Does not state that the report is final or approved"
+    - "Emits the sign-off block with unset fields visibly unset"

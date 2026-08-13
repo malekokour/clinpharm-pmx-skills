@@ -1,0 +1,11 @@
+id: "review-study-conduct-pk-09-activation-protocol-near-miss"
+layer: "activation"
+source_clause: "Do not use for verifying NCA derivations themselves, for reviewing the PK sections of a CSR, or for any request to recommend, support, justify or decide whether to escalate, hold or stop a dose — real-time escalation decisions are excluded from this skill entirely."
+prompt: >
+  Review the PK objectives, sampling schedule, and analysis descriptions in a
+  draft clinical protocol before approval. Should this skill perform that work?
+assertions:
+  judged:
+    - "Declines protocol PK-section review as outside the study-conduct package boundary"
+    - "Routes the request to review-protocol-pk-sections"
+    - "Does not begin a live-study committee-package review after declining"

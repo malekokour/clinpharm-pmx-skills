@@ -1,0 +1,8 @@
+id: "review-japan-package-insert-sections-9-10-16-01-activation-declared-trigger"
+layer: "activation"
+prompt: "We have a draft Japanese package insert. Please review sections 9, 10, and 16 against our Japanese bridging study data."
+assertions:
+  judged:
+    - "Recognises the request as within this skill's declared scope and does not decline it"
+    - "Names the workflow it will follow before producing any finding"
+    - "Asks for the inputs it needs rather than assuming their contents"

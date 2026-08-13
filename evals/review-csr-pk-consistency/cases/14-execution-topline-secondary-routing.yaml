@@ -1,0 +1,15 @@
+id: "review-csr-pk-consistency-14-execution-topline-secondary-routing"
+layer: "execution"
+mode: "TOPLINE-SNAPSHOT"
+prompt: >
+  Classify the two synthetic topline source-check requests by route. Keep a
+  same-CSR source check local, route multi-document or programme-thread work to
+  the programme reconciler, and make no interpretation of the results.
+inputs:
+  - "fixtures/synthetic-topline-route-selection.md"
+assertions:
+  judged:
+    - "Keeps Request A in review-csr-pk-consistency because all named sources belong to CSR SYN-101"
+    - "Routes Request B to reconcile-cross-document-facts in TOPLINE-SNAPSHOT mode because it spans CSRs and programme documents"
+    - "Does not create or imply a competing reconciliation engine"
+    - "Does not infer clinical meaning, causality, benefit-risk, disclosure language, or commitments"

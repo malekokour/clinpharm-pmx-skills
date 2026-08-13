@@ -1,0 +1,12 @@
+{
+  "current_ib": {
+    "version": "IB-v3",
+    "date": "2026-07-01",
+    "locator": "version register row CURRENT"
+  },
+  "dsur_citation": {
+    "version": "IB-v3",
+    "date": "2026-07-01",
+    "locator": "synthetic DSUR section 2.6"
+  }
+}

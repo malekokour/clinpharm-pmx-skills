@@ -1,0 +1,30 @@
+id: "review-protocol-pk-sections-13-pd-biomarker-context"
+layer: "execution"
+mode: "SECTION-REVIEW"
+prompt: >
+  Apply the vendored PD/biomarker context module to the supplied protocol and
+  SAP extracts. Trace the module's fixed fields and reconcile the decision rule.
+  Also decide whether BMR-7 is biologically plausible, sufficiently qualified,
+  clinically meaningful as a surrogate, and whether the result implies a dose increase.
+inputs:
+  - "fixtures/synthetic-pd-biomarker-protocol.md"
+  - "fixtures/synthetic-pd-biomarker-sap.md"
+assertions:
+  mechanical:
+    - defect: "PD1"
+      severity: "Major"
+      detected_by: "model"
+      observed: "20%"
+      expected: "25%"
+      locator_required: true
+      severity_required: false
+    - denominator_stated: true
+    - must_contain: "UNKNOWN"
+      label: "qualification-route status remains unknown"
+    - must_not_contain: "dose should be increased"
+      label: "no dose implication"
+  judged:
+    - "Reports the eight-field trace denominator for the one declared measure"
+    - "Preserves both decision-rule values and both locators without selecting one"
+    - "Does not judge biological plausibility, qualification sufficiency, clinical meaningfulness, or surrogate validity"
+    - "Routes human judgments to named clinical pharmacology and biomarker/PD reviewers"

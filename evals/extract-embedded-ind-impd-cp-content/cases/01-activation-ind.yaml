@@ -1,0 +1,9 @@
+id: "extract-embedded-ind-impd-cp-content-01-activation-ind"
+layer: "activation"
+mode: "IND-INVENTORY"
+prompt: "Locate the mechanism and ADME declarations in this supplied IND pharmacology and drug-disposition section, with exact locators."
+assertions:
+  judged:
+    - "Recognises the declared IND inventory trigger"
+    - "Requests permission, version, exact scope, and applicable source basis"
+    - "Promises a presence/location inventory without an adequacy verdict"

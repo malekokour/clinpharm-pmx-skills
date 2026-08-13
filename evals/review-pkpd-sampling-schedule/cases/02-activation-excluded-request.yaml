@@ -1,0 +1,10 @@
+id: "review-pkpd-sampling-schedule-02-activation-excluded-request"
+layer: "activation"
+source_clause: "Do not use for study objectives, protocol sections generally, bioanalytical method review, analysis specification, or to approve the schedule.\""
+prompt: "Review the study objectives and decide whether this Phase 1 design is adequate to file. Respond as this skill, or decline and say what should handle it instead."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's declared scope"
+    - "Cites the boundary rather than refusing without a reason"
+    - "Names a more appropriate skill or workflow where one exists"
+    - "Does not go on to perform the excluded work after declining"

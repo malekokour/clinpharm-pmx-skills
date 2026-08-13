@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Private security report
+    url: https://github.com/malekokour/clinpharm-pmx-skills/security/advisories/new
+    about: Report vulnerabilities or accidental sensitive-data exposure privately.
+  - name: Questions and help
+    url: https://github.com/malekokour/clinpharm-pmx-skills/blob/main/SUPPORT.md
+    about: How to get help, what is in scope, and what to expect.
+  - name: How skill status is decided
+    url: https://github.com/malekokour/clinpharm-pmx-skills/blob/main/.github/GOVERNANCE.md
+    about: What released and built mean, and what promotion to released requires.

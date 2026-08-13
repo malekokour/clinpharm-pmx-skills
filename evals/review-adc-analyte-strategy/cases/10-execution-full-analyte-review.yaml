@@ -1,0 +1,11 @@
+id: "review-adc-analyte-strategy-10-execution-full-analyte-review"
+layer: "execution"
+mode: "FULL-ANALYTE-REVIEW"
+prompt: "Run the default review. The protocol defines total antibody as all antibody regardless of conjugation; the CSR defines it as antibody bearing at least one payload. Both report AUC for it."
+assertions:
+  mechanical:
+    - denominator_stated: true
+  judged:
+    - "Classifies this as definition-drift and records both definitions verbatim with both locators"
+    - "Assigns Critical severity because both documents report parameters for that analyte"
+    - "Does not resolve which definition is intended"

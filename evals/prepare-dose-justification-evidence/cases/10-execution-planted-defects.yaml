@@ -1,0 +1,47 @@
+id: "prepare-dose-justification-evidence-10-execution-planted-defects"
+layer: "execution"
+mode: "ASSEMBLE"
+prompt: >
+  Assemble the dose-justification evidence package for this proposed regimen. Record the
+  regimen and every modification rule verbatim, index each claim to its supporting artefact,
+  build the intrinsic and extrinsic factor coverage matrix, lay out the formulation bridging
+  chain, and take pre-specification status from the analysis plans and authoritative versions
+  from the source-version baseline.
+inputs:
+  - "fixtures/synthetic-proposed-regimen.md"
+  - "fixtures/synthetic-exposure-response-and-plan.md"
+  - "fixtures/synthetic-factor-coverage-sources.md"
+  - "fixtures/synthetic-formulation-bridging.md"
+assertions:
+  mechanical:
+    - defect: "D1"
+      severity: "Critical"
+      detected_by: "script"
+      observed: "45 mL/min/1.73 m²"
+      expected: "30 mL/min/1.73 m²"
+      locator_required: true
+    - defect: "D7"
+      severity: "Major"
+      detected_by: "script"
+      observed: "12.4 L/h"
+      expected: "14.9 L/h"
+      locator_required: true
+    - denominator_stated: true
+    - must_not_contain: "the evidence supports the proposed dose"
+      label: "risk veto — never states that the evidence supports the dose"
+  judged:
+    - "Detects D2 (Critical): the document states resume at 175 mg once daily where the source requires Doses obtainable from the commercial presentation: 50, 100, 150, 200, 250, 300, 350, 400 mg and further multiples of 50 mg."
+    - "Detects D3 (Critical): the document states Cmax,ss where the source requires The exposure metric for the primary exposure–response analysis is AUC0–24,ss."
+    - "Detects D4 (Major): the document states no dose adjustment is required for mild hepatic impairment where the source requires Not covered — no dedicated study, no covariate analysis, no stated justification"
+    - "Detects D5 (Major): the document states Cohort R3 (mean eGFR 52 mL/min/1.73 m²) is reported as severe impairment. where the source requires moderate 30–59"
+    - "Detects D6 (Major): the document states F3 (tablet, 200 mg, batch B-3301) where the source requires No BA/BE study links F2 to F3."
+    - "Detects D8 (Major): the document states starting dose 250 mg once daily where the source requires 200 mg once daily"
+    - "Detects D9 (Major): the document states The safety exposure–response analysis was pre-specified in the analysis plan. where the source requires The safety exposure–response analysis was added post hoc."
+    - "Detects D10 (Minor): the document states 45–120 mg where the source requires Body weight (kg): 45–120"
+    - "Detects D11 (Minor): the document states KVX-202 where the source requires KVX-220"
+    - "Detects at least 9 of the 11 expert-keyed defects"
+    - "Records the proposed regimen and every modification rule verbatim rather than paraphrased"
+    - "States index coverage and question coverage each as a fraction"
+    - "Uses only the five defined coverage states in the factor matrix, with no cell meaning sufficient"
+    - "Flags none of the five documented false-positive traps in the expert key, and every open item carries a disposition written as open"
+    - "No sentence anywhere selects, recommends, adjusts or endorses a dose, and none proposes a corrected threshold or an administrable alternative to 175 mg"

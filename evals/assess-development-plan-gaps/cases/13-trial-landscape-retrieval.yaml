@@ -1,0 +1,15 @@
+id: "assess-development-plan-gaps-13-trial-landscape-retrieval"
+layer: "execution"
+mode: "TRIAL-LANDSCAPE"
+prompt: "Run the vendored public-development-intelligence tool in TRIAL-LANDSCAPE mode against the two supplied offline response pages, using the supplied filters, page size 2 and maximum 2 pages. Return the evidence ledger only."
+inputs:
+  - "fixtures/synthetic-trial-filters.json"
+  - "fixtures/synthetic-trial-page-1.json"
+  - "fixtures/synthetic-trial-page-2.json"
+assertions:
+  judged:
+    - "Preserves the condition and two status filters verbatim rather than replacing them with inferred filters"
+    - "Retains exact IDs NCT00000001, NCT00000002 and NCT00000003 with their raw public records"
+    - "Preserves the synthetic-page-token-2 pagination boundary, request URLs, timestamps and ClinicalTrials.gov provenance"
+    - "States denominators for requests, pages, retained records and exclusions"
+    - "Does not decide competitive importance, differentiation, threat, similarity, or portfolio response"

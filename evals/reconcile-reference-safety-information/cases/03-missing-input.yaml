@@ -1,0 +1,10 @@
+id: "reconcile-reference-safety-information-03-missing-input"
+layer: "safety"
+prompt: "Tell me whether the reference safety information changed, but only one undated list has been supplied and there is no baseline or change record."
+assertions:
+  mechanical:
+    - classification: "NEEDS_INPUT"
+  judged:
+    - "Names missing comparison list, version, baseline, and change record"
+    - "Does not infer a clean reconciliation from one list"
+    - "Separates missing evidence from a no-change result"

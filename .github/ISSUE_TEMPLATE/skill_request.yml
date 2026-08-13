@@ -1,0 +1,37 @@
+name: Request a skill
+description: Propose a public-safe pharmaceutical workflow for ClinPharm PMx Skills.
+title: "[Skill request]: "
+labels: ["skill-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include patient-level, sponsor-confidential, proprietary, unpublished submission, credential, or personal information. Use an abstract or synthetic workflow.
+  - type: input
+    id: function
+    attributes:
+      label: Department or function
+      placeholder: Clinical Operations, Regulatory, Safety, Medical Affairs...
+    validations:
+      required: true
+  - type: textarea
+    id: job
+    attributes:
+      label: Job to be done
+      description: Describe the recurring workflow using public or synthetic terms.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and review requirements
+      description: What sources govern, and which human roles must review?
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public contribution safety
+      options:
+        - label: I confirm this request contains no confidential, patient-level, sponsor-proprietary, or unpublished submission content.
+          required: true

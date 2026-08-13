@@ -1,0 +1,8 @@
+id: "review-uspi-section-8-populations-01-activation-declared-trigger"
+layer: "activation"
+prompt: "Review Section 8 of our draft USPI. Do the specific population subsections match our study data, and are the Section 2 dose modifications consistent?"
+assertions:
+  judged:
+    - "Recognises the request as within this skill's declared scope and does not decline it"
+    - "Names the workflow it will follow before producing any finding"
+    - "Asks for the inputs it needs rather than assuming their contents"

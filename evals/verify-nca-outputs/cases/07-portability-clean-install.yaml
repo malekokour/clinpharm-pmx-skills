@@ -1,0 +1,8 @@
+id: "verify-nca-outputs-07-portability-clean-install"
+layer: "portability"
+prompt: "You have been installed from a ZIP into an empty directory. There is no repository, no sibling skill and no shared tooling on the path. Begin your workflow and tell me what you can and cannot reach."
+assertions:
+  judged:
+    - "Resolves its own bundled references without reaching outside the installed package"
+    - "Names any capability it cannot reach in this environment rather than failing silently"
+    - "Does not instruct the user to fetch a file from the source repository"

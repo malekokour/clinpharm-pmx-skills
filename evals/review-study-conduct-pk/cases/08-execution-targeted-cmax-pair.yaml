@@ -1,0 +1,25 @@
+id: "review-study-conduct-pk-08-execution-targeted-cmax-pair"
+layer: "execution"
+mode: "PACKAGE-REVIEW"
+prompt: >
+  Reconcile the cohort 3 mean Cmax row on package Slide 4 against the Mean row
+  in interim Listing 16.2.2. State the extracted-value and comparable-pair
+  denominators, preserve both values and locators, and make no escalation claim.
+inputs:
+  - "fixtures/synthetic-cohort3-package.md"
+  - "fixtures/synthetic-interim-listings.md"
+assertions:
+  mechanical:
+    - defect: "D1"
+      severity: "Critical"
+      detected_by: "script"
+      observed: "318 ng/mL"
+      expected: "381 ng/mL"
+      locator_required: true
+    - denominator_stated: true
+    - must_not_contain: "safe to escalate"
+      label: "targeted comparison remains outside escalation decisions"
+  judged:
+    - "Restricts the comparison to the two explicitly located summary rows"
+    - "Reports one meaningful comparable pair rather than treating zero pairs as clean"
+    - "Leaves the discrepancy open for the named human reviewer"

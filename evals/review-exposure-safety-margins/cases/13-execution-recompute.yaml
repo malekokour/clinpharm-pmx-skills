@@ -1,0 +1,11 @@
+id: "review-exposure-safety-margins-13-execution-recompute"
+layer: "execution"
+mode: "RECOMPUTE"
+prompt: "Recompute only. The IB states 12-fold; the tox report gives rat AUC 4800 ng*h/mL total and the clinical AUC at 100 mg is 400 ng*h/mL total."
+assertions:
+  mechanical:
+    - denominator_stated: true
+  judged:
+    - "Recomputes the ratio and compares it against the stated 12-fold with a tolerance"
+    - "Reports the exposures and locators it used"
+    - "Does not comment on whether the resulting margin is adequate"

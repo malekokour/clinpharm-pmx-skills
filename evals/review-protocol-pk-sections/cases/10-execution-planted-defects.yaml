@@ -1,0 +1,47 @@
+id: "execution-planted-defects"
+layer: execution
+mode: "FULL-REVIEW"
+prompt: >
+  Review the clinical pharmacology sections of this protocol before it goes to
+  operational review. Use the sponsor's own conventions file as the rule source and the
+  declared version baseline, and check the sampling schedule against the half-life
+  reported in the Investigator's Brochure.
+inputs:
+  - "fixtures/synthetic-protocol.md"
+  - "fixtures/synthetic-ib-extract.md"
+  - "fixtures/synthetic-sponsor-conventions.md"
+  - "fixtures/synthetic-bioanalytical-summary.md"
+assertions:
+  mechanical:
+    - defect: "D1"
+      severity: "Critical"
+      detected_by: "script"
+      observed: "6.2 h"
+      expected: "18.6 h"
+      locator_required: true
+    - defect: "D3"
+      severity: "Major"
+      detected_by: "script"
+      observed: "0.25 µg/mL"
+      expected: "0.25 ng/mL"
+      locator_required: true
+    - defect: "D8"
+      severity: "Major"
+      detected_by: "script"
+      observed: "±55 min"
+      expected: "±30 min"
+      locator_required: true
+    - denominator_stated: true
+    - must_not_contain: "the sampling schedule is adequate"
+      label: "no adequacy verdict"
+  judged:
+    - "Detects D4 (Major): the document states Days 1 and 14 where the source requires Days 1, 7 and 14"
+    - "Detects D6 (Major): the document states Edition 3.0 where the source requires Edition 4.0"
+    - "Detects D10 (Minor): the document states two significant figures where the source requires three significant figures"
+    - "Detects D11 (Minor): the document states BA-M-0142 where the source requires BA-M-0412"
+    - "Detects at least 9 of the 11 expert-keyed defects"
+    - "Reports the three model-only completeness findings — no PK analysis population (D2), no BLQ handling convention (D7), and no standardised meal restriction (D9)"
+    - "Flags the 600 mg dose level as untraceable and does not propose, justify or endorse any dose"
+    - "Names the convention applied and its source on every conformance comment, and cites the sponsor conventions file rather than generic expectations"
+    - "Treats the deliberately deferred population PK modelling strategy as deferred, not as a completeness gap"
+    - "Every disposition is 'open' and no false-positive trap from the expert key is flagged"

@@ -1,0 +1,8 @@
+id: "check-investigators-brochure-pk-section-11-portability-degraded-markdown"
+layer: "portability"
+prompt: "Use only the Markdown starter; package scripts and references are unavailable. Check this bounded synthetic IB excerpt and supplied version table."
+assertions:
+  judged:
+    - "Discloses the degraded Markdown route"
+    - "Does not claim deterministic parsing or automated version comparison ran"
+    - "Performs only a manual bounded check with unchanged human/live-study boundaries"

@@ -1,0 +1,29 @@
+# gitleaks configuration for ClinPharm PMx Skills
+#
+# Scan the WORKING TREE, not just history:
+#     gitleaks detect --source . --no-git --redact
+#
+# Without --no-git on a repository with no commits, gitleaks scans 0 bytes and
+# reports "no leaks found". That is a vacuous pass, and it hid a real finding
+# during the 2026-08-05 rebuild.
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "generic-api-key"
+[rules.allowlist]
+description = """
+SHA-256 digests of evaluation fixtures are hex strings with high entropy, and
+one of the fixtures is named EXPERT-KEY.md — the answer key for the planted-defect
+benchmark. The generic-api-key rule matches on proximity to the word "key" plus
+entropy, so it fires on the digest of that filename.
+
+These are content hashes in generated scan and manifest reports, not credentials.
+Allowlisted by path so a real secret appearing anywhere else still fails the gate.
+"""
+paths = [
+  '''_qa/.*\.json$''',
+  '''dist/RELEASE-MANIFEST\.json$''',
+  '''dist/RELEASE-SCAN-REPORT\.json$''',
+]

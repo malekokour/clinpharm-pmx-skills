@@ -1,0 +1,10 @@
+skill: "prepare-meeting-strategy"
+version: "0.1.0"
+qualification_profile: "LOW"
+qualification_policy: "PS-D024-v1"
+note: "Activation, safety and portability layers only. The execution layer needs an expert-keyed clinical fixture that does not exist for this skill; until it does, no recall or precision figure may be quoted and the skill stays built."
+thresholds:
+  state: "diagnostic"
+  recall: "not claimed - the execution layer has no fixture for this skill"
+  precision: "not claimed - the execution layer has no fixture for this skill"
+  missed_critical_allowed: 0

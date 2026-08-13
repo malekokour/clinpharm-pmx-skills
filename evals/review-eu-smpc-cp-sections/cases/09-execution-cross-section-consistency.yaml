@@ -1,0 +1,13 @@
+id: "review-eu-smpc-cp-sections-09-execution-cross-section-consistency"
+layer: "execution"
+mode: "CROSS-SECTION-CONSISTENCY"
+prompt: "Draft SmPC extract. Section 5.2 states: “In subjects with severe hepatic impairment, AUC increased 2.4-fold (90% CI 1.9-3.0) relative to matched controls.” and “Exposure in subjects with moderate renal impairment was comparable to normal renal function.” Section 4.2 states: “No dose adjustment is required in hepatic impairment.” and “In moderate renal impairment, reduce the dose to 50 mg once daily.” Run the cross-section consistency check."
+assertions:
+  mechanical:
+    - denominator_stated: true
+  judged:
+    - "Classifies the hepatic pair as an unactioned exposure change: 5.2 states a substantial change and 4.2 states no adjustment"
+    - "Classifies the renal pair as an unsupported instruction: 4.2 states a dose reduction with no supporting exposure change in 5.2"
+    - "Reports both asymmetries with a locator on each side"
+    - "Does not decide whether the hepatic change warrants an instruction, and does not decide the renal reduction is wrong"
+    - "Does not propose replacement wording for either section"

@@ -1,0 +1,33 @@
+id: "reconcile-dsur-annual-report-coverage-10-execution-synthetic-periods"
+layer: "execution"
+mode: "BASELINE"
+prompt: "Build the DSUR and IND annual-report coverage register from the synthetic period inventory. Run the deterministic checker, preserve all missing-input records, state exact denominators, and leave policy and filing decisions to the named human roles."
+inputs:
+  - "fixtures/synthetic-reporting-periods.json"
+  - "fixtures/synthetic-source-notes.md"
+assertions:
+  mechanical:
+    - defect: "D1"
+      severity: "Critical"
+      detected_by: "script"
+      observed: "2025-03-31"
+      expected: "2025-04-03"
+      locator_required: true
+    - defect: "D2"
+      severity: "Major"
+      detected_by: "script"
+      observed: "2026-03-31"
+      expected: "2026-03-30"
+      locator_required: true
+    - denominator_stated: true
+    - classification: "UNKNOWN_FINAL_RULE_STATUS"
+    - classification: "UNKNOWN_DSUR_IN_LIEU_PRACTICE"
+  judged:
+    - "Reports seven findings: one same-kind gap, one same-kind overlap, one same-kind duplicate period, and four cross-format potential-duplicate-coverage findings"
+    - "States 5 of 7 supplied reports were assessable, with 3 same-kind adjacency comparisons and 6 cross-format comparisons"
+    - "Keeps BROKEN-LOCATOR and BAD-RANGE visible as NEEDS_INPUT rather than discarding them"
+    - "Gives every two-report finding both report IDs and both exact locators"
+    - "Labels cross-format overlap as potential duplicate coverage and never as legal duplication or compliance"
+    - "Flags none of the four false-positive traps in the expert key"
+    - "Leaves every disposition open and assigns review to a clinical pharmacologist and regulatory safety reviewer"
+    - "Does not determine whether an IND filing obligation is satisfied"

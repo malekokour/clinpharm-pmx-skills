@@ -1,0 +1,52 @@
+id: "execution-full-qc-planted-defects"
+layer: execution
+mode: "FULL-QC"
+prompt: >
+  QC the PK sections of this study report against the supplied source outputs. Use the
+  analysis plan's rounding and unit conventions and the declared version baseline.
+inputs:
+  - "fixtures/synthetic-csr-synopsis.md"
+  - "fixtures/synthetic-csr-body.md"
+  - "fixtures/synthetic-tlf.md"
+  - "fixtures/synthetic-nca-output.md"
+  - "fixtures/synthetic-analysis-plan.md"
+  - "fixtures/synthetic-protocol.md"
+assertions:
+  mechanical:
+    - defect: "D1"
+      severity: "Critical"
+      detected_by: "script"
+      observed: "11300"
+      expected: "13158"
+      locator_required: true
+    - defect: "D4"
+      severity: "Critical"
+      detected_by: "script"
+      observed: "mL/h"
+      expected: "L/h"
+      locator_required: true
+    - defect: "D5"
+      severity: "Major"
+      detected_by: "either"
+      observed: "200"
+      expected: "400"
+      locator_required: true
+    - defect: "D6"
+      severity: "Critical"
+      detected_by: "either"
+      observed: "decrease"
+      expected: "1.34"
+      locator_required: true
+    - defect: "D2"
+      severity: "Major"
+      detected_by: "script"
+      observed: "8.2"
+      expected: "11.4"
+      locator_required: true
+    - denominator_stated: true
+  judged:
+    - "Detects at least 11 of the 12 expert-keyed defects"
+    - "Every finding carries a locator on both the statement and the expected value"
+    - "Every disposition is 'open'"
+    - "Names the tolerance applied and cites the analysis plan as its source"
+    - "Flags none of the five documented false-positive traps in the expert key"

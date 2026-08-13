@@ -1,0 +1,10 @@
+skill: "review-ddi-evidence"
+version: "0.1.1"
+qualification_profile: "MEDIUM"
+qualification_policy: "PS-D024-v1"
+note: "Diagnostic suite with seven boundary cases, one provisional-key DDI case, and two enzyme/transporter inventory cases. Key adjudication, qualifying paired runs, activation testing, targeted practitioner review, and independent closeout remain required; no recall or precision figure may be quoted and the skill stays built."
+thresholds:
+  state: "diagnostic"
+  recall: "not claimed - the execution fixture and key are provisional and qualifying runs have not passed"
+  precision: "not claimed - the execution fixture and key are provisional and qualifying runs have not passed"
+  missed_critical_allowed: 0

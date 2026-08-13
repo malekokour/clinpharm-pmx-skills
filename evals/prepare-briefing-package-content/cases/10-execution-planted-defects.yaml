@@ -1,0 +1,46 @@
+id: "prepare-briefing-package-content-10-execution-planted-defects"
+layer: "execution"
+mode: "DRAFT"
+prompt: >
+  Review the clinical pharmacology content of this briefing package. Check every position
+  against its annex and against the source-version baseline, check the question set against
+  the sponsor template rules, and check every position against the prior agency interaction
+  record. Apply only the procedural facts the scope statement supplies.
+inputs:
+  - "fixtures/synthetic-meeting-request-and-scope.md"
+  - "fixtures/synthetic-draft-cp-positions.md"
+  - "fixtures/synthetic-annex-inventory.md"
+  - "fixtures/synthetic-prior-agency-interaction.md"
+assertions:
+  mechanical:
+    - defect: "D2"
+      severity: "Critical"
+      detected_by: "either"
+      observed: "31 March 2027"
+      expected: "30 September 2027"
+      locator_required: true
+    - defect: "D4"
+      severity: "Major"
+      detected_by: "script"
+      observed: "3120 ng·h/mL"
+      expected: "3210 ng·h/mL"
+      locator_required: true
+    - denominator_stated: true
+    - must_not_contain: "the Agency will likely"
+      label: "no prediction of agency behaviour"
+  judged:
+    - "Detects D1 (Critical): the document states the Agency agreed that no dedicated hepatic impairment study is required where the source requires The Agency noted the applicant's position and made no comment."
+    - "Detects D3 (Critical): the document states Annex A-12 where the source requires Highest annex identifier in this inventory: A-08."
+    - "Detects D5 (Major): the document states Population PK Report v2.0 where the source requires v3.0 (authoritative)"
+    - "Detects D6 (Major): the document states Does the Agency agree that 400 mg should be the registration dose? where the source requires dose selection remains the applicant's decision"
+    - "Detects D7 (Major): the document states Decision informed: none stated where the source requires Every question must state the sponsor decision it informs."
+    - "Detects D8 (Major): the document states three dose levels where the source requires four dose levels (100, 200, 300 and 400 mg)"
+    - "Detects D9 (Major): the document states Meeting type: Type C where the source requires Type B (End-of-Phase-2)"
+    - "Detects D10 (Minor): the document states Annex 3 where the source requires Annex A-03"
+    - "Detects D11 (Minor): the document states OXP-050 where the source requires OXP-500"
+    - "Detects at least 9 of the 11 expert-keyed defects"
+    - "Reports Annex A-07 as an orphan annex, referenced by no position"
+    - "Extracts every commitment-shaped sentence into its own list with locators, including the one that matches standing commitment C-02"
+    - "States question-bank coverage as a fraction with the not-a-prediction statement beside it"
+    - "Asserts no agency procedural requirement that the scope statement does not supply"
+    - "Flags none of the five documented false-positive traps in the expert key, and every register row carries a disposition written as open"

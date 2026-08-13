@@ -1,0 +1,13 @@
+id: "execution-tlf-spot-check"
+layer: execution
+mode: "TLF-SPOT-CHECK"
+prompt: >
+  Check just the in-text Tmax and half-life statements against the named tables.
+inputs:
+  - "fixtures/synthetic-csr-synopsis.md"
+  - "fixtures/synthetic-tlf.md"
+assertions:
+  judged:
+    - "Checks only the nominated statements"
+    - "Does not silently expand scope to a full pass"
+    - "States which checks were out of scope for this mode"

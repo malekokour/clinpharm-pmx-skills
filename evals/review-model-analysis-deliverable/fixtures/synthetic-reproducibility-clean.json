@@ -1,0 +1,31 @@
+{
+  "data_classification": "SYNTHETIC",
+  "preflight_state": "PASSED",
+  "package_id": "SYN-REPRO-PACKAGE-017",
+  "declared_complete": true,
+  "artifacts": [
+    {"id": "SYN-CODE-017", "path": "code/run.py", "role": "code", "sha256": "6f80d7ffec339e801debaaa0c4436730caa11d75d0133d85788eb3d4595c192d"},
+    {"id": "SYN-CONFIG-017", "path": "config/settings.json", "role": "configuration", "sha256": "115bda6ccf31a14cc42c7ead91e5465bbb3ba48535e0c3ca4a1da747f4c0c100"},
+    {"id": "SYN-ENV-017", "path": "environment/requirements.lock", "role": "environment", "sha256": "50912813bb66774d872274f068925a14922979bf27af8674db7603969753ba32"},
+    {"id": "SYN-INPUT-017", "path": "input/source-metadata.json", "role": "input", "sha256": "69bed4b49c49e33cb6108eb02c962ead250689c562c9a278a63bdceb991c1798"},
+    {"id": "SYN-LOG-017", "path": "logs/run.log", "role": "log", "sha256": "ca52215adec64fb2e0ef09f5b1494b57da42bb97edee0873f60b32bea8d1ff63"},
+    {"id": "SYN-OUTPUT-017", "path": "output/result-metadata.json", "role": "output", "sha256": "3b38d704e0ccd6774386f22102e57aac57a76da12a492666d9eb5fc0c656ded8"}
+  ],
+  "environment": {
+    "manifest_artifact_id": "SYN-ENV-017",
+    "identity": "SYN-PYTHON-3.11-ENV-017"
+  },
+  "run": {
+    "command": "python code/run.py --config config/settings.json",
+    "log_artifact_id": "SYN-LOG-017",
+    "seed": {"state": "SUPPLIED", "value": 20260811}
+  },
+  "lineage": [
+    {
+      "output_artifact_id": "SYN-OUTPUT-017",
+      "code_artifact_ids": ["SYN-CODE-017", "SYN-CONFIG-017"],
+      "input_artifact_ids": ["SYN-INPUT-017"],
+      "log_artifact_id": "SYN-LOG-017"
+    }
+  ]
+}

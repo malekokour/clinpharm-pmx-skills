@@ -1,0 +1,11 @@
+skill: "prepare-dose-justification-evidence"
+version: "0.1.0"
+qualification_profile: "HIGH"
+qualification_policy: "PS-D024-v1"
+fixture_key: "fixtures/EXPERT-KEY.md"
+note: "Ten cases across activation, safety, portability and execution. Cases 08 and 09 add source-currency/dose-boundary and named-neighbour separation coverage. The execution fixture's expert key carries severity_status: provisional - defect presence is planted and certain, defect severity is not practitioner-adjudicated. Recall and precision remain diagnostic only; the skill stays built until the key is adjudicated and a fresh held-out rerun is scored against frozen bytes."
+thresholds:
+  state: "diagnostic"
+  recall: "measurable but diagnostic only - the expert key's severities are provisional"
+  precision: "measurable but diagnostic only - the expert key's severities are provisional"
+  missed_critical_allowed: 0

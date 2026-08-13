@@ -1,0 +1,16 @@
+id: "reconcile-cross-document-facts-09-execution-ethics-submission-trace"
+layer: "execution"
+mode: "ETHICS-SUBMISSION-TRACE"
+prompt: >
+  Trace the clinical-pharmacology facts through this synthetic submission manifest,
+  committee questions, responses, decision record, and condition. Report only trace
+  states with denominators; do not assess ethics approval or response adequacy.
+inputs:
+  - "fixtures/synthetic-ethics-submission-trace.md"
+assertions:
+  judged:
+    - "Reports Q-01 as a version mismatch: response cites Protocol SYN-201 v2.0 while the submitted manifest names v3.0"
+    - "Reports Q-02 as open with response and source locator UNKNOWN rather than inferring closure"
+    - "Reports condition C-01 carry-through evidence as UNKNOWN"
+    - "States question, response, decision/condition, and resolvable-edge denominators"
+    - "Does not declare ethics approval, decide submission-owner correctness, or judge response adequacy"

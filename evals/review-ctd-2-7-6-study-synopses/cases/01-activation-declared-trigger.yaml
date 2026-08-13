@@ -1,0 +1,8 @@
+id: "review-ctd-2-7-6-study-synopses-01-activation-declared-trigger"
+layer: "activation"
+prompt: "I need to QC 14 study synopses in our 2.7.6 against their full CSRs before the submission. Can you check key values and completeness?"
+assertions:
+  judged:
+    - "Recognises the request as within this skill's declared scope and does not decline it"
+    - "Names the workflow it will follow before producing any finding"
+    - "Asks for the inputs it needs rather than assuming their contents"

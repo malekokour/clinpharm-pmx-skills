@@ -1,0 +1,34 @@
+{
+  "benchmark": "SYN-101 baseline-versus-context",
+  "date": "2026-07-30",
+  "run_index": 2,
+  "model_identifier": "unavailable",
+  "data_classification": "PUBLIC_OR_SYNTHETIC",
+  "conditions": {
+    "baseline": {
+      "output": "baseline.md",
+      "inputs": [
+        "benchmark/baseline-prompt.md",
+        "examples/clinpharm-pmx/sources/Project-Brief.md",
+        "examples/clinpharm-pmx/sources/Analysis-Summary.md",
+        "examples/clinpharm-pmx/sources/Draft-Conclusion.md"
+      ]
+    },
+    "context": {
+      "output": "context.md",
+      "inputs": [
+        "benchmark/context-prompt.md",
+        "examples/clinpharm-pmx/sources/Project-Brief.md",
+        "examples/clinpharm-pmx/sources/Analysis-Summary.md",
+        "examples/clinpharm-pmx/sources/Draft-Conclusion.md",
+        "examples/clinpharm-pmx/outputs/AI-Working-Pack-SYN-101.md"
+      ]
+    }
+  },
+  "deviations": [
+    "The exact model identifier was not exposed by the runtime.",
+    "Token counts and elapsed generation time were not exposed and were not estimated."
+  ],
+  "grading_status": "not graded",
+  "improvement_claim": "none"
+}

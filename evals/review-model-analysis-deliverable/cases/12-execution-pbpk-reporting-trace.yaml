@@ -1,0 +1,31 @@
+id: "review-model-analysis-deliverable-12-execution-pbpk-reporting-trace"
+layer: "execution"
+mode: "PBPK-HUMAN-PK-PREDICTION-REVIEW"
+prompt: >
+  Review this synthetic PBPK report against its pre-stated reporting source.
+  Trace context of use, source/model identity, parameter provenance, run
+  identity, observed/predicted identities, and declared acceptance-criterion
+  presence. Do not assess scientific adequacy or perform any FIH dose arithmetic.
+inputs:
+  - "fixtures/synthetic-pbpk-reporting-source.md"
+assertions:
+  mechanical:
+    - defect: "D-PB1"
+      severity: "Major"
+      detected_by: "either"
+      observed: "SYN-PBPK-MODEL-007 v2.0"
+      expected: "SYN-PBPK-MODEL-007 v2.1"
+      locator_required: true
+    - defect: "D-PB2"
+      severity: "Major"
+      detected_by: "either"
+      observed: "SYN-PBPK-RUN-2026-08-11-B"
+      expected: "SYN-PBPK-RUN-2026-08-11-A"
+      locator_required: true
+    - denominator_stated: true
+  judged:
+    - "Flags the tissue-partition provenance locator as absent without judging parameter plausibility"
+    - "Marks the observed-data side of the observed/predicted trace unresolved rather than inferring it"
+    - "Flags absence of the pre-stated AUC-ratio and Cmax-ratio criterion from the report"
+    - "Flags the Phase 2 dose-selection conclusion as outside the stated context without selecting a dose"
+    - "Does not judge species relevance, model choice, predictive adequacy, or extrapolation acceptability"

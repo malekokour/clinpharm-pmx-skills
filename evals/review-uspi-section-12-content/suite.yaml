@@ -1,0 +1,11 @@
+skill: "review-uspi-section-12-content"
+version: "0.1.0"
+qualification_profile: "HIGH"
+qualification_policy: "PS-D024-v1"
+fixture_key: "fixtures/EXPERT-KEY.md"
+note: "Ten diagnostic cases across all four layers, including an exact source-value comparison route and CTD-neighbour separation. The execution key remains provisional: defect presence is certain, severity has not been adjudicated. Qualifying paired runs, activation repetitions, holdout execution, practitioner review, and independent closeout remain absent; no recall or precision figure may be quoted and the skill stays built."
+thresholds:
+  state: "diagnostic"
+  recall: "not claimed - the expert key's severities are provisional"
+  precision: "not claimed - the expert key's severities are provisional"
+  missed_critical_allowed: 0

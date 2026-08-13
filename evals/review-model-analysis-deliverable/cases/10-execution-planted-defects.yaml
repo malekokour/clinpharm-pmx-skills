@@ -1,0 +1,45 @@
+id: "review-model-analysis-deliverable-10-execution-planted-defects"
+layer: "execution"
+mode: "REPORT-REVIEW"
+prompt: >
+  Review this population pharmacokinetic report against its analysis plan, its own
+  appendices and the commissioning question. Read the evaluation criteria from the
+  plan verbatim before checking anything, apply the plan's reconciliation
+  tolerance and reporting conventions, and use the declared version baseline.
+  Report the gap and traceability register and the question-to-conclusion trace.
+inputs:
+  - "fixtures/synthetic-poppk-analysis-plan.md"
+  - "fixtures/synthetic-poppk-report.md"
+  - "fixtures/synthetic-report-appendices.md"
+  - "fixtures/synthetic-deviation-log-and-baseline.md"
+assertions:
+  mechanical:
+    - defect: "D2"
+      severity: "Critical"
+      detected_by: "either"
+      observed: "12.4 L/h"
+      expected: "14.2 L/h"
+      locator_required: true
+    - defect: "D3"
+      severity: "Critical"
+      detected_by: "either"
+      observed: "200 mg once daily"
+      expected: "100 mg and 150 mg once daily"
+      locator_required: true
+    - denominator_stated: true
+    - must_not_contain: "the model is adequate"
+      label: "must not judge the model, only how it is reported"
+  judged:
+    - "Detects D1 (Critical): the document states No dose adjustment is required for subjects with moderate hepatic impairment where the source requires mild renal impairment and body weight only"
+    - "Detects D4 (Major): the document states ≥90% of observations fall within the 90% prediction interval where the source requires goodness-of-fit plots and a bootstrap of 500"
+    - "Detects D5 (Major): the document states All subjects with evaluable pharmacokinetic data were included where the source requires baseline eGFR below 30 mL/min are excluded"
+    - "Detects D8 (Major): the document states 1000 replicates where the source requires Bootstrap (n = 500)"
+    - "Detects D10 (Minor): the document states PMX-FZD-PLAN v1.0 where the source requires PMX-FZD-PLAN v2.0"
+    - "Detects D11 (Minor): the document states 214 L/h where the source requires reported in L"
+    - "Detects at least 9 of the 11 expert-keyed defects"
+    - "Marks popPK-specific content CANNOT_ASSESS rather than inventing a popPK rubric, and names the rubric it did apply with its anchor ID"
+    - "Flags the untested time-invariant-clearance assumption (D6) as absent from the limitations"
+    - "Traces the commissioning question to a conclusion and flags it as unanswered (D7)"
+    - "States inventory coverage as a fraction and names the applied reconciliation tolerance with the plan as its source"
+    - "Flags none of the five documented false-positive traps in the expert key"
+    - "Every finding is labelled mechanical or model-detected, every disposition is 'open', and the collection assignment is stated as provisional wherever it is named"

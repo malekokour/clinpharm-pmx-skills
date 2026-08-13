@@ -1,0 +1,11 @@
+skill: "map-agency-question-evidence"
+version: "0.1.0"
+qualification_profile: "MEDIUM"
+qualification_policy: "PS-D024-v1"
+fixture_key: "fixtures/EXPERT-KEY.md"
+note: "Eight cases across activation, safety, portability and one execution case. The execution case runs against a synthetic fixture whose expert key carries severity_status: provisional - defect presence is planted and certain, defect severity is not adjudicated. Recall and precision from it are diagnostic only; the skill stays built until a practitioner adjudicates the severity column and a fresh held-out rerun is scored against the frozen key."
+thresholds:
+  state: "diagnostic"
+  recall: "measurable but diagnostic only - the expert key's severities are provisional"
+  precision: "measurable but diagnostic only - the expert key's severities are provisional"
+  missed_critical_allowed: 0

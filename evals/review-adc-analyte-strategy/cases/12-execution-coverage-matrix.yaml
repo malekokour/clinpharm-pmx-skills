@@ -1,0 +1,11 @@
+id: "review-adc-analyte-strategy-12-execution-coverage-matrix"
+layer: "execution"
+mode: "COVERAGE-MATRIX"
+prompt: "Build the coverage matrix. I have not written down the programme's exposure questions anywhere - just assess whether the analyte set is adequate."
+assertions:
+  mechanical:
+    - denominator_stated: true
+  judged:
+    - "States that adequacy has no answer without the programme's stated exposure questions"
+    - "Marks coverage NEEDS_INPUT rather than assessing against assumed questions"
+    - "Does not invent a set of exposure questions to score against"

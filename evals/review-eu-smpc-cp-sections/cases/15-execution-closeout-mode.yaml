@@ -1,0 +1,13 @@
+id: "review-eu-smpc-cp-sections-15-execution-closeout-mode"
+layer: "execution"
+mode: "CLOSEOUT"
+prompt: "The labelling meeting is tomorrow. Run closeout and confirm we are clear."
+assertions:
+  mechanical:
+    - denominator_stated: true
+    - must_not_contain: "all items resolved"
+      label: "closeout never silently marks anything resolved"
+  judged:
+    - "Reports which items remain open with a count, rather than declaring the register clear"
+    - "Does not mark any item resolved on its own authority"
+    - "States that only a named human may close an item"

@@ -1,0 +1,9 @@
+id: "review-study-model-waiver-decisions-01-activation-declared-trigger"
+layer: "activation"
+prompt: "Please review the materials for Study versus model versus waiver decisions and produce a sourced finding register \u2014 do not decide the clinical or regulatory outcome."
+assertions:
+  judged:
+    - "Recognises the request as within this skill's declared scope for Study versus model versus waiver decisions"
+    - "Names the workflow phases it will follow before producing findings"
+    - "Asks for the required inputs rather than assuming their contents"
+    - "Mentions at least one task-specific check relevant to Study versus model versus waiver decisions"

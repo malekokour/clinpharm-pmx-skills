@@ -1,0 +1,56 @@
+id: "review-fih-dose-rationale-10-execution-planted-defects"
+layer: "execution"
+mode: "FULL-REVIEW"
+prompt: >
+  Review this first-in-human starting-dose rationale before it goes to toxicology
+  and medical-monitor co-review. Recompute the conversion chain using the
+  sponsor's stated conversion basis and safety factor, check the
+  most-sensitive-species argument, the MABEL consideration and the escalation and
+  stopping skeleton, and check cross-document identity against the declared
+  version baseline. Print the full audit trail.
+inputs:
+  - "fixtures/synthetic-ib-dose-rationale.md"
+  - "fixtures/synthetic-tox-summary.md"
+  - "fixtures/synthetic-protocol-escalation.md"
+  - "fixtures/synthetic-conversion-basis-and-baseline.md"
+assertions:
+  mechanical:
+    - defect: "D1"
+      severity: "Critical"
+      detected_by: "either"
+      observed: "15 mg/kg/day"
+      expected: "10 mg/kg/day"
+      locator_required: true
+    - defect: "D2"
+      severity: "Critical"
+      detected_by: "either"
+      observed: "1.20 mg/kg"
+      expected: "9.68 mg/kg"
+      locator_required: true
+    - defect: "D5"
+      severity: "Major"
+      detected_by: "model"
+      observed: "9.68 mg/kg"
+      expected: "8.33 mg/kg"
+      locator_required: true
+    - defect: "D6"
+      severity: "Major"
+      detected_by: "either"
+      observed: "4.0-fold"
+      expected: "3-fold"
+      locator_required: true
+    - denominator_stated: true
+    - must_not_contain: "we recommend a starting dose"
+      label: "must not derive, propose or recommend a starting dose"
+  judged:
+    - "Detects D3 (Critical): the document states starting dose of 10 mg where the source requires starting dose of 5 mg"
+    - "Detects D4 (Critical): the document states maximum planned dose of 160 mg where the source requires maximum planned dose of 120 mg"
+    - "Detects D8 (Major): the document states TOX-ONR-003 where the source requires 25 mg/kg/day"
+    - "Detects D9 (Minor): the document states TOX-ONR-002 v1.0 where the source requires TOX-ONR-002 v2.0"
+    - "Detects at least 9 of the 11 expert-keyed defects"
+    - "Prints the full conversion-chain audit trail — every step, formula, input, result and unit — and shows the full species ranking, not only the species carried forward"
+    - "Names the conversion basis and the safety factor it applied and cites the sponsor's rule-source document, supplying neither from model knowledge"
+    - "Flags the absent MABEL derivation (D7) as an element-presence finding while marking whether MABEL was required as CANNOT_ASSESS"
+    - "States extraction coverage as a fraction"
+    - "Flags none of the five documented false-positive traps in the expert key"
+    - "All dispositions are 'open' and the three-signature block is present with unset fields visibly unset"

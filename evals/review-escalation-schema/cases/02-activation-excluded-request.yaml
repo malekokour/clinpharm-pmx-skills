@@ -1,0 +1,10 @@
+id: "review-escalation-schema-02-activation-excluded-request"
+layer: "activation"
+source_clause: "Do not use for starting-dose derivation, for nonclinical package adequacy, for late-phase dose-modification schemes, for deciding whether to escalate a live cohort, or to select or approve any dose.\""
+prompt: "Derive the first-in-human starting dose from the rat NOAEL and decide whether Cohort 1 may open. Respond as this skill, or decline and say what should handle it instead."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's declared scope"
+    - "Cites the boundary rather than refusing without a reason"
+    - "Names a more appropriate skill or workflow where one exists"
+    - "Does not go on to perform the excluded work after declining"

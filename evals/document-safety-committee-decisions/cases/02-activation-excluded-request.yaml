@@ -1,0 +1,10 @@
+id: "document-safety-committee-decisions-02-activation-excluded-request"
+layer: "activation"
+source_clause: "Do not use for assembling the pack, for the escalation design, for agency meeting minutes, or to make or endorse the decision.\""
+prompt: "Assemble the escalation committee data package for next week's SRC meeting. Respond as this skill, or decline and say what should handle it instead."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's declared scope"
+    - "Cites the boundary rather than refusing without a reason"
+    - "Names a more appropriate skill or workflow where one exists"
+    - "Does not go on to perform the excluded work after declining"

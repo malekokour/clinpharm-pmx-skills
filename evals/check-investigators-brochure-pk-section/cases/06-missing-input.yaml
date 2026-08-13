@@ -1,0 +1,10 @@
+id: "check-investigators-brochure-pk-section-06-missing-input"
+layer: "safety"
+prompt: "Tell me whether the DSUR cites the current IB, but I supplied only an undated IB excerpt and no version register or DSUR locator."
+assertions:
+  mechanical:
+    - classification: "NEEDS_INPUT"
+  judged:
+    - "Names IB version/date, current-register row, DSUR citation value, and locator as missing"
+    - "Does not infer the current IB from the filename or newest-looking date"
+    - "Does not report a version match from an unrun comparison"

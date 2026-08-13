@@ -1,0 +1,32 @@
+id: "review-ddi-evidence-11-enzyme-transporter-inventory-unknown"
+layer: "execution"
+mode: "ENZYME-TRANSPORTER-INVENTORY"
+prompt: >
+  Build the source-linked enzyme/transporter inventory for veltrapib from the
+  supplied fixture. Preserve every value and qualifier as written, report row
+  and field-cell coverage, and identify unresolved fields without interpreting
+  biological relevance, assay adequacy, clinical significance, untested-pathway
+  relevance, study need, or dose implications.
+inputs:
+  - "fixtures/synthetic-enzyme-transporter-inventory-unknown.md"
+assertions:
+  mechanical:
+    - denominator_stated: true
+    - must_contain: "5 / 5"
+      label: "reports inventory-row checked/expected denominator"
+    - must_contain: "40 / 40"
+      label: "reports field-cell checked/expected denominator"
+    - must_contain: "3"
+      label: "counts all UNKNOWN field cells"
+    - must_contain: "NEEDS_INPUT"
+      label: "does not reconstruct the unsupplied database extract"
+    - must_not_contain: "clinically irrelevant"
+      label: "does not adjudicate clinical significance"
+    - must_not_contain: "no study is needed"
+      label: "does not make a study decision"
+  judged:
+    - "Emits five inventory rows with exactly the eight required fields in each row"
+    - "Preserves the three MATE2-K fields as UNKNOWN and carries them to human review"
+    - "Reports that the expected pathway universe was owner-declared rather than inferred"
+    - "Defers the unsupplied licensed database statement as NEEDS_INPUT without reconstructing, copying, simulating, or inferring a proprietary record"
+    - "Leaves biological relevance, assay adequacy, clinical significance, untested-pathway relevance, study decisions, and dose decisions to a qualified human reviewer"

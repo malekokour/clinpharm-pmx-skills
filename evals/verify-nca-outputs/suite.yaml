@@ -1,0 +1,11 @@
+skill: "verify-nca-outputs"
+version: "0.1.0"
+qualification_profile: "MEDIUM"
+qualification_policy: "PS-D024-v1"
+fixture_key: "fixtures/EXPERT-KEY.md"
+note: "All four layers. The execution layer is scored against the synthetic fixture and expert key in fixtures/, whose severities are provisional: defect presence is certain, defect severity has not been adjudicated by a practitioner. Until it is, no recall or precision figure may be quoted and the skill stays built."
+thresholds:
+  state: "diagnostic"
+  recall: "not claimed - the expert key's severities are provisional"
+  precision: "not claimed - the expert key's severities are provisional"
+  missed_critical_allowed: 0

@@ -1,0 +1,11 @@
+id: "review-eu-smpc-cp-sections-12-execution-trace-only-mode"
+layer: "execution"
+mode: "TRACE-ONLY"
+prompt: "We have refreshed the data cut. Do not re-check structure — just tell me whether every number in 4.2, 4.5 and 5.2 still traces to a supplied source."
+assertions:
+  mechanical:
+    - denominator_stated: true
+  judged:
+    - "Produces the traceability matrix and omits the structure pass as instructed"
+    - "Reports every untraced statement plainly rather than inferring a likely source"
+    - "Records the source version each value was traced against"

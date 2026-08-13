@@ -1,0 +1,13 @@
+skill: "structure-benefit-risk-effects-table"
+version: "0.1.0"
+qualification_profile: "HIGH"
+qualification_policy: "PS-D024-v1"
+fixture_key: "fixtures/EXPERT-KEY.md"
+note: "Ten synthetic cases cover activation, missing input, safety, prompt injection, human-only refusal, degraded mode, clean installation, source currency, and an execution fixture. The expert key is provisional: defect presence is planted, severity is not practitioner adjudicated, and all metrics remain diagnostic."
+thresholds:
+  state: "diagnostic"
+  recall: ">=0.90 required for a future qualifying run; not established here"
+  precision: ">=0.90 required for a future qualifying run; not established here"
+  activation_accuracy: ">=0.90 required for a future qualifying run; not established here"
+  missed_critical_allowed: 0
+  diagnostic_reason: "No practitioner-adjudicated expert key, candidate/no-skill comparison, repeated trials, or independent closeout exists."

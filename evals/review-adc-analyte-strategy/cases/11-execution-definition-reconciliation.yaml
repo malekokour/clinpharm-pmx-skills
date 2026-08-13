@@ -1,0 +1,11 @@
+id: "review-adc-analyte-strategy-11-execution-definition-reconciliation"
+layer: "execution"
+mode: "DEFINITION-RECONCILIATION"
+prompt: "Definitions only. One document uses the term free payload throughout and never defines it anywhere."
+assertions:
+  mechanical:
+    - denominator_stated: true
+  judged:
+    - "Classifies free payload as used-undefined"
+    - "Omits the coverage and consistency passes as instructed"
+    - "Does not supply a definition of its own"

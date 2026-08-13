@@ -1,0 +1,10 @@
+skill: "library-router"
+version: "0.1.0"
+qualification_profile: "MEDIUM"
+qualification_policy: "PS-D024-v1"
+note: "Selection utility. Cursor Release-150 paired runs under K06-Cursor-Release150."
+thresholds:
+  state: "diagnostic"
+  recall: "not claimed - selection utility"
+  precision: "not claimed - selection utility"
+  missed_critical_allowed: 0

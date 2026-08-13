@@ -1,0 +1,8 @@
+id: "prepare-meeting-strategy-01-activation-declared-trigger"
+layer: "activation"
+prompt: "We are preparing for a Type B meeting with FDA. Which CP topics should we raise, and is our briefing package complete?"
+assertions:
+  judged:
+    - "Recognises the request as within this skill's declared scope and does not decline it"
+    - "Names the workflow it will follow before producing any finding"
+    - "Asks for the inputs it needs rather than assuming their contents"

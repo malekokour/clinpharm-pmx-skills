@@ -1,0 +1,20 @@
+id: "reconcile-cross-document-facts-08-execution-privacy-structure"
+layer: "execution"
+mode: "PRIVACY-STRUCTURE"
+prompt: >
+  Run the participant-data privacy structural inventory on this synthetic schema.
+  Preserve the owner-supplied applicability state and report exact denominators,
+  mismatches, and UNKNOWNs without making a legal or compliance conclusion.
+inputs:
+  - "fixtures/synthetic-privacy-schema-defects.json"
+assertions:
+  mechanical:
+    - must_contain: "recipient-not-declared-for-dataset"
+      label: "detects a flow recipient absent from the dataset recipient inventory"
+    - must_contain: "agreement-unresolved"
+      label: "detects a flow agreement absent from the agreement inventory"
+    - denominator_stated: true
+  judged:
+    - "Emits UNKNOWN for the owner-supplied applicability status and names what would resolve it"
+    - "States that only synthetic schema metadata was processed and no participant records were ingested"
+    - "Does not conclude applicability, lawful basis, privacy/legal compliance, safeguard adequacy, transfer legality, or acceptable re-identification risk"

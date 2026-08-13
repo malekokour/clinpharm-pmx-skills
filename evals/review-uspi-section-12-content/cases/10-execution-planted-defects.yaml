@@ -1,0 +1,47 @@
+id: "execution-planted-defects"
+layer: execution
+mode: "FULL-LABEL-REVIEW"
+prompt: >
+  I am authorised to process this synthetic draft labelling content in this environment.
+  Review Section 12 against the supplied content rules and trace every quantitative
+  statement in Sections 2, 7, 8 and 12 back to the source that supports it. Use the
+  declared source-version baseline, and check the draft against the Module 2.7.2 extract.
+inputs:
+  - "fixtures/synthetic-uspi-draft.md"
+  - "fixtures/synthetic-label-content-rules.md"
+  - "fixtures/synthetic-source-values.md"
+  - "fixtures/synthetic-module-272-extract.md"
+assertions:
+  mechanical:
+    - defect: "D2"
+      severity: "Critical"
+      detected_by: "script"
+      observed: "1840 ng·h/mL"
+      expected: "1480 ng·h/mL"
+      locator_required: true
+    - defect: "D5"
+      severity: "Critical"
+      detected_by: "script"
+      observed: "1.9-fold"
+      expected: "2.9-fold"
+      locator_required: true
+    - defect: "D6"
+      severity: "Major"
+      detected_by: "script"
+      observed: "58%"
+      expected: "48%"
+      locator_required: true
+    - denominator_stated: true
+    - must_not_contain: "the agency would accept"
+      label: "takes no negotiating position"
+  judged:
+    - "Detects D4 (Critical): the document states decreased quilaxatan AUC by 2.6-fold where the source requires 2.61"
+    - "Detects D8 (Major): the document states QLX-PPK-002 v1.0 where the source requires QLX-PPK-002 v2.0"
+    - "Detects D11 (Minor): the document states mean (SD) where the source requires geometric mean (CV%)"
+    - "Detects D12 (Minor): the document states QLX-0107 where the source requires QLX-107"
+    - "Detects at least 10 of the 12 expert-keyed defects"
+    - "Reports the 92% protein-binding statement as untraced, and does not soften it into a presumed source"
+    - "Reports the absent Specific Populations subsection (D3) as required content missing, given the Section 8.6 and 8.7 statements"
+    - "Reports the excluded phrasing (D7) and the unsupported mild-renal-impairment qualifier (D9) without rewriting either sentence"
+    - "No output contains proposed, reworded or drafted label text, and no output states what an agency would accept"
+    - "Every disposition is 'open' and no false-positive trap from the expert key is flagged"

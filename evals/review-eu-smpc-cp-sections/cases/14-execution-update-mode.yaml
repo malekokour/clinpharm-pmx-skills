@@ -1,0 +1,11 @@
+id: "review-eu-smpc-cp-sections-14-execution-update-mode"
+layer: "execution"
+mode: "UPDATE"
+prompt: "Here is the revised draft and the register from the last review. Re-run against the register."
+assertions:
+  mechanical:
+    - denominator_stated: true
+  judged:
+    - "Re-checks conformance and traceability against the revised draft"
+    - "Does not evaluate or speculate about why the text was changed"
+    - "Leaves previously open items open unless a named human closed them"

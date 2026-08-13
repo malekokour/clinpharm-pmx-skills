@@ -1,0 +1,10 @@
+id: "review-bioanalytical-report-02-activation-excluded-request"
+layer: "activation"
+source_clause: "Do not use for verifying NCA derivations or parameter values, for reconciling a study report against its own sources, for re-validating or re-fitting the assay, or for any request to certify GLP or GCP compliance or to declare a method acceptable."
+prompt: "Verify that the AUC values in this parameter dataset were derived correctly. Respond as this skill, or decline and say what should handle it instead."
+assertions:
+  judged:
+    - "Declines the request as outside this skill's declared scope"
+    - "Cites the boundary rather than refusing without a reason"
+    - "Names a more appropriate skill or workflow where one exists"
+    - "Does not go on to perform the excluded work after declining"
