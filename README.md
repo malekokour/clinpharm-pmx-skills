@@ -81,9 +81,15 @@ was then run end to end. See [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md).
 
 | State | Packages | What it means |
 |---|---:|---|
-| `released` | **151** | The package passed its assigned evidence gate. |
+| `released` | **151** | Passed the structural gates and its assigned qualification route. |
 | `built` | **0** | The package exists and validates, but qualification has **not** passed; its catalog row names the missing evidence. |
 | **Total** | **151** | 133 clinical-pharmacology + 16 pharmacometrics + 2 utilities. |
+
+**Name the gate.** `released` does **not** mean clinical validation, and it does
+**not** mean the evaluation suite has qualified a package's *behaviour* — three
+`blocker`-severity findings against that suite are open and frozen.
+[`CLAIM-LEDGER.md`](CLAIM-LEDGER.md) and [`AGENTS.md`](AGENTS.md) say this in the
+same words, and a gate fails the build if any of the three drifts.
 
 The [catalog](docs/CATALOG.md) spans CSR and protocol review, CTD 2.7.2 and USPI
 Section 12, DDI and FIH evidence, NCA verification, and cross-document
@@ -140,7 +146,7 @@ Three claims that are often blurred stay separate here:
    closeout are required before a package becomes `released`.
 
 As of 2026-08-13, the public quality surface contains **151 evaluation suites,
-1,197 cases, 4,510 assertions, 147 declared inputs, 67 portable scripts, and 224
+1,197 cases, 4,510 assertions, 147 declared inputs, 67 portable scripts, and 225
 repository tests**. Those are engineering denominators—not a clinical-performance
 claim. Every one of them is re-derived from its source of record in
 [`CLAIM-LEDGER.md`](CLAIM-LEDGER.md), and the build fails if this

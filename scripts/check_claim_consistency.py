@@ -101,10 +101,34 @@ ROOT = Path(__file__).resolve().parent.parent
 #: deliberate act of putting it under this gate.
 STATUS_SURFACES = ("README.md", "CLAIM-LEDGER.md", "AGENTS.md")
 
-#: The shared anchor. Short on purpose -- see the design note above. Any surface
-#: that defines `released` must also say this, so the definition cannot travel
-#: without its caveat.
+#: The shared anchor: a surface that defines `released` must mention the
+#: evaluation gate **and** disclaim it. Both halves are required.
+#:
+#: The first version required only the word "evaluation". It passed within the
+#: hour on a README whose caveat paragraph had been dropped in a concurrent
+#: edit, because the page still said "151 evaluation suites" — a count, in a
+#: different section, about a different thing. That is a check answering a
+#: narrower question than the one asked: the anchor matched, and nothing it
+#: existed to protect was present.
 STATUS_ANCHOR = "evaluation"
+
+#: At least one of these must appear too. A caveat is a *disclaimer*, and a
+#: disclaimer needs a negation or a limit — no incidental sentence carries one.
+STATUS_CAVEAT = re.compile(
+    r"(?i)(?:does not mean|is not a claim|not clinical validation"
+    r"|explicitly incomplete|frozen|open and frozen|name the gate"
+    r"|not (?:a )?(?:clinical|GxP)|structural gates?)"
+)
+
+#: How far from the definition the caveat may sit, in characters (~30 lines).
+#:
+#: Whole-file matching is not enough, and this is not hypothetical either: the
+#: README defined `released` in a table at line 84 while the only caveat phrase
+#: on the page sat at line 144, in a different section, about denominators. Both
+#: earlier versions of this check passed that. A reader of line 84 never reaches
+#: line 144 before forming a belief, so a disclaimer that far away is not a
+#: disclaimer — it is a phrase that happens to be in the same file.
+CAVEAT_REACH = 2000
 
 #: A surface only has to carry the anchor if it actually defines the word.
 #:
@@ -215,10 +239,20 @@ def check_anchor(problems: list[str], texts: dict[str, str]) -> int:
         if not DEFINES_RELEASED.search(text):
             continue
         checked += 1
-        if STATUS_ANCHOR.lower() not in text.lower():
+        where = DEFINES_RELEASED.search(text)
+        near = text[max(0, where.start() - CAVEAT_REACH) : where.end() + CAVEAT_REACH]
+        if STATUS_ANCHOR.lower() not in near.lower():
             problems.append(
-                f"{name}: defines `released` but never says {STATUS_ANCHOR!r} — "
-                "the definition must not travel without its caveat"
+                f"{name}:{text[: where.start()].count(chr(10)) + 1}: defines "
+                f"`released` but does not mention {STATUS_ANCHOR!r} anywhere near "
+                "it — the definition must not travel without its caveat"
+            )
+        elif not STATUS_CAVEAT.search(near):
+            problems.append(
+                f"{name}:{text[: where.start()].count(chr(10)) + 1}: defines "
+                f"`released` with no caveat phrase within {CAVEAT_REACH} "
+                "characters — a bare mention elsewhere on the page is not a "
+                "disclaimer a reader of this sentence will see"
             )
     return checked
 

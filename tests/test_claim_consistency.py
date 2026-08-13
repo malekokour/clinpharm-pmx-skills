@@ -104,6 +104,27 @@ class PlantedDefectTests(unittest.TestCase):
             f"a line-wrapped overclaim escaped the gate; got {found}",
         )
 
+    def test_a_caveat_far_from_the_definition_does_not_count(self) -> None:
+        """Proximity regression.
+
+        A concurrent edit once left `README.md` defining `released` in a table
+        at line 84 while the only caveat phrase on the page sat at line 144, in
+        a different section, about denominators. Two earlier versions of the
+        check passed that. A reader of the definition never reaches the distant
+        sentence before forming a belief, so it is not a disclaimer.
+        """
+        far = (
+            "| `released` | **151** | Passed its gate. |\n"
+            + ("\nfiller line that says nothing about status\n" * 200)
+            + "\nThis does not mean clinical validation of the evaluation suite.\n"
+        )
+        found = problems_for(**{"README.md": far})
+        self.assertTrue(
+            any("README.md" in p and "released" in p for p in found),
+            f"a caveat {len(far)} characters from the definition was accepted; "
+            f"got {found}",
+        )
+
     def test_dropping_the_caveat_anchor_is_caught_on_every_status_surface(self) -> None:
         texts = cc.load()
         for surface in cc.STATUS_SURFACES:
