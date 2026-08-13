@@ -125,7 +125,7 @@ def main() -> int:
     def content(paths):
         return [p for p in paths if p.name != "README.md"]
 
-    cdir = ROOT / "shared" / "contexts"
+    cdir = ROOT / "contexts"
     contexts = [resolvable("context", f, f"context/{f.parent.name}/{f.stem}")
                 for f in content(sorted(cdir.rglob("*.md")))] if cdir.exists() else []
 

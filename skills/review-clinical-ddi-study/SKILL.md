@@ -42,7 +42,7 @@ whether its result is being carried forward faithfully.
 - **Recomputing a ratio from individual data.** This skill reviews reported statistics
   against the design that produced them; it does not re-analyse.
 - **Modality where the framework does not apply** — for a therapeutic protein, see
-  `shared/contexts/modality/mab.md`. The cytokine-mediated question replaces the enzyme
+  `contexts/modality/mab.md`. The cytokine-mediated question replaces the enzyme
   question, and a clean enzyme study answers neither.
 
 ## Operating modes

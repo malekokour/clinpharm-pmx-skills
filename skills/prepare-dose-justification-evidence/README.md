@@ -139,7 +139,7 @@ run, practitioner adjudication, or performance claim exists.
 **A synthetic benchmark is not clinical validation, not a GxP qualification, and
 not evidence of real-world performance.** Published scores state their exact
 task, model, host, date and run count, and ship under
-`benchmark/prepare-dose-justification-evidence/`.
+`evals/benchmark/prepare-dose-justification-evidence/`.
 
 No score would relax the boundary. The refusal to make a dose call does not rest
 on measured accuracy — it rests on what sits one step downstream of the output.

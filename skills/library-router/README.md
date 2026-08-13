@@ -13,7 +13,7 @@ accuracy are not yet complete (`evidence_gap`).
 
 - Classifies requests: SIMPLE / SINGLE / AMBIGUOUS / MULTI
 - Narrows by job-tree `nav_path`, then picks top-1 or asks / refuses
-- Honours safe preferences from repo `config/settings.example.json`
+- Honours safe preferences from repo `scripts/settings.example.json`
 
 ## What it does not do
 
@@ -24,7 +24,7 @@ accuracy are not yet complete (`evidence_gap`).
 ## Install route
 
 **Whole-repo primary.** This skill expects the ClinPharm PMx Skills repository (catalog,
-config, sibling skills). Do not claim ZIP-standalone routing until that route is
+settings, sibling skills). Do not claim ZIP-standalone routing until that route is
 tested with vendored registry material.
 
 ## Deterministic helper (from repo root)
@@ -40,4 +40,4 @@ Advisory only — the host still activates the chosen skill.
 - `ROADMAP.md`
 - `catalog/nav_registry.json`
 - `REFERENCES.md`
-- `config/settings.example.json`
+- `scripts/settings.example.json`

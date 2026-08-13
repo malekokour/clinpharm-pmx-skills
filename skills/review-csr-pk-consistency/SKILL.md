@@ -428,7 +428,7 @@ Evaluated against a synthetic CSR with expert-keyed planted defects. **A
 synthetic benchmark is not clinical validation, not a GxP qualification, and not
 evidence of real-world performance.** Published scores state their exact task,
 model, host, date and run count. See
-[`benchmark/review-csr-pk-consistency/`](https://github.com/malekokour/clinpharm-pmx-skills/tree/main/benchmark/review-csr-pk-consistency).
+[`evals/benchmark/review-csr-pk-consistency/`](https://github.com/malekokour/clinpharm-pmx-skills/tree/main/evals/benchmark/review-csr-pk-consistency).
 
 ## Metadata
 

@@ -137,12 +137,12 @@ affected rows.
 Load only those matching the declared programme. Each supplies criteria; none
 supplies a decision:
 
-- `shared/contexts/therapeutic-area/oncology.md` — randomised dosage comparison, anchor `fda-optimus`
+- `contexts/therapeutic-area/oncology.md` — randomised dosage comparison, anchor `fda-optimus`
 - `shared/references/dose-proportionality-accumulation.md`
 - `shared/references/renal-impairment.md` and `shared/references/hepatic-impairment.md`
 - `shared/references/drug-drug-interaction.md`, `shared/references/food-effect.md`
 - `shared/references/ba-be-formulation-bridging.md`
-- `shared/contexts/modality/mab.md`, `shared/references/immunogenicity-ada.md`
+- `contexts/modality/mab.md`, `shared/references/immunogenicity-ada.md`
 - `shared/references/pediatric-pk-extrapolation.md`, `shared/references/qt-assessment.md`
 
 For a programme no module covers: state that no validated module exists, run the
@@ -393,7 +393,7 @@ Evaluated against a synthetic dose-justification package with expert-keyed
 planted gaps. **A synthetic benchmark is not clinical validation, not a GxP
 qualification, and not evidence of real-world performance.** Published scores
 state their exact task, model, host, date and run count, and ship under
-`benchmark/prepare-dose-justification-evidence/`.
+`evals/benchmark/prepare-dose-justification-evidence/`.
 
 No benchmark result would change the risk veto. The boundary is not a
 consequence of measured accuracy; it is a consequence of what sits one step

@@ -20,7 +20,7 @@ This is stated rather than hidden. A map that shows only what it covers tells yo
 
 ## What it reads
 
-- [`shared/contexts/therapeutic-area/cardiometabolic-immunology.md`](../../shared/contexts/therapeutic-area/cardiometabolic-immunology.md)
+- [`contexts/therapeutic-area/cardiometabolic-immunology.md`](../../contexts/therapeutic-area/cardiometabolic-immunology.md)
 
 ## What it does, and what it refuses
 

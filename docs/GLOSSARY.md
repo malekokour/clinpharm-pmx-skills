@@ -34,7 +34,7 @@ before it appears in a path.
 
 | Term | Path | Meaning |
 |---|---|---|
-| **Context** | `shared/contexts/` | A modality, therapeutic area, population, or region that changes *how* a skill runs. **Attached after selection, never selected** |
+| **Context** | `contexts/` | A modality, therapeutic area, population, or region that changes *how* a skill runs. **Attached after selection, never selected** |
 | **Shared reference** | `shared/references/` | Reusable knowledge with no independent user journey. Loaded by a named skill |
 | **Policy** | `shared/policies/` | An always-on constraint every skill applies — evidence hierarchy, output states, human review, source preflight, untrusted content, privacy routing |
 | **Script** | `shared/scripts/` | A deterministic transform or check. No scientific judgment |

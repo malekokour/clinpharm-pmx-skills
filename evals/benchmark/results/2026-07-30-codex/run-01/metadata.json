@@ -1,34 +1,33 @@
 {
-  "benchmark": "SYN-101 baseline-versus-context",
   "date": "2026-07-30",
-  "run_index": 2,
+  "run_index": 1,
   "model_identifier": "unavailable",
-  "data_classification": "PUBLIC_OR_SYNTHETIC",
   "conditions": {
     "baseline": {
-      "output": "baseline.md",
+      "prompt": "evals/benchmark/baseline-prompt.md",
       "inputs": [
-        "benchmark/baseline-prompt.md",
         "examples/clinpharm-pmx/sources/Project-Brief.md",
         "examples/clinpharm-pmx/sources/Analysis-Summary.md",
         "examples/clinpharm-pmx/sources/Draft-Conclusion.md"
-      ]
+      ],
+      "output": "evals/benchmark/results/2026-07-30-codex/run-01/baseline.md"
     },
     "context": {
-      "output": "context.md",
+      "prompt": "evals/benchmark/context-prompt.md",
       "inputs": [
-        "benchmark/context-prompt.md",
         "examples/clinpharm-pmx/sources/Project-Brief.md",
         "examples/clinpharm-pmx/sources/Analysis-Summary.md",
         "examples/clinpharm-pmx/sources/Draft-Conclusion.md",
         "examples/clinpharm-pmx/outputs/AI-Working-Pack-SYN-101.md"
-      ]
+      ],
+      "output": "evals/benchmark/results/2026-07-30-codex/run-01/context.md"
     }
   },
-  "deviations": [
-    "The exact model identifier was not exposed by the runtime.",
-    "Token counts and elapsed generation time were not exposed and were not estimated."
+  "sequence": [
+    "Read the baseline prompt and three synthetic source files.",
+    "Wrote baseline.md before reading the context prompt or AI Working Pack.",
+    "Read the context prompt and AI Working Pack.",
+    "Wrote context.md."
   ],
-  "grading_status": "not graded",
-  "improvement_claim": "none"
+  "deviations": []
 }

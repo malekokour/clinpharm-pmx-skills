@@ -64,5 +64,5 @@ restricted-data classification.
   did not expose an exact model identifier.
 
 Any public comparative claim remains blocked until the fixed protocol in
-[`../benchmark/`](../benchmark/) is repeated with a recorded model, date,
+[`benchmark/`](benchmark/) is repeated with a recorded model, date,
 run count, and source-fidelity review.

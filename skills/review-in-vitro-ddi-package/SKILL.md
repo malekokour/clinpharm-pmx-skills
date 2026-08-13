@@ -47,7 +47,7 @@ sufficient to decide what happens next.
 - **A modality where the framework does not apply.** For a therapeutic protein the
   enzyme and transporter framework is largely inapplicable, and the correct output is to
   say which mechanisms were assessed and why they do not apply — not to run a checklist
-  that returns empty. `shared/contexts/modality/mab.md` attaches when the work context
+  that returns empty. `contexts/modality/mab.md` attaches when the work context
   says so.
 
 ## Operating modes

@@ -13,7 +13,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RESULT_ROOT = ROOT / "benchmark/results/2026-07-30-codex"
+RESULT_ROOT = ROOT / "evals/benchmark/results/2026-07-30-codex"
 
 
 def sha256(path: Path) -> str:

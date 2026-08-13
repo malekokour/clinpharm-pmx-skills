@@ -20,7 +20,7 @@ This is stated rather than hidden. A map that shows only what it covers tells yo
 
 ## What it reads
 
-- [`shared/contexts/therapeutic-area/rare-disease.md`](../../shared/contexts/therapeutic-area/rare-disease.md)
+- [`contexts/therapeutic-area/rare-disease.md`](../../contexts/therapeutic-area/rare-disease.md)
 
 ## What it does, and what it refuses
 

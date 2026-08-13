@@ -340,7 +340,7 @@ that requirement does not relax.
 
 This skill has **not yet been evaluated**. No benchmark run exists for it, and
 no score may be quoted for it until one is published under
-`benchmark/map-agency-question-evidence/`.
+`evals/benchmark/map-agency-question-evidence/`.
 
 When that evaluation runs it will use a synthetic request with expert-keyed
 planted defects. **A synthetic benchmark is not clinical validation, not a GxP

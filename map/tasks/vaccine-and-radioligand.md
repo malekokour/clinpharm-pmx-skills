@@ -20,7 +20,7 @@ This is stated rather than hidden. A map that shows only what it covers tells yo
 
 ## What it reads
 
-- [`shared/contexts/modality/vaccine-radioligand.md`](../../shared/contexts/modality/vaccine-radioligand.md)
+- [`contexts/modality/vaccine-radioligand.md`](../../contexts/modality/vaccine-radioligand.md)
 
 ## What it does, and what it refuses
 

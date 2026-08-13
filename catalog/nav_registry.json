@@ -2284,7 +2284,7 @@
     {
       "id": "adc",
       "kind": "context",
-      "locator": "shared/contexts/modality/adc.md",
+      "locator": "contexts/modality/adc.md",
       "nav_path": "context/modality/adc",
       "selectable": false,
       "refuse_tags": [
@@ -2294,7 +2294,7 @@
     {
       "id": "cell-gene",
       "kind": "context",
-      "locator": "shared/contexts/modality/cell-gene.md",
+      "locator": "contexts/modality/cell-gene.md",
       "nav_path": "context/modality/cell-gene",
       "selectable": false,
       "refuse_tags": [
@@ -2304,7 +2304,7 @@
     {
       "id": "mab",
       "kind": "context",
-      "locator": "shared/contexts/modality/mab.md",
+      "locator": "contexts/modality/mab.md",
       "nav_path": "context/modality/mab",
       "selectable": false,
       "refuse_tags": [
@@ -2314,7 +2314,7 @@
     {
       "id": "oligonucleotide",
       "kind": "context",
-      "locator": "shared/contexts/modality/oligonucleotide.md",
+      "locator": "contexts/modality/oligonucleotide.md",
       "nav_path": "context/modality/oligonucleotide",
       "selectable": false,
       "refuse_tags": [
@@ -2324,7 +2324,7 @@
     {
       "id": "small-molecule",
       "kind": "context",
-      "locator": "shared/contexts/modality/small-molecule.md",
+      "locator": "contexts/modality/small-molecule.md",
       "nav_path": "context/modality/small-molecule",
       "selectable": false,
       "refuse_tags": [
@@ -2334,7 +2334,7 @@
     {
       "id": "vaccine-radioligand",
       "kind": "context",
-      "locator": "shared/contexts/modality/vaccine-radioligand.md",
+      "locator": "contexts/modality/vaccine-radioligand.md",
       "nav_path": "context/modality/vaccine-radioligand",
       "selectable": false,
       "refuse_tags": [
@@ -2344,7 +2344,7 @@
     {
       "id": "cardiometabolic-immunology",
       "kind": "context",
-      "locator": "shared/contexts/therapeutic-area/cardiometabolic-immunology.md",
+      "locator": "contexts/therapeutic-area/cardiometabolic-immunology.md",
       "nav_path": "context/therapeutic-area/cardiometabolic-immunology",
       "selectable": false,
       "refuse_tags": [
@@ -2354,7 +2354,7 @@
     {
       "id": "cns",
       "kind": "context",
-      "locator": "shared/contexts/therapeutic-area/cns.md",
+      "locator": "contexts/therapeutic-area/cns.md",
       "nav_path": "context/therapeutic-area/cns",
       "selectable": false,
       "refuse_tags": [
@@ -2364,7 +2364,7 @@
     {
       "id": "oncology",
       "kind": "context",
-      "locator": "shared/contexts/therapeutic-area/oncology.md",
+      "locator": "contexts/therapeutic-area/oncology.md",
       "nav_path": "context/therapeutic-area/oncology",
       "selectable": false,
       "refuse_tags": [
@@ -2374,7 +2374,7 @@
     {
       "id": "rare-disease",
       "kind": "context",
-      "locator": "shared/contexts/therapeutic-area/rare-disease.md",
+      "locator": "contexts/therapeutic-area/rare-disease.md",
       "nav_path": "context/therapeutic-area/rare-disease",
       "selectable": false,
       "refuse_tags": [

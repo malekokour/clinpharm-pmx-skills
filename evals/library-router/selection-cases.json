@@ -6,7 +6,7 @@
   "note": "Deterministic selection cases for scripts/library_router.py. Executed by scripts/check_router_selection.py with no model in the loop, so every row is reproducible on a clean checkout. This is NOT a PS-D028 model-run suite and deliberately carries no suite.yaml: the question here is whether a pure function returns the right identifier or the right refusal, which is decided by running it.",
   "profiles": {
     "shipped": {
-      "note": "config/settings.example.json exactly as shipped: ask-and-confirm, no auto-select, released-only eligibility."
+      "note": "scripts/settings.example.json exactly as shipped: ask-and-confirm, no auto-select, released-only eligibility."
     },
     "auto": {
       "note": "Auto-select enabled and built packages eligible. This is the profile under which top-1 accuracy is measurable at all; under the shipped profile every SINGLE request correctly returns ask.",

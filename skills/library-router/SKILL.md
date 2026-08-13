@@ -3,7 +3,7 @@ name: library-router
 description: "Selects which ClinPharm PMx Skills skill to run for a user or agent request inside this repository. Use when the task is ambiguous across skills, the user asks which skill to use, routing or skill selection is needed, or the host should ask/refuse instead of guessing. Classifies SIMPLE / SINGLE / AMBIGUOUS / MULTI, narrows by job-tree nav_path, then returns top-1 with reasons, asks the user, or refuses human-only/OOS/safety work. Example: \"Which skill should handle reviewing this bioanalytical validation report?\" Do not use to spawn multi-agent swarms, take clinical decisions, or bypass safety boundaries."
 allowed-tools: Read
 license: MIT
-compatibility: Provider-neutral Markdown skill. Works best with whole-repo install so catalog/nav_registry.json and config/settings.example.json are available.
+compatibility: Provider-neutral Markdown skill. Works best with whole-repo install so catalog/nav_registry.json and scripts/settings.example.json are available.
 metadata:
   author: Malek Okour
   brand: ClinPharm PMx Skills
@@ -68,7 +68,7 @@ and limit routing claims.
 
 ## Preferences
 
-Honour `config/settings.example.json` keys when present (or a user copy):
+Honour `scripts/settings.example.json` keys when present (or a user copy):
 
 - `selection_mode`: `ask` · `auto` · `manual_only`
 - `ambiguity_policy`: `ask_user` · `refuse` · `best_effort_warn`

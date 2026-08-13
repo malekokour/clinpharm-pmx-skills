@@ -79,7 +79,7 @@ and limit routing claims.
 
 ## Preferences
 
-Honour `config/settings.example.json` keys when present (or a user copy):
+Honour `scripts/settings.example.json` keys when present (or a user copy):
 
 - `selection_mode`: `ask` · `auto` · `manual_only`
 - `ambiguity_policy`: `ask_user` · `refuse` · `best_effort_warn`

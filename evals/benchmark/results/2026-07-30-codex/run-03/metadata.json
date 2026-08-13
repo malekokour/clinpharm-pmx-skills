@@ -7,23 +7,23 @@
   "model_identifier_note": "The runtime did not expose an exact model identifier to this evaluation run.",
   "conditions": {
     "baseline": {
-      "prompt": "benchmark/baseline-prompt.md",
+      "prompt": "evals/benchmark/baseline-prompt.md",
       "inputs": [
         "examples/clinpharm-pmx/sources/Project-Brief.md",
         "examples/clinpharm-pmx/sources/Analysis-Summary.md",
         "examples/clinpharm-pmx/sources/Draft-Conclusion.md"
       ],
-      "output": "benchmark/results/2026-07-30-codex/run-03/baseline.md"
+      "output": "evals/benchmark/results/2026-07-30-codex/run-03/baseline.md"
     },
     "context": {
-      "prompt": "benchmark/context-prompt.md",
+      "prompt": "evals/benchmark/context-prompt.md",
       "inputs": [
         "examples/clinpharm-pmx/sources/Project-Brief.md",
         "examples/clinpharm-pmx/sources/Analysis-Summary.md",
         "examples/clinpharm-pmx/sources/Draft-Conclusion.md",
         "examples/clinpharm-pmx/outputs/AI-Working-Pack-SYN-101.md"
       ],
-      "output": "benchmark/results/2026-07-30-codex/run-03/context.md"
+      "output": "evals/benchmark/results/2026-07-30-codex/run-03/context.md"
     }
   },
   "execution_order": [

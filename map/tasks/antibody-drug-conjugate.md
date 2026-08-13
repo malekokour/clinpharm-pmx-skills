@@ -18,7 +18,7 @@
 
 ## What it reads
 
-- [`shared/contexts/modality/adc.md`](../../shared/contexts/modality/adc.md)
+- [`contexts/modality/adc.md`](../../contexts/modality/adc.md)
 
 ## What it does, and what it refuses
 

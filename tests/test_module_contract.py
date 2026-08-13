@@ -25,7 +25,7 @@ MODULES = sorted(
 #: not apply to them. They are counted here only so the shared-guidance floor
 #: cannot be met by moving files between the two folders.
 CONTEXTS = sorted(
-    p for p in (ROOT / "shared" / "contexts").rglob("*.md") if p.name != "README.md"
+    p for p in (ROOT / "contexts").rglob("*.md") if p.name != "README.md"
 )
 
 REQUIRED_SECTIONS = (

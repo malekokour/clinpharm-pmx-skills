@@ -20,7 +20,7 @@ This is stated rather than hidden. A map that shows only what it covers tells yo
 
 ## What it reads
 
-- [`shared/contexts/modality/cell-gene.md`](../../shared/contexts/modality/cell-gene.md)
+- [`contexts/modality/cell-gene.md`](../../contexts/modality/cell-gene.md)
 
 ## What it does, and what it refuses
 

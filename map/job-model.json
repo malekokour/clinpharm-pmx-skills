@@ -285,7 +285,7 @@
       "covered_by_skill": false,
       "roadmap_wave": "Next",
       "reads": [
-        "shared/contexts/modality/small-molecule.md"
+        "contexts/modality/small-molecule.md"
       ],
       "planned_not_built": [
         "shared/modules/"
@@ -305,7 +305,7 @@
       "covered_by_skill": false,
       "roadmap_wave": "Next",
       "reads": [
-        "shared/contexts/modality/mab.md"
+        "contexts/modality/mab.md"
       ],
       "planned_not_built": [
         "shared/modules/biologics-mab-pk.md"
@@ -325,7 +325,7 @@
       "covered_by_skill": true,
       "roadmap_wave": "Now",
       "reads": [
-        "shared/contexts/modality/adc.md"
+        "contexts/modality/adc.md"
       ],
       "planned_not_built": [],
       "contract_recorded": true,
@@ -343,7 +343,7 @@
       "covered_by_skill": false,
       "roadmap_wave": "Next",
       "reads": [
-        "shared/contexts/modality/oligonucleotide.md"
+        "contexts/modality/oligonucleotide.md"
       ],
       "planned_not_built": [],
       "contract_recorded": true,
@@ -361,7 +361,7 @@
       "covered_by_skill": false,
       "roadmap_wave": "Next",
       "reads": [
-        "shared/contexts/modality/cell-gene.md"
+        "contexts/modality/cell-gene.md"
       ],
       "planned_not_built": [],
       "contract_recorded": true,
@@ -379,7 +379,7 @@
       "covered_by_skill": false,
       "roadmap_wave": "Next",
       "reads": [
-        "shared/contexts/modality/vaccine-radioligand.md"
+        "contexts/modality/vaccine-radioligand.md"
       ],
       "planned_not_built": [],
       "contract_recorded": true,
@@ -397,7 +397,7 @@
       "covered_by_skill": false,
       "roadmap_wave": "Next",
       "reads": [
-        "shared/contexts/therapeutic-area/oncology.md"
+        "contexts/therapeutic-area/oncology.md"
       ],
       "planned_not_built": [
         "shared/modules/oncology-dose-optimization.md"
@@ -433,7 +433,7 @@
       "covered_by_skill": false,
       "roadmap_wave": "Next",
       "reads": [
-        "shared/contexts/therapeutic-area/rare-disease.md"
+        "contexts/therapeutic-area/rare-disease.md"
       ],
       "planned_not_built": [],
       "contract_recorded": true,
@@ -451,7 +451,7 @@
       "covered_by_skill": false,
       "roadmap_wave": "Next",
       "reads": [
-        "shared/contexts/therapeutic-area/cns.md"
+        "contexts/therapeutic-area/cns.md"
       ],
       "planned_not_built": [],
       "contract_recorded": true,
@@ -469,7 +469,7 @@
       "covered_by_skill": false,
       "roadmap_wave": "Next",
       "reads": [
-        "shared/contexts/therapeutic-area/cardiometabolic-immunology.md"
+        "contexts/therapeutic-area/cardiometabolic-immunology.md"
       ],
       "planned_not_built": [],
       "contract_recorded": true,

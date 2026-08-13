@@ -47,7 +47,7 @@ and status honestly beats one that hides the track or overclaims readiness.
 ## Where contexts do the heavy lifting here
 
 Pharmacometric methods apply across every modality and therapeutic area. One
-`shared/contexts/` file lifts every skill in this collection rather than forcing a
+`contexts/` file lifts every skill in this collection rather than forcing a
 variant per combination — which is what makes co-equal depth affordable rather than a
 multiplication of packages.
 

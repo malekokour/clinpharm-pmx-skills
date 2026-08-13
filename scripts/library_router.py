@@ -96,7 +96,7 @@ META_ASK = re.compile(
 
 def load_settings(path: Path | None = None) -> dict[str, Any]:
     settings = dict(DEFAULT_SETTINGS)
-    candidate = path or (ROOT / "config" / "settings.example.json")
+    candidate = path or (ROOT / "scripts" / "settings.example.json")
     if candidate.is_file():
         raw = json.loads(candidate.read_text(encoding="utf-8"))
         if not isinstance(raw, dict):

@@ -20,7 +20,7 @@ This is stated rather than hidden. A map that shows only what it covers tells yo
 
 ## What it reads
 
-- [`shared/contexts/modality/oligonucleotide.md`](../../shared/contexts/modality/oligonucleotide.md)
+- [`contexts/modality/oligonucleotide.md`](../../contexts/modality/oligonucleotide.md)
 
 ## What it does, and what it refuses
 

@@ -184,7 +184,7 @@ evidence-level: escaped-root
             self.assertIn("unsupported", text.lower())
 
     def test_secondary_benchmark_review_is_reconciled(self) -> None:
-        results = ROOT / "benchmark/results/2026-07-30-codex"
+        results = ROOT / "evals/benchmark/results/2026-07-30-codex"
         scores = json.loads((results / "scores.json").read_text(encoding="utf-8"))
         review = scores["review"]["secondary"]
         record = (results / review["record"]).read_text(encoding="utf-8")

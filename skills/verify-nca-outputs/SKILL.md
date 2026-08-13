@@ -358,7 +358,7 @@ treat every capability statement here as a design claim, not a measured one.**
 **A synthetic benchmark is not clinical validation, not a GxP qualification, and
 not evidence of real-world performance.** When scores are published they will
 state their exact task, model, host, date and run count, under
-`benchmark/verify-nca-outputs/`.
+`evals/benchmark/verify-nca-outputs/`.
 
 ## Metadata
 

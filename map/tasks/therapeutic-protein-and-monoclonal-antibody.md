@@ -20,7 +20,7 @@ This is stated rather than hidden. A map that shows only what it covers tells yo
 
 ## What it reads
 
-- [`shared/contexts/modality/mab.md`](../../shared/contexts/modality/mab.md)
+- [`contexts/modality/mab.md`](../../contexts/modality/mab.md)
 
 ## Planned, not built
 

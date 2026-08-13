@@ -120,7 +120,7 @@ finding class and all three detection paths.
 **A synthetic benchmark is not clinical validation, not a GxP qualification, and
 not evidence of real-world performance.** Published scores state their exact task,
 model, host, date and run count — see
-[`benchmark/review-csr-pk-consistency/`](https://github.com/malekokour/clinpharm-pmx-skills/tree/main/benchmark/review-csr-pk-consistency).
+[`evals/benchmark/review-csr-pk-consistency/`](https://github.com/malekokour/clinpharm-pmx-skills/tree/main/evals/benchmark/review-csr-pk-consistency).
 
 ## Compatibility
 

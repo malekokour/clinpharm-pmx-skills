@@ -152,7 +152,7 @@ repository tests**. Those are engineering denominators—not a clinical-performa
 claim. Every one of them is re-derived from its source of record in
 [`CLAIM-LEDGER.md`](CLAIM-LEDGER.md), and the build fails if this
 sentence and the sources disagree. A historical CSR deterministic-path result is retained under
-[`benchmark/`](benchmark/) as bounded diagnostic evidence after its broader
+[`evals/benchmark/`](evals/benchmark/) as bounded diagnostic evidence after its broader
 qualification claim was retracted.
 
 ## Safety and data boundary
@@ -171,13 +171,14 @@ validated GxP system, or a patient-specific decision tool.
 ```text
 map/           167 job-model task pages (Layer 1). Source: catalog/job-model-167.tsv
 skills/        151 independently installable Agent Skill packages
+contexts/      modality and therapeutic-area context files, attached after selection
 collections/   editable status authority and domain navigation
 catalog/       derived cross-package registry
-evals/         synthetic cases, fixtures, provisional/accepted keys, and rubrics
+evals/         synthetic suites; historical records under evals/benchmark/
 shared/        canonical tools, modules, assets, and contracts vendored as needed
-benchmark/     bounded historical and current evaluation records
-scripts/       validators, generators, privacy checks, and release tooling
+scripts/       validators, generators, privacy checks, and settings.example.json
 docs/ site/    documentation and the static project site
+examples/      worked synthetic examples
 tests/         repository and workflow regression tests
 ```
 
