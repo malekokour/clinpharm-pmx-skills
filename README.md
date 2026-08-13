@@ -79,6 +79,15 @@ same path in [`map/`](map/): [A](map/bands/A.md) · [B](map/bands/B.md) ·
 Machine-readable: [`map/job-model.json`](map/job-model.json). Generated from
 [`catalog/job-model-167.tsv`](catalog/job-model-167.tsv).
 
+## How it was built
+
+Map the job. Decide what actually needs a skill. Build those. Write what each
+one refuses. Publish the gaps with the wins.
+
+![How the library was built: map the job, split what needs a skill, write the refusals, publish the gaps.](site/assets/build-in-public-story.gif)
+
+The same recording plays on the [site](https://malekokour.github.io/clinpharm-pmx-skills/#story) with controls. It does not autoplay there — it is a minute long on purpose.
+
 ## Current evidence status
 
 | State | Packages | What it means |
