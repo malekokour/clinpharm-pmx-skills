@@ -14,6 +14,46 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
+#: Matches ``requires-python`` in pyproject.toml. Kept here as well because the
+#: manifest is only consulted on install, and the documented first command is
+#: this script run directly.
+MINIMUM_PYTHON = (3, 11)
+
+
+def require_python() -> None:
+    """Fail immediately, and legibly, on an unsupported interpreter.
+
+    `pyproject.toml`, `README.md`, and `AGENTS.md` all state Python 3.11 or
+    later. None of them enforced it, and macOS ships **3.9** as `/usr/bin/python3`
+    — so the single most likely newcomer, on the single most likely platform,
+    running the exact command the README gives, got this:
+
+        File ".../scripts/build_docx.py", line 14, in <module>
+          from datetime import UTC, datetime
+        ImportError: cannot import name 'UTC' from 'datetime'
+
+    Twelve frames deep, in a DOCX builder they never asked for, naming neither
+    Python nor a version nor a remedy. The documented failure — a clean
+    `ModuleNotFoundError: No module named 'strictyaml'` — only appears on an
+    interpreter new enough to reach it.
+
+    An unmet prerequisite must fail at the prerequisite, saying what to do.
+    """
+    if sys.version_info < MINIMUM_PYTHON:
+        want = ".".join(str(n) for n in MINIMUM_PYTHON)
+        have = ".".join(str(n) for n in sys.version_info[:3])
+        print(
+            f"FAILED: this repository needs Python {want} or later; "
+            f"this interpreter is {have}.\n"
+            f"  ({sys.executable})\n"
+            "  On macOS, /usr/bin/python3 is often 3.9. Use a newer one:\n"
+            "    python3.11 -m venv .venv && source .venv/bin/activate\n"
+            "    python3 -m pip install --requirement requirements.lock\n"
+            "    python3 scripts/check_all.py",
+            file=sys.stderr,
+        )
+        raise SystemExit(1)
+
 
 def run(label: str, command: list[str]) -> None:
     print(f"\n== {label} ==", flush=True)
@@ -23,6 +63,7 @@ def run(label: str, command: list[str]) -> None:
 
 
 def main() -> int:
+    require_python()
     python = sys.executable
     run("Repository contract", [python, "scripts/validate_repo.py"])
     run("Benchmark digests", [python, "scripts/verify_benchmark_digests.py"])

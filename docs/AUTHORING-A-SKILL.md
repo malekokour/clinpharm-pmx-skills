@@ -119,7 +119,9 @@ remove it, confirm green. A gate nobody has seen fail is untested.
 
 1. The four boxes fill, and the evidence is written down.
 2. The description does not collide with a neighbour.
-3. The package validates: `make check`.
+3. The package validates: `make check` — needs Python 3.11 or later and
+   `python3 -m pip install --requirement requirements.lock` first. Both are
+   checked, and each failure names its own fix.
 4. The eval suite exists, even if the gate has not run.
 5. The human boundary is explicit, and you can name what the skill refuses.
 

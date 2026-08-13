@@ -3,7 +3,17 @@
 ## Change flow
 
 1. Work on a branch.
-2. Run `python3 scripts/check_all.py`.
+2. Run `python3 scripts/check_all.py` — **from an environment with the pinned
+   dependencies installed**, on Python 3.11 or later:
+
+   ```bash
+   python3 -m venv .venv && source .venv/bin/activate
+   python3 -m pip install --requirement requirements.lock
+   ```
+
+   Both prerequisites now fail fast and name the remedy: a too-old interpreter
+   is rejected before any gate runs, and a missing dependency stops the run at
+   the gate that needs it. Neither is a broken checkout.
 3. Review the privacy report and generated-file status.
 4. Open a pull request and let required checks finish.
 5. Squash merge after conversations are resolved.
