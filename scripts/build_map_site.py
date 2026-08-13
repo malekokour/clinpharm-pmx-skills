@@ -48,8 +48,8 @@ CLASS_COPY = {
 
 BAND_COPY = {
     "A": ("Foundations",
-          "Knowledge and methods applied to everything below. Not ranked by "
-          "frequency — this is substrate, not activity."),
+          ("Knowledge and methods applied to everything below. Not ranked by "
+           "frequency — this is substrate, not activity.")),
     "B": ("The development arc",
           "Sequential. Each domain fires at its own point in a programme's life."),
     "C": ("Cross-cutting obligations",
