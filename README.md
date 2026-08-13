@@ -30,25 +30,68 @@ who review documents and analyses.
 > scientific disagreement, edits a controlled document, or replaces clinical,
 > pharmacometric, medical, regulatory, or quality judgment.
 
-## Try one example
+## Getting started
 
-Synthetic NCA report vs its dataset — planted defects, no real study.
+Three ways in. Pick one. Host-by-host screenshots and caveats live in
+[`docs/HOSTS.md`](docs/HOSTS.md).
 
-Ask:
+### 1. Paste a block — no clone
+
+Open [`skills/verify-nca-outputs/PASTE.md`](skills/verify-nca-outputs/PASTE.md),
+paste it into Claude, ChatGPT, or any ordinary chat, attach the four files under
+[`examples/verify-nca-outputs/inputs/`](examples/verify-nca-outputs/inputs/),
+and ask:
 
 > Verify the NCA report against the parameter dataset and the analysis plan.
 > Report every finding with its locator. Do not re-derive anything.
 
+That is the web route for every skill: `skills/<id>/PASTE.md`. Review every
+finding before using the output.
+
 | | |
 |---|---|
 | Skill | [`verify-nca-outputs`](skills/verify-nca-outputs/) |
-| Inputs | [`examples/verify-nca-outputs/inputs/`](examples/verify-nca-outputs/inputs/) |
 | What it catches | Reported `AUC` 8% off the dataset; a 1000-fold `CL/F` unit swap; an exclusion the plan does not allow |
 | What it refuses | Deciding which of two conflicting values is scientifically correct; selecting a dose; rerunning the NCA |
 
-Zero install: paste [`skills/verify-nca-outputs/PASTE.md`](skills/verify-nca-outputs/PASTE.md) into any chat, attach the four input files, ask the same question.
+Two more shapes — a regulatory label and project context — are in [`examples/`](examples/).
 
-Two more shapes — regulatory label and project context — are in [`examples/`](examples/).
+### 2. Install the library — desktop agents
+
+```bash
+git clone https://github.com/malekokour/clinpharm-pmx-skills.git
+cd clinpharm-pmx-skills
+```
+
+| Host | Then do this |
+|---|---|
+| **Claude Code** | `/plugin marketplace add malekokour/clinpharm-pmx-skills` then `/plugin install clinpharm-pmx-skills@clinpharm-pmx-skills` |
+| **Cursor** | File → Open Folder on the clone |
+| **Codex / Antigravity** | Open the clone as the workspace. Plugin commands for those hosts have not been run here |
+
+Ask, in a new chat:
+
+> Which ClinPharm PMx Skills skill applies to reviewing PK sections of a CSR?
+
+A loaded library names `review-csr-pk-consistency`. If the host answers without
+naming a package, the skills did not load.
+
+Claude Code and Cursor are the two hosts whose install was executed against a
+clean clone. Codex and Antigravity are documented, not attested — see the
+table under [Install](#install).
+
+### 3. Run the repository gates — contributors
+
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+python3 -m pip install --requirement requirements.lock
+python3 scripts/check_all.py
+```
+
+That last command validates the repository. It does not send documents anywhere.
+The `requirements.lock` install is required; without it the run stops at
+`ModuleNotFoundError: No module named 'strictyaml'`. See
+[Develop and verify](#develop-and-verify).
 
 ## The map — 167 tasks, and the 114 we do not cover yet
 
@@ -110,8 +153,10 @@ Regenerate counts from [`CLAIM-LEDGER.md`](CLAIM-LEDGER.md) before quoting them.
 
 ## Install
 
+The commands are in [Getting started](#getting-started). This section is what
+those rows rest on — which hosts were actually run, and which were not.
 Web and desktop steps for **Claude, ChatGPT / Codex, Cursor, and Antigravity**
-are in [`docs/HOSTS.md`](docs/HOSTS.md). Short version below.
+are in [`docs/HOSTS.md`](docs/HOSTS.md).
 
 ### Paste a block (any web chat)
 
@@ -217,8 +262,8 @@ Three claims that are often blurred stay separate here:
    held-out inputs, activation testing, practitioner review, and independent
    closeout are required before a package becomes `released`.
 
-As of 2026-08-12, the public quality surface contains **151 evaluation suites,
-1,197 cases, 4,510 assertions, 147 declared inputs, 67 portable scripts, and 215
+As of 2026-08-13, the public quality surface contains **151 evaluation suites,
+1,197 cases, 4,510 assertions, 147 declared inputs, 67 portable scripts, and 224
 repository tests**. Those are engineering denominators—not a clinical-performance
 claim. Every one of them is re-derived from its source of record in
 [`CLAIM-LEDGER.md`](CLAIM-LEDGER.md), and the build fails if this
