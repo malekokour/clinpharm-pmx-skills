@@ -1,17 +1,19 @@
 # Install, update, roll back, uninstall
 
-The four operations a library you actually depend on has to support, for the two
-hosts this project advertises: **Claude** and **Codex**.
+The four operations a library you actually depend on has to support.
 
-> **Scope, stated first.** Only these two hosts are advertised for the Agent
-> Skill route. ChatGPT, GitHub Copilot and Microsoft 365 Copilot are documented
-> in [`COMPATIBILITY.md`](COMPATIBILITY.md) for the attach-first route only, and
-> nothing here claims an Agent Skill route for them.
+> **Scope, stated first.** This repository does **not** ship host adapters or
+> `plugin.json`. Zero-install is each package's `PASTE.md`. Clone is the
+> library install. Claude and Codex steps below are documented procedures,
+> not a "works with" claim. ChatGPT, GitHub Copilot and Microsoft 365 Copilot
+> have a dated one-package record in [`COMPATIBILITY.md`](COMPATIBILITY.md)
+> only.
 
 ## Before anything: which install shape do you want?
 
 | Shape | What you get | When to choose it |
 |---|---|---|
+| **Paste a block** | One package's `skills/<id>/PASTE.md` in an ordinary chat | No clone, no host skill install |
 | **Whole repository** | Every package, the shared modules and tools, the nav registry, and the router | The default. Cross-skill routing and the shared modules only work when the whole tree is present |
 | **Single package** | One `skills/<id>/` directory | You want exactly one workflow and accept that routing, neighbour separation and study-type modules are unavailable |
 
@@ -38,8 +40,9 @@ Verify in a **fresh** conversation, not the one you installed from:
 
 > "Which ClinPharm PMx Skills skill applies to reviewing PK sections of a CSR?"
 
-A correct install names `review-csr-pk-consistency` and says it is `built`, not
-ready. If it answers without naming a package, the skill did not load.
+A correct install names `review-csr-pk-consistency` and its catalog status
+(`released` today). If it answers without naming a package, the skill did not
+load.
 
 ### Update
 
@@ -52,16 +55,15 @@ list your skills before installing.
 
 ### Roll back
 
-Releases are tagged. Download the previous release asset rather than
-reconstructing it:
+No GitHub Release or tag has been published yet. Roll back by checking out a
+known commit from this repository, then reinstalling from that checkout.
+**Never edit an installed skill in place** — an edited install has no
+version, and nothing can tell you what it contains.
 
 ```bash
-gh release download v0.1.0 --repo malekokour/clinpharm-pmx-skills
+git -C <checkout> log --oneline
+git -C <checkout> checkout <sha>
 ```
-
-Then uninstall the current version and install the downloaded one. **Roll back by
-reinstalling a known artifact, never by editing an installed skill in place** — an
-edited install has no version, and nothing can tell you what it contains.
 
 ### Uninstall
 
@@ -112,12 +114,15 @@ roll back from, not to work in.
 
 ### Roll back
 
+No tag exists yet. Check out a known commit SHA from `git log`, then re-run
+the gates:
+
 ```bash
-git -C <checkout> checkout v0.1.0
+git -C <checkout> checkout <sha>
 python3 scripts/check_all.py
 ```
 
-Tags are immutable; branches are not. Roll back to a tag.
+A SHA is a point in history; `main` is not. Roll back to a SHA.
 
 ### Uninstall
 
@@ -155,7 +160,7 @@ is renamed.
 **UNVERIFIED — and this matters:** the Claude UI steps were confirmed on
 **2026-07-30, for one package** (`build-work-context`), when the library was
 substantially smaller. They have **not** been re-run against the current
-23-package whole-repository install, and no update, rollback or uninstall
+151-package whole-repository install, and no update, rollback or uninstall
 sequence has been executed end to end on either host.
 
 Re-verification needs Malek's own Claude and Codex accounts, so it is an owner

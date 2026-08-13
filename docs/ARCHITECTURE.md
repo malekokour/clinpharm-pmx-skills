@@ -2,11 +2,11 @@
 
 ## Product boundary
 
-ClinPharm PMx Skills is a portable content and workflow layer. Version 0.1 has no
-server, database, account, autonomous agent, connector, or external upload.
+ClinPharm PMx Skills is a portable content and workflow layer: 151 packages,
+no server, database, account, autonomous agent, connector, or external upload.
 
-The flagship skill turns permitted information into versioned files that can be
-carried between approved AI environments.
+Each package turns permitted information into findings a qualified professional
+can review. Zero-install is `PASTE.md`. Host adapters are not in this tree.
 
 ## Four-layer model
 
@@ -53,7 +53,7 @@ Markdown is canonical. DOCX is generated for usability.
 canonical .md
     ├── reviewed directly
     ├── parsed by compatible AI hosts
-    └── rendered to .docx for attach-first use
+    └── rendered to .docx for human reading (archived starters; live route is PASTE.md)
 ```
 
 Generated DOCX files must be rebuilt, privacy scrubbed, rendered, and visually
@@ -61,14 +61,15 @@ inspected before release.
 
 ## Public interface
 
-The stable interface consists of:
+The stable library interface consists of:
 
-- skill name `build-work-context`;
-- schema version `1.0`;
-- five operating modes;
-- four document types;
-- required headings and metadata; and
+- 151 flat packages under `skills/<id>/`, each with `SKILL.md` and `PASTE.md`;
+- the 167-task map under `map/`;
+- `CLAIM-LEDGER.md` as the regenerated public counts;
+- required Agent Skills headings and metadata; and
 - conservative update semantics.
+
+`build-work-context` remains one package in that set, not the product.
 
 Provider-specific adapters may be added later, but the canonical content must
 remain provider-neutral.
