@@ -19,7 +19,7 @@ who review documents and analyses.
 [![CodeQL](https://github.com/malekokour/clinpharm-pmx-skills/actions/workflows/codeql.yml/badge.svg)](https://github.com/malekokour/clinpharm-pmx-skills/actions/workflows/codeql.yml)
 [![Roadmap](https://img.shields.io/badge/roadmap-Now%20%2F%20Next%20%2F%20Later-0B7A75.svg)](ROADMAP.md)
 
-[![Works with](https://img.shields.io/badge/opens%20in-Claude%20%7C%20Codex%20%7C%20Cursor%20%7C%20Antigravity-0B7A75.svg)](docs/HOSTS.md)
+[![Works with](https://img.shields.io/badge/lifecycle%20verified-Claude%20Code%20%7C%20Cursor-0B7A75.svg)](catalog/adapter-evidence.json)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Malek%20Okour-0A66C2.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/malek-okour-73020520/)
 [![GitHub](https://img.shields.io/badge/GitHub-malekokour-181717.svg?logo=github&logoColor=white)](https://github.com/malekokour)
 [![Cite](https://img.shields.io/badge/Cite-CITATION.cff-0B7A75.svg)](CITATION.cff)
@@ -136,25 +136,40 @@ The last command validates the repository; it does not send documents anywhere.
 `ModuleNotFoundError: No module named 'strictyaml'` and exits 1. The virtual
 environment is a recommendation; the `requirements.lock` install is not.
 
-| Host | After the clone | What backs it |
-|---|---|---|
-| **Claude Code** | `/plugin marketplace add malekokour/clinpharm-pmx-skills` then `/plugin install clinpharm-pmx-skills@clinpharm-pmx-skills` | `.claude-plugin/marketplace.json` ships and validates |
-| **Codex CLI** | `codex plugin marketplace add malekokour/clinpharm-pmx-skills` then `codex plugin add clinpharm-pmx-skills@clinpharm-pmx-skills` — **needs a build with `plugin` subcommands**; otherwise open the clone, `AGENTS.md` is read natively | Root [`plugin.json`](plugin.json), the Agent Plugins 1.0.0 manifest |
-| **Cursor** | File → Open Folder on the clone | Needs no manifest |
-| **Antigravity** | Open the clone as the workspace | Needs no manifest |
+| Host | After the clone | What backs it | Executed? |
+|---|---|---|---|
+| **Claude Code** | `/plugin marketplace add malekokour/clinpharm-pmx-skills` then `/plugin install clinpharm-pmx-skills@clinpharm-pmx-skills` | `.claude-plugin/marketplace.json` ships and validates | ✅ **full lifecycle, 2026-08-13** |
+| **Cursor** | File → Open Folder on the clone | Needs no manifest | ✅ **clone route, 2026-08-13** |
+| **Codex CLI** | `codex plugin marketplace add malekokour/clinpharm-pmx-skills` then `codex plugin add clinpharm-pmx-skills@clinpharm-pmx-skills` — **needs a build with `plugin` subcommands**; otherwise open the clone, `AGENTS.md` is read natively | Root [`plugin.json`](plugin.json), the Agent Plugins 1.0.0 manifest | ⬜ not run here |
+| **Antigravity** | Open the clone as the workspace | Needs no manifest | ⬜ not run here |
 
-> **What these rows are and are not.** Each names a manifest that ships and
-> validates, or a route that needs no manifest at all. **None of them is an
-> executed lifecycle claim** — install · update · rollback · uninstall have not
-> been run and captured for any host. When they are, the evidence lands in
-> `catalog/adapter-evidence.json`, which does not yet exist, and this column can
-> cite it.
+> **What the ✅ rows mean.** Against a clean clone of this repository taken from
+> the published remote, **Claude Code** completed all eight lifecycle steps —
+> marketplace add, install, list, update, disable, enable, uninstall, and
+> marketplace remove — each exiting 0, with 151 skills loaded and one skill run
+> end to end. The host's own plugin config was diffed byte-identical against a
+> pre-test copy afterwards, so the rollback is verified rather than assumed.
+> **Cursor** opened the same clone and read a skill, returning both its purpose
+> and its refusal boundary unprompted.
 >
-> The `agy plugin install …` command was **removed** rather than hedged: nothing
-> in this repository is an Antigravity-specific adapter, and the command has not
-> been run. Opening the clone as a workspace is the route that actually works.
-> `docs/HOSTS.md` keeps it as a conditional with a stated fallback, which is
-> honest; a bare command in a README reads as a promise that it runs.
+> The machine-readable attestation is
+> [`catalog/adapter-evidence.json`](catalog/adapter-evidence.json). It is an
+> **allowlist**: a badge or a "works with" claim may name a host only if that
+> host appears in its `hosts` array. Nothing else is a source for such a claim.
+>
+> **What the ⬜ rows mean, precisely: untested, not failed.** `codex`, `agy`, and
+> `gemini` are not installed on the machine that produced this evidence, so their
+> routes were never executed — that is all. The distinction matters because the
+> remedy differs: a route that is executed and *fails* is **removed** from these
+> docs, while a route that is merely untested may stay as a conditional with a
+> stated fallback, which is what [`docs/HOSTS.md`](docs/HOSTS.md) gives it. What
+> an untested route may **not** do is appear in the badge, and it does not.
+>
+> The `agy plugin install …` command was **removed** from this table rather than
+> hedged: nothing here is an Antigravity-specific adapter, and the command has
+> not been run. Opening the clone as a workspace is the route that works.
+> `docs/HOSTS.md` keeps it as a conditional with a stated fallback; a bare
+> command in a README reads as a promise that it runs.
 
 1. Clone this **whole repository** (primary install).
 2. Point your host at the repo (or copy a complete `skills/<skill-id>/`
@@ -166,9 +181,13 @@ environment is a recommendation; the `requirements.lock` install is not.
 5. Ask for the workflow in natural language and inspect the resulting human
    review before acting.
 
-Coverage caveat, separate from the routes above: no host route has been re-run
-against all 151 packages. See [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md)
-and [`docs/LIFECYCLE.md`](docs/LIFECYCLE.md).
+Coverage caveat, separate from the routes above. **Loaded is not exercised.**
+Claude Code reported all **151** skills present after install, so the whole
+library reaches the host — but exactly **one** skill was then run end to end. No
+host route has been re-run against all 151 packages, and the ✅ marks above claim
+the install lifecycle, never per-package behaviour. See
+[`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md) and
+[`docs/LIFECYCLE.md`](docs/LIFECYCLE.md).
 
 ## What is included
 

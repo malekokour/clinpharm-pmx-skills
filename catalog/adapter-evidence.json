@@ -1,0 +1,90 @@
+{
+  "_comment": "S04.12 public attestation. A host may be named in a works-with claim ONLY if it appears in `hosts` below. This file is an allowlist, never a denylist: a consumer that iterates `hosts` cannot accidentally name an untested route. `not_evidenced` is documentation, not a source — it exists so untested hosts are named rather than silently absent. Private transcripts stay in the workspace and never ship; this attestation carries no machine paths.",
+  "schema_version": "1.0.0",
+  "evidence_id": "adapters-20260813-clean-clone-9ef2fd5",
+  "generated": "2026-08-13",
+  "method": "Executed against a clean `git clone` of the published remote at tip 9ef2fd5, taken outside the private workspace so no private sibling was reachable.",
+  "hosts": [
+    {
+      "host": "claude-code",
+      "display_name": "Claude Code",
+      "route": "marketplace",
+      "backed_by": ".claude-plugin/marketplace.json",
+      "date": "2026-08-13",
+      "evidence_id": "adapters-20260813-clean-clone-9ef2fd5",
+      "lifecycle_steps_executed": [
+        { "step": "add", "command": "claude plugin marketplace add malekokour/clinpharm-pmx-skills", "exit": 0 },
+        { "step": "install", "command": "claude plugin install clinpharm-pmx-skills@clinpharm-pmx-skills", "exit": 0 },
+        { "step": "list", "command": "claude plugin list", "exit": 0 },
+        { "step": "update", "command": "claude plugin update clinpharm-pmx-skills@clinpharm-pmx-skills", "exit": 0 },
+        { "step": "disable", "command": "claude plugin disable clinpharm-pmx-skills@clinpharm-pmx-skills", "exit": 0 },
+        { "step": "enable", "command": "claude plugin enable clinpharm-pmx-skills@clinpharm-pmx-skills", "exit": 0 },
+        { "step": "uninstall", "command": "claude plugin uninstall clinpharm-pmx-skills@clinpharm-pmx-skills", "exit": 0 },
+        { "step": "rollback", "command": "claude plugin marketplace remove clinpharm-pmx-skills", "exit": 0 }
+      ],
+      "skills_loaded": 151,
+      "one_skill_run": {
+        "skill": "library-router",
+        "routed_to": "review-renal-impairment",
+        "exit": 0
+      },
+      "rollback_verified": true,
+      "rollback_check": "Host plugin config diffed byte-identical against a pre-test copy; zero residual references after removal."
+    },
+    {
+      "host": "cursor",
+      "display_name": "Cursor",
+      "route": "open-clone",
+      "backed_by": "AGENTS.md at the clone root; no manifest required",
+      "date": "2026-08-13",
+      "evidence_id": "adapters-20260813-clean-clone-9ef2fd5",
+      "lifecycle_steps_executed": [
+        { "step": "clone", "command": "git clone https://github.com/malekokour/clinpharm-pmx-skills.git", "exit": 0 },
+        { "step": "open", "command": "cursor-agent --print --mode ask --trust (in the clone)", "exit": 0 }
+      ],
+      "skills_loaded": null,
+      "one_skill_run": {
+        "skill": "review-renal-impairment",
+        "routed_to": "review-renal-impairment",
+        "exit": 0,
+        "note": "Returned the skill's purpose and its refusal boundary unprompted."
+      },
+      "rollback_verified": true,
+      "rollback_check": "No host state is written by the open-clone route; removing the clone is the whole rollback."
+    }
+  ],
+  "not_evidenced": [
+    {
+      "host": "codex-cli",
+      "display_name": "Codex CLI",
+      "status": "untested",
+      "reason": "`command -v codex` returned nothing on the machine that produced this attestation.",
+      "backed_by": "plugin.json (Agent Plugins 1.0.0) ships and validates",
+      "documented_as": "A conditional in docs/HOSTS.md with a stated fallback: if the build has no `plugin` subcommands, open the clone and Codex reads the SKILL.md tree.",
+      "not_failed": true
+    },
+    {
+      "host": "antigravity",
+      "display_name": "Google Antigravity",
+      "status": "untested",
+      "reason": "`command -v agy` returned nothing on the machine that produced this attestation.",
+      "backed_by": "plugin.json (Agent Plugins 1.0.0) ships and validates",
+      "documented_as": "A conditional in docs/HOSTS.md with a stated fallback: open the clone as the workspace.",
+      "not_failed": true
+    },
+    {
+      "host": "gemini-cli",
+      "display_name": "Gemini CLI",
+      "status": "untested",
+      "reason": "`command -v gemini` returned nothing on the machine that produced this attestation.",
+      "backed_by": "GEMINI.md at the clone root (a symlink to AGENTS.md)",
+      "documented_as": "Named in docs/HOSTS.md only as a pointer for Gemini-family hosts, with no install command.",
+      "not_failed": true
+    }
+  ],
+  "policy": {
+    "works_with_claim_source": "hosts[].display_name — and nothing else.",
+    "untested_is_not_failed": "An untested route may be documented as a conditional with a stated fallback. It may not appear in a badge, a host table's works-with column, or a launch claim.",
+    "failed_is_removed": "A route that is executed and fails is removed from the documentation, not softened."
+  }
+}

@@ -121,8 +121,17 @@ codex plugin marketplace add malekokour/clinpharm-pmx-skills
 codex plugin add clinpharm-pmx-skills@clinpharm-pmx-skills
 ```
 
+> **UNVERIFIED: the version number and these two commands have not been executed
+> by this project.** `codex` was not installed on the machine that produced
+> [`catalog/adapter-evidence.json`](../catalog/adapter-evidence.json), so the
+> block above is a documented expectation, not a tested route. Treat a failure
+> here as our claim being wrong, not your typing — and please open an issue.
+> What *is* verified: root [`plugin.json`](../plugin.json) is a valid Agent
+> Plugins 1.0.0 manifest, checked with a schema validator.
+
 If your Codex build does not yet have `plugin` subcommands, open the clone as
-the working directory. Codex reads `SKILL.md` trees from the project.
+the working directory. Codex reads `SKILL.md` trees from the project. That
+fallback is the same shape as the Cursor route, which **is** verified.
 
 Prove the checkout before involving a model:
 
@@ -178,9 +187,17 @@ If your `agy` build supports plugin install from Git:
 agy plugin install https://github.com/malekokour/clinpharm-pmx-skills
 ```
 
+> **UNVERIFIED: this command has not been executed by this project.** `agy` was
+> not installed on the machine that produced
+> [`catalog/adapter-evidence.json`](../catalog/adapter-evidence.json). It is kept
+> here, behind its conditional, rather than in the README, because a bare command
+> in a README reads as a promise that it runs. If it fails, that is our claim
+> being wrong, not your typing.
+
 If that command is not available, the clone is the supported path. This
 repository also ships [`GEMINI.md`](../GEMINI.md) (a pointer to `AGENTS.md`)
-for Gemini-family hosts.
+for Gemini-family hosts — also unverified, for the same reason: no `gemini` on
+the test machine.
 
 ---
 
