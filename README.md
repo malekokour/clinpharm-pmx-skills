@@ -52,8 +52,11 @@ Two more shapes — regulatory label and project context — are in [`examples/`
 
 ## The map — 167 tasks, and the 114 we do not cover yet
 
-**[`map/`](map/) — the profession, mapped.** One page per task, citable by a
-stable path, rendering directly on GitHub.
+Writing it out that way was uncomfortable. You see how much of the job nobody
+has built anything for.
+
+**[`map/`](map/) — the profession, mapped.** Click a band, then a domain, then a
+task. One page per task, citable by a stable path, on GitHub.
 
 |  |  |
 |---|---:|
@@ -67,9 +70,11 @@ evaluations; none publishes the shape of the job those skills are for, so none
 can tell you what fraction of your work it touches. This one can, and the answer
 today is *less than a third*.
 
-![Drill Band → Domain → Subdomain → L3 on the 167-task job map](site/assets/map-walkthrough.gif)
+![Click Band B, then Study delivery, then Design, on the 167-task job map](site/assets/map-walkthrough.gif)
 
-Browse by band: [A](map/bands/A.md) · [B](map/bands/B.md) · [C](map/bands/C.md).
+GitHub will not run a live tree in this README, so the recording is the drill:
+Band → Domain → Subdomain → task. Do the same click path in
+[`map/`](map/): [A](map/bands/A.md) · [B](map/bands/B.md) · [C](map/bands/C.md).
 Machine-readable: [`map/job-model.json`](map/job-model.json). HTML rendering:
 [`site/map/`](site/map/). Both are generated from
 [`catalog/job-model-167.tsv`](catalog/job-model-167.tsv). GitHub Pages is not
