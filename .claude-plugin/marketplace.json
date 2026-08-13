@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "clinpharm-pmx-skills",
+  "description": "Portable Agent Skills for clinical pharmacologists and pharmacometricians.",
+  "owner": {
+    "name": "Malek Okour",
+    "url": "https://github.com/malekokour"
+  },
+  "plugins": [
+    {
+      "name": "clinpharm-pmx-skills",
+      "version": "1.0.0",
+      "source": {
+        "source": "github",
+        "repo": "malekokour/clinpharm-pmx-skills"
+      },
+      "description": "151 Agent Skill packages for clinical pharmacology and pharmacometrics review. Skills review, reconcile, and prepare evidence. They never select a dose, sign off, or submit.",
+      "homepage": "https://github.com/malekokour/clinpharm-pmx-skills",
+      "license": "MIT",
+      "keywords": [
+        "skills",
+        "clinical-pharmacology",
+        "pharmacometrics",
+        "agent-skills"
+      ]
+    }
+  ]
+}

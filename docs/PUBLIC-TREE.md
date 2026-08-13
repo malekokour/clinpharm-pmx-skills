@@ -8,7 +8,7 @@ A folder without its first real artifact is not created.
 Both are generated from [`catalog/job-model-167.tsv`](../catalog/job-model-167.tsv).
 Do not hand-edit either view.
 
-## Present — fourteen roots
+## Present — fifteen directory roots
 
 | Path | Layer | What it is |
 |---|---|---|
@@ -25,14 +25,15 @@ Do not hand-edit either view.
 | `examples/` | 2 | Worked synthetic examples |
 | `docs/` · `scripts/` · `tests/` · `site/` | 3 | Documentation, gates, regression tests, static rendering |
 | `.github/` · `.githooks/` | 3 | CI and authorship hook |
+| `.claude-plugin/` | 3 | Claude Code marketplace (`plugin.json`, `marketplace.json`) |
+| `plugin.json` | 3 | Agent Plugins 1.0.0 manifest (file at root, not a directory) |
 | `CLAIM-LEDGER.md` | 3 | Regenerated public counts |
 
 ## Deliberately not at root
 
 | Agreed name | Why it is absent |
 |---|---|
-| `plugin.json` | Generated with host adapters. No lifecycle evidence yet |
-| `.claude-plugin/`, `.codex-plugin/`, `.cursor-plugin/`, `.agents/plugins/` | Host adapters. Shipping an empty adapter is a false "works with" claim |
+| `.codex-plugin/`, `.cursor-plugin/`, `.agents/plugins/` | Codex, Cursor, Copilot, and Antigravity read the root [`plugin.json`](../plugin.json) plus `skills/`. A second empty adapter would be a false extra claim |
 | Root `router/` | The router is `skills/library-router/` plus `scripts/library_router.py` |
 | Root `assets/` | Assets already live under `docs/`, `shared/`, and `site/` |
 | Root `config/` | One file. It lives at `scripts/settings.example.json` |

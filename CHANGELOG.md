@@ -4,9 +4,9 @@ All notable changes to ClinPharm PMx Skills are documented here.
 
 ## [Unreleased]
 
-Nothing has been tagged or published as a GitHub Release. The numbers below
-are the live library on `main`, regenerated from
-`collections/*/collection.json` and [`CLAIM-LEDGER.md`](CLAIM-LEDGER.md).
+## [1.0.0] - 2026-08-13
+
+First GitHub Release of this repository.
 
 ### Added
 
@@ -24,6 +24,9 @@ are the live library on `main`, regenerated from
 - Zero-install `PASTE.md` per package, a static tracking-free site, and
   portable quality, privacy, benchmark-digest, and release checks.
 - Public contribution, support, security, and governance documentation.
+- [`plugin.json`](plugin.json) ([Agent Plugins 1.0.0](https://agent-plugins.org/))
+  and [`.claude-plugin/`](.claude-plugin/) for Claude Code. How to use on
+  Claude, ChatGPT / Codex, Cursor, and Antigravity: [`docs/HOSTS.md`](docs/HOSTS.md).
 
 ### Changed
 
@@ -45,5 +48,4 @@ are the live library on `main`, regenerated from
 A `0.1.0` was released on 2026-07-30 under this project's predecessor, which had
 a different name, a single skill, and a repository that no longer exists. That
 history is preserved privately and is deliberately not carried forward here.
-This repository has **no tags yet**. Its first GitHub Release, when cut, is a
-different artifact describing a different product.
+This repository's first public tag is **v1.0.0**.

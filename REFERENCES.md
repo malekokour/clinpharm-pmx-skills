@@ -6,7 +6,11 @@ Library-wide starting points. Individual skills still carry their own
 ## Agent Skills and setup
 
 - [Agent Skills specification](https://agentskills.io/specification)
+- [Agent Plugins 1.0.0](https://agent-plugins.org/)
 - [Anthropic — Equipping agents with Agent Skills](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)
+- [Claude — Use skills](https://support.claude.com/en/articles/12512180-use-skills-in-claude)
+- [Claude Code skills](https://code.claude.com/docs/en/skills)
+- [OpenAI Codex — Build skills](https://developers.openai.com/codex/skills)
 
 ## Library design (selection at scale)
 

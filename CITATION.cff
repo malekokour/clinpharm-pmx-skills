@@ -6,6 +6,8 @@ authors:
   - family-names: "Okour"
     given-names: "Malek"
 license: MIT
+version: "1.0.0"
+date-released: "2026-08-13"
 repository-code: "https://github.com/malekokour/clinpharm-pmx-skills"
 url: "https://github.com/malekokour/clinpharm-pmx-skills"
 abstract: "Portable Agent Skills that teach AI how pharmaceutical professionals work."

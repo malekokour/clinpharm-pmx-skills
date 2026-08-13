@@ -1,0 +1,12 @@
+{
+  "name": "clinpharm-pmx-skills",
+  "version": "1.0.0",
+  "description": "Portable Agent Skills for clinical pharmacologists and pharmacometricians. Skills review, reconcile, and prepare evidence. They never select a dose, sign off, or submit.",
+  "author": {
+    "name": "Malek Okour"
+  },
+  "homepage": "https://github.com/malekokour/clinpharm-pmx-skills",
+  "repository": "https://github.com/malekokour/clinpharm-pmx-skills",
+  "license": "MIT",
+  "skills": "./skills"
+}

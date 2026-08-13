@@ -39,6 +39,7 @@ PUBLIC_ROOTS: frozenset[str] = frozenset(
     {
         ".github",
         ".githooks",
+        ".claude-plugin",
         "catalog",
         "collections",
         "contexts",
@@ -93,6 +94,7 @@ PUBLIC_ROOT_FILES: frozenset[str] = frozenset(
         # the decision is made, not inside `scripts/`.
         "scan_skills.py",
         "scan_pr_skills.py",
+        "plugin.json",
     }
 )
 

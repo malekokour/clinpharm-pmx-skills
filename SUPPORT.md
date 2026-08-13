@@ -3,7 +3,8 @@
 ## Start here
 
 - Setup and first use: [`README.md`](README.md)
-- Host compatibility: [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md)
+- How to use on Claude, ChatGPT / Codex, Cursor, Antigravity: [`docs/HOSTS.md`](docs/HOSTS.md)
+- Host compatibility record: [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md)
 - Privacy boundary: [`docs/PRIVACY.md`](docs/PRIVACY.md)
 - New workflow request: use the **Request a skill** issue form
 

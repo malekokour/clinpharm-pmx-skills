@@ -9,14 +9,17 @@ who review documents and analyses.
 > off, or submits.*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-0B7A75.svg)](LICENSE)
+[![Version](https://img.shields.io/github/v/release/malekokour/clinpharm-pmx-skills?label=version&color=0B7A75)](https://github.com/malekokour/clinpharm-pmx-skills/releases)
 [![Skills](https://img.shields.io/badge/skills-151%20released-0B7A75.svg)](CLAIM-LEDGER.md)
 [![Tasks](https://img.shields.io/badge/tasks-167%20mapped-0B7A75.svg)](map/)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-specification-0B7A75.svg)](https://agentskills.io/specification)
+[![Agent Plugins](https://img.shields.io/badge/Agent%20Plugins-1.0.0-0B7A75.svg)](https://agent-plugins.org/)
 
 [![Quality](https://github.com/malekokour/clinpharm-pmx-skills/actions/workflows/quality.yml/badge.svg)](https://github.com/malekokour/clinpharm-pmx-skills/actions/workflows/quality.yml)
 [![CodeQL](https://github.com/malekokour/clinpharm-pmx-skills/actions/workflows/codeql.yml/badge.svg)](https://github.com/malekokour/clinpharm-pmx-skills/actions/workflows/codeql.yml)
 [![Roadmap](https://img.shields.io/badge/roadmap-Now%20%2F%20Next%20%2F%20Later-0B7A75.svg)](ROADMAP.md)
 
+[![Works with](https://img.shields.io/badge/installs%20on-Claude%20%7C%20Codex%20%7C%20Cursor%20%7C%20Antigravity-0B7A75.svg)](docs/HOSTS.md)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Malek%20Okour-0A66C2.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/malek-okour-73020520/)
 [![GitHub](https://img.shields.io/badge/GitHub-malekokour-181717.svg?logo=github&logoColor=white)](https://github.com/malekokour)
 [![Cite](https://img.shields.io/badge/Cite-CITATION.cff-0B7A75.svg)](CITATION.cff)
@@ -85,13 +88,16 @@ Regenerate counts from [`CLAIM-LEDGER.md`](CLAIM-LEDGER.md) before quoting them.
 
 ## Install
 
-### Paste a block (no clone)
+Web and desktop steps for **Claude, ChatGPT / Codex, Cursor, and Antigravity**
+are in [`docs/HOSTS.md`](docs/HOSTS.md). Short version below.
+
+### Paste a block (any web chat)
 
 Open any `skills/<id>/PASTE.md` and paste it into an ordinary chat window with
 only the source material permitted in that environment. Review every finding
-before using the output.
+before using the output. This is the claude.ai and ChatGPT web route.
 
-### Clone the library
+### Clone the library (desktop agents)
 
 ```bash
 git clone https://github.com/malekokour/clinpharm-pmx-skills.git
@@ -100,6 +106,13 @@ python3 scripts/check_all.py
 ```
 
 That command validates the repository; it does not send documents anywhere.
+
+| Host | After the clone |
+|---|---|
+| **Claude Code** | `/plugin marketplace add malekokour/clinpharm-pmx-skills` then `/plugin install clinpharm-pmx-skills@clinpharm-pmx-skills` |
+| **Codex CLI** | `codex plugin marketplace add malekokour/clinpharm-pmx-skills` then `codex plugin add clinpharm-pmx-skills@clinpharm-pmx-skills` |
+| **Cursor** | File → Open Folder on the clone |
+| **Antigravity** | Open the clone as the workspace, or `agy plugin install https://github.com/malekokour/clinpharm-pmx-skills` |
 
 1. Clone this **whole repository** (primary install).
 2. Point your host at the repo (or copy a complete `skills/<skill-id>/`
@@ -111,9 +124,9 @@ That command validates the repository; it does not send documents anywhere.
 5. Ask for the workflow in natural language and inspect the resulting human
    review before acting.
 
-Host installation locations differ. Follow the host's current documentation;
-do not copy all packages globally unless you actually need them. This repository
-does not ship host adapters or `plugin.json`.
+Host UI steps are documented procedures. They have not been re-run against all
+151 packages on every host; see [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md)
+and [`docs/LIFECYCLE.md`](docs/LIFECYCLE.md).
 
 ## What is included
 
@@ -175,6 +188,8 @@ evals/         synthetic suites; historical records under evals/benchmark/
 shared/        canonical tools, modules, assets, and contracts vendored as needed
 scripts/       validators, generators, privacy checks, and settings.example.json
 docs/ site/    documentation and the checked-in static rendering (Pages is not enabled)
+.claude-plugin/  Claude Code marketplace manifest
+plugin.json    Agent Plugins 1.0.0 manifest (skills live in skills/)
 examples/      worked synthetic examples
 tests/         repository and workflow regression tests
 ```
@@ -201,6 +216,7 @@ evidence gap. Breadth without evidence is not a release criterion.
 ## Docs
 
 [Claim ledger](CLAIM-LEDGER.md) · [Roadmap](ROADMAP.md) ·
+[Hosts](docs/HOSTS.md) · [Lifecycle](docs/LIFECYCLE.md) ·
 [Catalog](docs/CATALOG.md) · [Boundaries](docs/BOUNDARIES.md) ·
 [Authoring](docs/AUTHORING-A-SKILL.md) · [Architecture](docs/ARCHITECTURE.md) ·
 [Compatibility](docs/COMPATIBILITY.md) · [Governance](.github/GOVERNANCE.md) ·

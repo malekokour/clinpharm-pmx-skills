@@ -1,9 +1,14 @@
 # Compatibility
 
 Current zero-install route: paste `skills/<id>/PASTE.md` into an ordinary chat.
-Current library install: clone this whole repository. Host adapters and
-`plugin.json` are **not** shipped — do not read this page as "works with
-Claude / Codex / Cursor."
+Current library install: clone this whole repository. Host how-to:
+[`HOSTS.md`](HOSTS.md).
+
+[`plugin.json`](../plugin.json) is the [Agent Plugins 1.0.0](https://agent-plugins.org/)
+manifest. [`.claude-plugin/`](../.claude-plugin/) is the Claude Code marketplace
+entry. Those files tell hosts where `skills/` lives. They are **not** a
+substitute for the table below, and they are not a claim that every host was
+re-run against all 151 packages.
 
 The table below is a **dated one-package record**, not a claim about the
 151-package library on `main`.

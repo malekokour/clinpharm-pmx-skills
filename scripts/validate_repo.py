@@ -72,6 +72,9 @@ EXPECTED = [
     ".github/workflows/quality.yml",
     ".github/workflows/codeql.yml",
     ".github/workflows/links.yml",
+    "plugin.json",
+    ".claude-plugin/plugin.json",
+    ".claude-plugin/marketplace.json",
     "docs/PRIVACY.md",
     "docs/COMPATIBILITY.md",
     "site/index.html",
@@ -312,7 +315,14 @@ def check_no_stray_root_entries() -> None:
 
 
 #: Dot-directories that legitimately live inside the public tree.
-ALLOWED_NESTED_DOT_DIRS = {".github", ".githooks", ".git", ".venv", ".ruff_cache"}
+ALLOWED_NESTED_DOT_DIRS = {
+    ".github",
+    ".githooks",
+    ".claude-plugin",
+    ".git",
+    ".venv",
+    ".ruff_cache",
+}
 
 
 def check_no_stray_dot_dirs() -> None:
