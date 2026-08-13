@@ -1,5 +1,8 @@
 # ClinPharm PMx Skills
 
+Portable Agent Skills for **clinical pharmacologists and pharmacometricians**
+who review documents and analyses.
+
 > **Turn any AI agent into a clinical pharmacologist and pharmacometrician.**
 >
 > *It reviews, reconciles, and prepares evidence. It never selects a dose, signs
@@ -10,28 +13,31 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-0B7A75.svg)](LICENSE)
 [![Roadmap](https://img.shields.io/badge/roadmap-Now%20%2F%20Next%20%2F%20Later-0B7A75.svg)](ROADMAP.md)
 
-Portable, inspectable Agent Skills for clinical pharmacology and pharmacometrics.
-A skill can reconcile PK values across documents, review a protocol or label
-section, structure a DDI evidence inventory, or verify the shape of an analysis
-deliverable. It returns source-linked findings and explicit unknowns for a
-qualified professional to review.
-
 > [!IMPORTANT]
 > **Skills review, reconcile, verify, structure, and flag. Qualified humans
 > decide, approve, sign, and submit.** No skill selects a dose, resolves a
 > scientific disagreement, edits a controlled document, or replaces clinical,
 > pharmacometric, medical, regulatory, or quality judgment.
 
-## Current evidence status
+## Try one example
 
-| State | Packages | What it means |
-|---|---:|---|
-| `released` | **151** | The package passed its assigned evidence gate. |
-| `built` | **0** | The package exists and validates, but qualification has **not** passed; its catalog row names the missing evidence. |
-| **Total** | **151** | 133 clinical-pharmacology + 16 pharmacometrics + 2 utilities. |
+Synthetic NCA report vs its dataset — planted defects, no real study.
 
-The job model maps **167** tasks. **151** packages exist on disk (library target met).
-Regenerate counts from [`CLAIM-LEDGER.md`](CLAIM-LEDGER.md) before quoting them.
+Ask:
+
+> Verify the NCA report against the parameter dataset and the analysis plan.
+> Report every finding with its locator. Do not re-derive anything.
+
+| | |
+|---|---|
+| Skill | [`verify-nca-outputs`](skills/verify-nca-outputs/) |
+| Inputs | [`examples/verify-nca-outputs/inputs/`](examples/verify-nca-outputs/inputs/) |
+| What it catches | Reported `AUC` 8% off the dataset; a 1000-fold `CL/F` unit swap; an exclusion the plan does not allow |
+| What it refuses | Deciding which of two conflicting values is scientifically correct; selecting a dose; rerunning the NCA |
+
+Zero install: paste [`skills/verify-nca-outputs/PASTE.md`](skills/verify-nca-outputs/PASTE.md) into any chat, attach the four input files, ask the same question.
+
+Two more shapes — regulatory label and project context — are in [`examples/`](examples/).
 
 ## The map — 167 tasks, and the 114 we do not cover yet
 
@@ -53,39 +59,21 @@ today is *less than a third*.
 ![Drill Band → Domain → Subdomain → L3 on the 167-task job map](site/assets/map-walkthrough.gif)
 
 Browse by band: [A](map/bands/A.md) · [B](map/bands/B.md) · [C](map/bands/C.md).
-Machine-readable: [`map/job-model.json`](map/job-model.json). The rendered HTML
-copy lives at [`site/map/`](site/map/); both are generated from
-[`catalog/job-model-167.tsv`](catalog/job-model-167.tsv), which is the single
-source of record. GitHub Pages is not enabled; the map is this repository, not
-a separate site.
+Machine-readable: [`map/job-model.json`](map/job-model.json). HTML rendering:
+[`site/map/`](site/map/). Both are generated from
+[`catalog/job-model-167.tsv`](catalog/job-model-167.tsv). GitHub Pages is not
+enabled; the map is this repository.
 
-## Three ways to use this
+## Current evidence status
 
-| Route | You need | You get |
-|---|---|---|
-| **Read the map** | A browser. No AI, no install | The profession made navigable — 167 tasks, what each is, where the human boundary sits |
-| **Clone the library** | Any host that reads `SKILL.md` | Executable workflows with router selection and composed context |
-| **Paste a block** | A chat window | The same procedure, immediately — every package ships a generated `PASTE.md` |
+| State | Packages | What it means |
+|---|---:|---|
+| `released` | **151** | The package passed its assigned evidence gate. |
+| `built` | **0** | The package exists and validates, but qualification has **not** passed; its catalog row names the missing evidence. |
+| **Total** | **151** | 133 clinical-pharmacology + 16 pharmacometrics + 2 utilities. |
 
-The third route exists because most clinical pharmacologists will never clone a
-repository, and a library the majority of the field cannot open is not much of a
-library.
-
-## Start here
-
-| | |
-|---|---|
-| **Worked examples** | [`examples/`](examples/) — run something real, with synthetic inputs |
-| **The map** | [`map/`](map/) — 167 task pages, 53 carried, 114 open. [`site/map/`](site/map/) is the HTML rendering |
-| **What we claim, and its limits** | [CLAIM-LEDGER.md](CLAIM-LEDGER.md) — every public number, regenerated from source |
-| Roadmap | [ROADMAP.md](ROADMAP.md) — Now / Next / Later / Not planned, pharmacometrics first-class |
-| Navigation spine | [docs/JOB-TREE.md](docs/JOB-TREE.md) |
-| Multi-skill journeys | [docs/workflows/](docs/workflows/) — documented, never auto-run |
-| Vocabulary | [docs/GLOSSARY.md](docs/GLOSSARY.md) — what a context is, and why it is not a skill |
-| What this does not cover | [docs/BOUNDARIES.md](docs/BOUNDARIES.md) — named, not hidden |
-| Extend it | [docs/AUTHORING-A-SKILL.md](docs/AUTHORING-A-SKILL.md) — the method, published |
-| Selection promises | [docs/SELECTION-SLO.md](docs/SELECTION-SLO.md) |
-| Library-wide sources | [REFERENCES.md](REFERENCES.md) — skills also keep local references |
+The job model maps **167** tasks. **151** packages exist on disk (library target met).
+Regenerate counts from [`CLAIM-LEDGER.md`](CLAIM-LEDGER.md) before quoting them.
 
 ## Install
 
@@ -96,6 +84,14 @@ only the source material permitted in that environment. Review every finding
 before using the output.
 
 ### Clone the library
+
+```bash
+git clone https://github.com/malekokour/clinpharm-pmx-skills.git
+cd clinpharm-pmx-skills
+python3 scripts/check_all.py
+```
+
+That command validates the repository; it does not send documents anywhere.
 
 1. Clone this **whole repository** (primary install).
 2. Point your host at the repo (or copy a complete `skills/<skill-id>/`
@@ -108,15 +104,8 @@ before using the output.
    review before acting.
 
 Host installation locations differ. Follow the host's current documentation;
-do not copy all packages globally unless you actually need them.
-
-```bash
-git clone https://github.com/malekokour/clinpharm-pmx-skills.git
-cd clinpharm-pmx-skills
-python3 scripts/check_all.py
-```
-
-That command validates the repository; it does not send documents anywhere.
+do not copy all packages globally unless you actually need them. This repository
+does not ship host adapters or `plugin.json`.
 
 ## What is included
 
@@ -177,7 +166,7 @@ catalog/       derived cross-package registry
 evals/         synthetic suites; historical records under evals/benchmark/
 shared/        canonical tools, modules, assets, and contracts vendored as needed
 scripts/       validators, generators, privacy checks, and settings.example.json
-docs/ site/    documentation and the static project site
+docs/ site/    documentation and the checked-in static rendering (Pages is not enabled)
 examples/      worked synthetic examples
 tests/         repository and workflow regression tests
 ```
@@ -201,11 +190,14 @@ Before contributing, read [CONTRIBUTING.md](CONTRIBUTING.md) and the public
 human-review boundary, synthetic failure cases, objective checks, and a truthful
 evidence gap. Breadth without evidence is not a release criterion.
 
-## Project links
+## Docs
 
-[Catalog](docs/CATALOG.md) · [Architecture](docs/ARCHITECTURE.md) ·
+[Claim ledger](CLAIM-LEDGER.md) · [Roadmap](ROADMAP.md) ·
+[Catalog](docs/CATALOG.md) · [Boundaries](docs/BOUNDARIES.md) ·
+[Authoring](docs/AUTHORING-A-SKILL.md) · [Architecture](docs/ARCHITECTURE.md) ·
 [Compatibility](docs/COMPATIBILITY.md) · [Governance](.github/GOVERNANCE.md) ·
-[Privacy](docs/PRIVACY.md) · [Roadmap](ROADMAP.md) · [References](REFERENCES.md) ·
+[Privacy](docs/PRIVACY.md) · [Glossary](docs/GLOSSARY.md) ·
+[Job tree](docs/JOB-TREE.md) · [References](REFERENCES.md) ·
 [Security](SECURITY.md) · [Citation](CITATION.cff)
 
 ## License
