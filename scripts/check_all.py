@@ -51,6 +51,11 @@ def main() -> int:
     run("Router scale fixtures", [python, "scripts/build_scale_fixtures.py", "--check"])
     run("Router selection cases", [python, "scripts/check_router_selection.py"])
     run("Public claim ledger", [python, "scripts/check_claim_ledger.py", "--check"])
+    # The ledger above checks every number. This checks the claims that are not
+    # numbers — the gap that let CLAIM-LEDGER.md assert the evaluation gate had
+    # passed while AGENTS.md cited it saying the opposite, with every count on
+    # both pages correct throughout.
+    run("Claim consistency", [python, "scripts/check_claim_consistency.py"])
     run("Lifecycle runbook", [python, "scripts/check_lifecycle_docs.py"])
     run("Static site gates", [python, "scripts/check_site_gates.py"])
     run("Fixture grounding", [python, "scripts/check_fixture_grounding.py"])
