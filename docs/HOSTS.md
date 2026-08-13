@@ -192,7 +192,9 @@ for Gemini-family hosts.
 | Worked example | Reports the planted NCA defects; refuses to pick the scientifically “correct” value or a dose |
 | `python3 scripts/library_router.py "…"` (clone only) | One JSON record, or a clean failure |
 
-Update a clone with `git pull --ff-only` and `python3 scripts/check_all.py`.
+Update a clone with `git pull --ff-only` and `python3 scripts/check_all.py`
+(the checkout needs `python3 -m pip install --requirement requirements.lock` once
+before any gate will run — see [`LIFECYCLE.md`](LIFECYCLE.md)).
 Roll back to tag `v1.0.0` (or a later release). Uninstall by removing the
 checkout, the plugin, or the uploaded zip — then confirm a fresh session no
 longer names the package.

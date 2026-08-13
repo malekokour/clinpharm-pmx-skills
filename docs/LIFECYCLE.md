@@ -32,8 +32,15 @@ and each eval suite carries a `portability` case that exercises that disclosure.
 ```bash
 git clone https://github.com/malekokour/clinpharm-pmx-skills.git
 cd clinpharm-pmx-skills
+python3 -m venv .venv && source .venv/bin/activate
+python3 -m pip install --requirement requirements.lock
 python3 scripts/check_all.py
 ```
+
+The dependency install is required. Without it the run stops at the
+evaluation-suite gate with `ModuleNotFoundError: No module named 'strictyaml'`
+and exits 1 — the gate working, not a broken checkout. The update and rollback
+commands later in this document assume this step was done once for the checkout.
 
 Then follow the host row in [`HOSTS.md`](HOSTS.md).
 
