@@ -16,13 +16,33 @@ python3 -c "import json; print(len(json.load(open('collections/pharmacometrics/c
 
 | Status honesty | Meaning here |
 |---|---|
-| `released` | **0** — evaluation gate has not been earned for any PMx skill |
-| `built` | **16** — packages validate; most still carry `evidence_gap` |
+| `released` | **16** — each package has a paired-run qualification dossier and carries the evidence stamp `cursor-release150-paired-runs-ps-d024` |
+| `built` | **0** — no PMx package is currently awaiting qualification |
+
+**What `released` does and does not mean here.** It means the package passed the
+qualification route defined in PS-D024 (risk-tiered qualification): a paired-run
+dossier per package, plus explicit owner authorization. **It is not a claim of
+clinical performance, and not GxP validation.** The distinction is the point of
+the vocabulary — see [`../../CLAIM-LEDGER.md`](../../CLAIM-LEDGER.md).
 
 One package — `review-model-analysis-deliverable` — is the pre-W4 hand-authored PMx
 home skill. The other fifteen were registered from Band A / Quantitative pharmacology
-gap rows. Until those bodies are authored to domain depth (route R19), treat them as
-**built scaffolds pending real authoring**, not as a finished PMx library.
+gap rows and qualified in Release-150.
+
+> **Corrected 2026-08-13.** This table previously read `released` **0** /
+> `built` **16**, with the note *"treat them as built scaffolds pending real
+> authoring."* That was accurate until Release-150 promoted all sixteen; the
+> promotion touched `collection.json` and this file was never updated, so the
+> collection contradicted its own source of record in published bytes for a day.
+>
+> Corrected toward the collection, not away from it, because the promotion is
+> evidenced: **16 of 16** packages have a `K06-Cursor-Release150` dossier, and
+> `collection.json` reports 16 `released` with 0 `evidence_gap`. The old text is
+> retained here because a reader who saw the earlier version needs to know which
+> way the contradiction resolved, rather than finding it silently gone.
+>
+> `collection.json` is the source of record; this README describes it. On any
+> future disagreement, the JSON wins and this file is the one to fix.
 
 ## What the track covers
 

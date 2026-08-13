@@ -43,11 +43,22 @@ Every contributed skill must:
 
 ## Development checks
 
-From the repository root:
+From the repository root, once per checkout:
+
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+python3 -m pip install --requirement requirements.lock
+```
+
+Then, before every pull request:
 
 ```bash
 python3 scripts/check_all.py
 ```
+
+Skipping the dependency install stops the run at the evaluation-suite gate with
+`ModuleNotFoundError: No module named 'strictyaml'` and exit 1. That is the gate
+behaving correctly, not a broken checkout.
 
 To rebuild generated documents, run `make docs`, then rerun the full check.
 Use `skills-ref validate ./skills/<skill-name>` when available; the repository

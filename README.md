@@ -106,10 +106,17 @@ before using the output. This is the claude.ai and ChatGPT web route.
 ```bash
 git clone https://github.com/malekokour/clinpharm-pmx-skills.git
 cd clinpharm-pmx-skills
+python3 -m venv .venv && source .venv/bin/activate
+python3 -m pip install --requirement requirements.lock
 python3 scripts/check_all.py
 ```
 
-That command validates the repository; it does not send documents anywhere.
+The last command validates the repository; it does not send documents anywhere.
+
+**The dependency install is required, not optional.** Without it,
+`check_all.py` stops at the evaluation-suite gate with
+`ModuleNotFoundError: No module named 'strictyaml'` and exits 1. The virtual
+environment is a recommendation; the `requirements.lock` install is not.
 
 | Host | After the clone |
 |---|---|
@@ -203,8 +210,10 @@ generated views; the quality gate fails if they drift.
 
 ## Develop and verify
 
-Requires Python 3.11 or later. The main commands are defined in the
-[`Makefile`](Makefile):
+Requires Python 3.11 or later **and the pinned dependencies installed** —
+`python3 -m pip install --requirement requirements.lock`. Every gate below needs
+them; without them the run stops at the first gate that imports one and exits 1.
+The main commands are defined in the [`Makefile`](Makefile):
 
 ```bash
 make check          # lint, validate, test, privacy, portability, and consistency
