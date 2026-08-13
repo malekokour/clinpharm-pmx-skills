@@ -40,8 +40,9 @@ Do not hand-edit either view.
 | Root `benchmark/` | Evaluation evidence. It lives at `evals/benchmark/` |
 | `contexts/region/`, `contexts/population/` | No first artifact yet. Empty axes are not created |
 
-GitHub Pages is **not** enabled. `malekokour.github.io/clinpharm-pmx-skills` is
-not a published site. The map is this repository.
+GitHub Pages is enabled. The published site is
+[malekokour.github.io/clinpharm-pmx-skills](https://malekokour.github.io/clinpharm-pmx-skills)
+(source: `site/`). The Markdown map remains this repository under `map/`.
 
 ## Retired
 

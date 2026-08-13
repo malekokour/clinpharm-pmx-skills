@@ -4,6 +4,12 @@ All notable changes to ClinPharm PMx Skills are documented here.
 
 ## [Unreleased]
 
+### Added
+
+- GitHub Pages at
+  [malekokour.github.io/clinpharm-pmx-skills](https://malekokour.github.io/clinpharm-pmx-skills)
+  (source: `site/`).
+
 ## [1.0.0] - 2026-08-13
 
 First GitHub Release of this repository.

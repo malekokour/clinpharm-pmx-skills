@@ -72,6 +72,7 @@ EXPECTED = [
     ".github/workflows/quality.yml",
     ".github/workflows/codeql.yml",
     ".github/workflows/links.yml",
+    ".github/workflows/pages.yml",
     "plugin.json",
     ".claude-plugin/plugin.json",
     ".claude-plugin/marketplace.json",

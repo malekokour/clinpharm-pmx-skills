@@ -76,9 +76,9 @@ GitHub will not run a live tree in this README, so the recording is the drill:
 Band → Domain → Subdomain → task. Do the same click path in
 [`map/`](map/): [A](map/bands/A.md) · [B](map/bands/B.md) · [C](map/bands/C.md).
 Machine-readable: [`map/job-model.json`](map/job-model.json). HTML rendering:
-[`site/map/`](site/map/). Both are generated from
-[`catalog/job-model-167.tsv`](catalog/job-model-167.tsv). GitHub Pages is not
-enabled; the map is this repository.
+[`site/map/`](site/map/). Live site:
+[malekokour.github.io/clinpharm-pmx-skills](https://malekokour.github.io/clinpharm-pmx-skills).
+Both are generated from [`catalog/job-model-167.tsv`](catalog/job-model-167.tsv).
 
 ## Current evidence status
 
@@ -192,7 +192,7 @@ catalog/       derived cross-package registry
 evals/         synthetic suites; historical records under evals/benchmark/
 shared/        canonical tools, modules, assets, and contracts vendored as needed
 scripts/       validators, generators, privacy checks, and settings.example.json
-docs/ site/    documentation and the checked-in static rendering (Pages is not enabled)
+docs/ site/    documentation and the GitHub Pages source
 .claude-plugin/  Claude Code marketplace manifest
 plugin.json    Agent Plugins 1.0.0 manifest (skills live in skills/)
 examples/      worked synthetic examples

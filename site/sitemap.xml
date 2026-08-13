@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://github.com/malekokour/clinpharm-pmx-skills</loc>
+    <loc>https://malekokour.github.io/clinpharm-pmx-skills/</loc>
+    <lastmod>2026-08-13</lastmod>
+  </url>
+  <url>
+    <loc>https://malekokour.github.io/clinpharm-pmx-skills/map/</loc>
     <lastmod>2026-08-13</lastmod>
   </url>
 </urlset>
