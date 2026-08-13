@@ -80,7 +80,30 @@ SECRET_PATTERNS = [
     re.compile(r"\b(?:ghp|github_pat|sk-proj|sk-ant)-[A-Za-z0-9_-]{16,}\b"),
     re.compile(r"\bgho_[A-Za-z0-9]{20,}\b"),
 ]
-EMAIL_PATTERN = re.compile(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b")
+# The trailing group is an explicit TLD list, not `[A-Za-z]{2,}`.
+#
+# Binary assets are scanned by extracting printable strings, and any two letters
+# after a dot satisfied the old pattern. A real case: the mapping video reported
+# `ly@tf.zs` as an unexpected email address and turned the release gate red.
+# `.zs` is not a delegated TLD -- it was encoder bytes that happened to look like
+# an address.
+#
+# This narrows rather than weakens. Every deliverable address ends in a real TLD,
+# so no genuine finding is lost; what is dropped is the class of match that can
+# only ever be noise. Widening the list is fine when a real address needs it.
+# Loosening it back to `[A-Za-z]{2,}` re-admits the false positives, and the
+# temptation to do that arrives disguised as "the scan is too strict".
+#
+# Canaried both directions -- see tests/test_privacy_scan_email_tld.py.
+_EMAIL_TLDS = (
+    "com|org|net|edu|gov|mil|int|info|biz|io|ai|co|dev|app|me|us|uk|eu|ca|au|nz|"
+    "de|fr|es|it|nl|be|ch|at|se|no|dk|fi|ie|pt|pl|cz|gr|jp|cn|kr|in|sg|hk|il|"
+    "br|mx|za|ru|tr|edu\\.au|ac\\.uk|co\\.uk|org\\.uk|gov\\.uk|com\\.au"
+)
+EMAIL_PATTERN = re.compile(
+    r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.(?:" + _EMAIL_TLDS + r")\b",
+    re.IGNORECASE,
+)
 ALLOWED_PUBLIC_EMAILS = {"34357016+malekokour@users.noreply.github.com"}
 PATIENT_IDENTIFIER_PATTERNS = [
     re.compile(

@@ -76,8 +76,14 @@ skill's safety rules.
 Python 3.11 or later. From the repository root:
 
 ```bash
+python3 -m venv .venv && source .venv/bin/activate
+python3 -m pip install --requirement requirements.lock
 python3 scripts/check_all.py
 ```
+
+The dependency install is not optional. Skip it and the run stops at the
+evaluation-suite gate with `ModuleNotFoundError: No module named 'strictyaml'`
+and exits 1 — that is the gate working, not a broken checkout.
 
 Also available: `make check`, `make test`, `make docs`, `make privacy-scan`,
 `make release-check`.
