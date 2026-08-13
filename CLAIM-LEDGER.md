@@ -21,9 +21,26 @@ record, and `make check` fails if any public surface disagrees.
 
 ## What the two status words mean
 
-`released` — the package's evaluation gate has been run and passed.
-`built` — the package exists and validates, and **the gate has not been run**.
-It carries an `evidence_gap` saying so.
+`released` — the package exists, validates, and has passed **the structural
+gates and its assigned qualification route** (PS-D024, risk-tiered: a paired-run
+dossier per package plus explicit owner authorization).
+`built` — the package exists and validates, and **its assigned gate has not been
+run**. It carries an `evidence_gap` saying so.
+
+**Name the gate.** `released` does **not** mean clinical validation, and it does
+**not** mean the evaluation suite has qualified the package's behaviour. Three
+`blocker`-severity findings against that suite are open and frozen, so
+evaluation-gate qualification is explicitly incomplete. Writing *"passes every
+gate"* anywhere is prohibited for exactly this reason.
+
+> This paragraph previously read: *"`released` — the package's evaluation gate
+> has been run and passed."* That was an overclaim on a published surface, and a
+> circular one: [`AGENTS.md`](AGENTS.md) correctly says evaluation-gate
+> qualification is incomplete **and cites this file as the source** — so the
+> document carrying the caveat pointed at the document denying it. Corrected
+> toward `AGENTS.md`, whose wording was already right. Recorded rather than
+> silently swapped, because the failure mode is a claim that gets stronger each
+> time it is restated one document further from its evidence.
 
 A `built` package is not a promise. The distinction is the whole of this
 project's credibility, and it is why the ledger reports both numbers rather
