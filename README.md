@@ -12,17 +12,9 @@ who review documents and analyses.
 [![Version](https://img.shields.io/github/v/release/malekokour/clinpharm-pmx-skills?label=version&color=0B7A75)](https://github.com/malekokour/clinpharm-pmx-skills/releases)
 [![Skills](https://img.shields.io/badge/skills-151%20released-0B7A75.svg)](CLAIM-LEDGER.md)
 [![Tasks](https://img.shields.io/badge/tasks-167%20mapped-0B7A75.svg)](map/)
-[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-specification-0B7A75.svg)](https://agentskills.io/specification)
-[![Agent Plugins](https://img.shields.io/badge/Agent%20Plugins-1.0.0-0B7A75.svg)](https://agent-plugins.org/)
-
 [![Quality](https://github.com/malekokour/clinpharm-pmx-skills/actions/workflows/quality.yml/badge.svg)](https://github.com/malekokour/clinpharm-pmx-skills/actions/workflows/quality.yml)
-[![CodeQL](https://github.com/malekokour/clinpharm-pmx-skills/actions/workflows/codeql.yml/badge.svg)](https://github.com/malekokour/clinpharm-pmx-skills/actions/workflows/codeql.yml)
-[![Roadmap](https://img.shields.io/badge/roadmap-Now%20%2F%20Next%20%2F%20Later-0B7A75.svg)](ROADMAP.md)
-
 [![Works with](https://img.shields.io/badge/lifecycle%20verified-Claude%20Code%20%7C%20Cursor-0B7A75.svg)](catalog/adapter-evidence.json)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Malek%20Okour-0A66C2.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/malek-okour-73020520/)
-[![GitHub](https://img.shields.io/badge/GitHub-malekokour-181717.svg?logo=github&logoColor=white)](https://github.com/malekokour)
-[![Cite](https://img.shields.io/badge/Cite-CITATION.cff-0B7A75.svg)](CITATION.cff)
 
 > [!IMPORTANT]
 > **Skills review, reconcile, verify, structure, and flag. Qualified humans
@@ -32,21 +24,20 @@ who review documents and analyses.
 
 ## Getting started
 
-Three ways in. Pick one. Host-by-host screenshots and caveats live in
-[`docs/HOSTS.md`](docs/HOSTS.md).
+Host-by-host steps: [`docs/HOSTS.md`](docs/HOSTS.md).
 
-### 1. Paste a block — no clone
+### Paste a block (any web chat — no clone)
 
-Open [`skills/verify-nca-outputs/PASTE.md`](skills/verify-nca-outputs/PASTE.md),
-paste it into Claude, ChatGPT, or any ordinary chat, attach the four files under
-[`examples/verify-nca-outputs/inputs/`](examples/verify-nca-outputs/inputs/),
-and ask:
+1. Open [`skills/verify-nca-outputs/PASTE.md`](skills/verify-nca-outputs/PASTE.md).
+2. Paste it into Claude, ChatGPT, or any ordinary chat.
+3. Attach the four files under [`examples/verify-nca-outputs/inputs/`](examples/verify-nca-outputs/inputs/).
+4. Ask:
 
 > Verify the NCA report against the parameter dataset and the analysis plan.
 > Report every finding with its locator. Do not re-derive anything.
 
-That is the web route for every skill: `skills/<id>/PASTE.md`. Review every
-finding before using the output.
+Every skill has the same web route: `skills/<id>/PASTE.md`. Review every finding
+before using the output.
 
 | | |
 |---|---|
@@ -54,52 +45,57 @@ finding before using the output.
 | What it catches | Reported `AUC` 8% off the dataset; a 1000-fold `CL/F` unit swap; an exclusion the plan does not allow |
 | What it refuses | Deciding which of two conflicting values is scientifically correct; selecting a dose; rerunning the NCA |
 
-Two more shapes — a regulatory label and project context — are in [`examples/`](examples/).
+More worked examples: [`examples/`](examples/).
 
-### 2. Install the library — desktop agents
+### Install the library (desktop agents)
 
 ```bash
 git clone https://github.com/malekokour/clinpharm-pmx-skills.git
 cd clinpharm-pmx-skills
 ```
 
-| Host | Then do this |
-|---|---|
-| **Claude Code** | `/plugin marketplace add malekokour/clinpharm-pmx-skills` then `/plugin install clinpharm-pmx-skills@clinpharm-pmx-skills` |
-| **Cursor** | File → Open Folder on the clone |
-| **Codex / Antigravity** | Open the clone as the workspace. Plugin commands for those hosts have not been run here |
+| Host | Then | Executed here? |
+|---|---|---|
+| **Claude Code** | `/plugin marketplace add malekokour/clinpharm-pmx-skills` then `/plugin install clinpharm-pmx-skills@clinpharm-pmx-skills` | ✅ full lifecycle, 2026-08-13 |
+| **Cursor** | File → Open Folder on the clone | ✅ clone route, 2026-08-13 |
+| **Codex / Antigravity** | Open the clone as the workspace | ⬜ documented, not run here |
 
-Ask, in a new chat:
+Ask in a **new** chat:
 
 > Which ClinPharm PMx Skills skill applies to reviewing PK sections of a CSR?
 
 A loaded library names `review-csr-pk-consistency`. If the host answers without
 naming a package, the skills did not load.
 
-Claude Code and Cursor are the two hosts whose install was executed against a
-clean clone. Codex and Antigravity are documented, not attested — see the
-table under [Install](#install).
+Prefer [`library-router`](skills/library-router/) when the right skill is
+unclear. Keep each `skills/<id>/` directory intact. Clone the **whole
+repository** — a single-folder copy is a degraded route (no router, no
+`shared/`).
 
-### 3. Run the repository gates — contributors
+What ✅ and ⬜ mean, and the machine-readable attestation:
+[`catalog/adapter-evidence.json`](catalog/adapter-evidence.json). **Loaded is not
+exercised** — Claude Code listed all **151** packages after install; one skill
+was then run end to end. See [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md).
 
-```bash
-python3 -m venv .venv && source .venv/bin/activate
-python3 -m pip install --requirement requirements.lock
-python3 scripts/check_all.py
-```
+## What's in the library
 
-That last command validates the repository. It does not send documents anywhere.
-The `requirements.lock` install is required; without it the run stops at
-`ModuleNotFoundError: No module named 'strictyaml'`. See
-[Develop and verify](#develop-and-verify).
+| State | Packages | What it means |
+|---|---:|---|
+| `released` | **151** | The package passed its assigned evidence gate. |
+| `built` | **0** | The package exists and validates, but qualification has **not** passed; its catalog row names the missing evidence. |
+| **Total** | **151** | 133 clinical-pharmacology + 16 pharmacometrics + 2 utilities. |
 
-## The map — 167 tasks, and the 114 we do not cover yet
+The [catalog](docs/CATALOG.md) spans CSR and protocol review, CTD 2.7.2 and USPI
+Section 12, DDI and FIH evidence, NCA verification, and cross-document
+reconciliation. Each package follows the
+[Agent Skills specification](https://agentskills.io/specification): `SKILL.md`
+is the activation contract; `scripts/`, `references/`, and `assets/` load only
+when needed.
 
-Writing it out that way was uncomfortable. You see how much of the job nobody
-has built anything for.
+## The job map
 
-**[`map/`](map/) — the profession, mapped.** Click a band, then a domain, then a
-task. One page per task, citable by a stable path, on GitHub.
+Writing the profession out as tasks was uncomfortable. You see how much of the
+job nobody has built anything for.
 
 |  |  |
 |---|---:|
@@ -108,24 +104,14 @@ task. One page per task, citable by a stable path, on GitHub.
 | **Not yet carried** | **114** |
 | Domains | 15 |
 
-That third row is the point. Every comparable library ships skills and
-evaluations; none publishes the shape of the job those skills are for, so none
-can tell you what fraction of your work it touches. This one can, and the answer
-today is *less than a third*.
-
-The live tree — native disclosure, no JavaScript. Open a domain, then a
-sub-domain. Coverage is regenerated from the ledger, so a dated snapshot cannot
-silently become this page.
+That third row is the point. Live tree (open a domain, then a sub-domain):
+[malekokour.github.io/clinpharm-pmx-skills/map/](https://malekokour.github.io/clinpharm-pmx-skills/map/).
+On GitHub: [`map/`](map/) · [A](map/bands/A.md) · [B](map/bands/B.md) ·
+[C](map/bands/C.md). Source: [`catalog/job-model-167.tsv`](catalog/job-model-167.tsv).
 
 ![The live job map: three bands and fifteen domains, each row coloured by whether a skill carries it.](site/assets/job-map.png)
 
 ![Study delivery opened to Design. Covered work sits next to the gaps.](site/assets/job-map-open.png)
-
-Click through:
-[malekokour.github.io/clinpharm-pmx-skills/map/](https://malekokour.github.io/clinpharm-pmx-skills/map/).
-GitHub Markdown view: [`map/`](map/) · [A](map/bands/A.md) · [B](map/bands/B.md) ·
-[C](map/bands/C.md). Machine-readable: [`map/job-model.json`](map/job-model.json).
-Generated from [`catalog/job-model-167.tsv`](catalog/job-model-167.tsv).
 
 One subdomain, zoomed — a job, then a task, then a skill you can run:
 
@@ -138,119 +124,10 @@ one refuses. Publish the gaps with the wins.
 
 ![How the library was built: map the job, split what needs a skill, write the refusals, publish the gaps.](site/assets/build-in-public-story.gif)
 
-The same recording plays on the [site](https://malekokour.github.io/clinpharm-pmx-skills/#story) with controls. It does not autoplay there — it is a minute long on purpose.
+The same recording plays on the
+[site](https://malekokour.github.io/clinpharm-pmx-skills/#story) with controls.
 
-## Current evidence status
-
-| State | Packages | What it means |
-|---|---:|---|
-| `released` | **151** | The package passed its assigned evidence gate. |
-| `built` | **0** | The package exists and validates, but qualification has **not** passed; its catalog row names the missing evidence. |
-| **Total** | **151** | 133 clinical-pharmacology + 16 pharmacometrics + 2 utilities. |
-
-The job model maps **167** tasks. **151** packages exist on disk (library target met).
-Regenerate counts from [`CLAIM-LEDGER.md`](CLAIM-LEDGER.md) before quoting them.
-
-## Install
-
-The commands are in [Getting started](#getting-started). This section is what
-those rows rest on — which hosts were actually run, and which were not.
-Web and desktop steps for **Claude, ChatGPT / Codex, Cursor, and Antigravity**
-are in [`docs/HOSTS.md`](docs/HOSTS.md).
-
-### Paste a block (any web chat)
-
-Open any `skills/<id>/PASTE.md` and paste it into an ordinary chat window with
-only the source material permitted in that environment. Review every finding
-before using the output. This is the claude.ai and ChatGPT web route.
-
-### Clone the library (desktop agents)
-
-```bash
-git clone https://github.com/malekokour/clinpharm-pmx-skills.git
-cd clinpharm-pmx-skills
-python3 -m venv .venv && source .venv/bin/activate
-python3 -m pip install --requirement requirements.lock
-python3 scripts/check_all.py
-```
-
-The last command validates the repository; it does not send documents anywhere.
-
-**The dependency install is required, not optional.** Without it,
-`check_all.py` stops at the evaluation-suite gate with
-`ModuleNotFoundError: No module named 'strictyaml'` and exits 1. The virtual
-environment is a recommendation; the `requirements.lock` install is not.
-
-| Host | After the clone | What backs it | Executed? |
-|---|---|---|---|
-| **Claude Code** | `/plugin marketplace add malekokour/clinpharm-pmx-skills` then `/plugin install clinpharm-pmx-skills@clinpharm-pmx-skills` | `.claude-plugin/marketplace.json` ships and validates | ✅ **full lifecycle, 2026-08-13** |
-| **Cursor** | File → Open Folder on the clone | Needs no manifest | ✅ **clone route, 2026-08-13** |
-| **Codex CLI** | `codex plugin marketplace add malekokour/clinpharm-pmx-skills` then `codex plugin add clinpharm-pmx-skills@clinpharm-pmx-skills` — **needs a build with `plugin` subcommands**; otherwise open the clone, `AGENTS.md` is read natively | Root [`plugin.json`](plugin.json), the Agent Plugins 1.0.0 manifest | ⬜ not run here |
-| **Antigravity** | Open the clone as the workspace | Needs no manifest | ⬜ not run here |
-
-> **What the ✅ rows mean.** Against a clean clone of this repository taken from
-> the published remote, **Claude Code** completed all eight lifecycle steps —
-> marketplace add, install, list, update, disable, enable, uninstall, and
-> marketplace remove — each exiting 0, with 151 skills loaded and one skill run
-> end to end. The host's own plugin config was diffed byte-identical against a
-> pre-test copy afterwards, so the rollback is verified rather than assumed.
-> **Cursor** opened the same clone and read a skill, returning both its purpose
-> and its refusal boundary unprompted.
->
-> The machine-readable attestation is
-> [`catalog/adapter-evidence.json`](catalog/adapter-evidence.json). It is an
-> **allowlist**: a badge or a "works with" claim may name a host only if that
-> host appears in its `hosts` array. Nothing else is a source for such a claim.
->
-> **What the ⬜ rows mean, precisely: untested, not failed.** `codex`, `agy`, and
-> `gemini` are not installed on the machine that produced this evidence, so their
-> routes were never executed — that is all. The distinction matters because the
-> remedy differs: a route that is executed and *fails* is **removed** from these
-> docs, while a route that is merely untested may stay as a conditional with a
-> stated fallback, which is what [`docs/HOSTS.md`](docs/HOSTS.md) gives it. What
-> an untested route may **not** do is appear in the badge, and it does not.
->
-> The `agy plugin install …` command was **removed** from this table rather than
-> hedged: nothing here is an Antigravity-specific adapter, and the command has
-> not been run. Opening the clone as a workspace is the route that works.
-> `docs/HOSTS.md` keeps it as a conditional with a stated fallback; a bare
-> command in a README reads as a promise that it runs.
-
-1. Clone this **whole repository** (primary install).
-2. Point your host at the repo (or copy a complete `skills/<skill-id>/`
-   directory if your host only supports single-skill install — degraded route).
-3. Prefer [`library-router`](skills/library-router/) when the right skill is
-   unclear; force a skill id when you already know it.
-4. Keep each skill directory intact: `SKILL.md`, scripts, references, and assets
-   form one package. Shared modules live under `shared/` for whole-repo use.
-5. Ask for the workflow in natural language and inspect the resulting human
-   review before acting.
-
-Coverage caveat, separate from the routes above. **Loaded is not exercised.**
-Claude Code reported all **151** skills present after install, so the whole
-library reaches the host — but exactly **one** skill was then run end to end. No
-host route has been re-run against all 151 packages, and the ✅ marks above claim
-the install lifecycle, never per-package behaviour. See
-[`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md) and
-[`docs/LIFECYCLE.md`](docs/LIFECYCLE.md).
-
-## What is included
-
-The [catalog](docs/CATALOG.md) spans:
-
-- study documents: CSR, protocol, study-conduct, bioanalytical, and NCA review;
-- regulatory content: CTD 2.7.2, USPI Section 12, briefing packages, agency
-  questions, investigator's brochures, IND/IMPD content, DSURs, and annual reports;
-- quantitative evidence: DDI, FIH rationale, dose-justification evidence, model
-  deliverables, and development-plan gaps;
-- cross-document governance: fact reconciliation, reference-safety information,
-  benefit-risk table structure, and reusable work context.
-
-Each package follows the open [Agent Skills specification](https://agentskills.io/specification):
-`SKILL.md` carries the activation contract, while optional `scripts/`,
-`references/`, and `assets/` are loaded only when needed.
-
-## How evidence works
+## Evidence
 
 Three claims that are often blurred stay separate here:
 
@@ -271,6 +148,8 @@ sentence and the sources disagree. A historical CSR deterministic-path result is
 [`evals/benchmark/`](evals/benchmark/) as bounded diagnostic evidence after its broader
 qualification claim was retracted.
 
+Regenerate counts from [`CLAIM-LEDGER.md`](CLAIM-LEDGER.md) before quoting them.
+
 ## Safety and data boundary
 
 Use only public, synthetic, or explicitly permitted information. Never upload
@@ -282,33 +161,18 @@ Fixtures in this repository are synthetic by construction, not anonymized from
 real studies. This library is not medical advice, clinical decision support, a
 validated GxP system, or a patient-specific decision tool.
 
-## Repository map
+## Contribute
 
-```text
-map/           167 job-model task pages (Layer 1). Source: catalog/job-model-167.tsv
-skills/        151 independently installable Agent Skill packages
-contexts/      modality and therapeutic-area context files, attached after selection
-collections/   editable status authority and domain navigation
-catalog/       derived cross-package registry
-evals/         synthetic suites; historical records under evals/benchmark/
-shared/        canonical tools, modules, assets, and contracts vendored as needed
-scripts/       validators, generators, privacy checks, and settings.example.json
-docs/ site/    documentation and the GitHub Pages source
-.claude-plugin/  Claude Code marketplace manifest
-plugin.json    Agent Plugins 1.0.0 manifest (skills live in skills/)
-examples/      worked synthetic examples
-tests/         repository and workflow regression tests
+Requires Python 3.11 or later **and the pinned dependencies**:
+
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+python3 -m pip install --requirement requirements.lock
 ```
 
-Collections own package status. `catalog/catalog.json` and `docs/CATALOG.md` are
-generated views; the quality gate fails if they drift.
-
-## Develop and verify
-
-Requires Python 3.11 or later **and the pinned dependencies installed** —
-`python3 -m pip install --requirement requirements.lock`. Every gate below needs
-them; without them the run stops at the first gate that imports one and exits 1.
-The main commands are defined in the [`Makefile`](Makefile):
+**The `requirements.lock` install is required, not optional.** Without it,
+`check_all.py` stops at `ModuleNotFoundError: No module named 'strictyaml'` and
+exits 1. Then:
 
 ```bash
 make check          # lint, validate, test, privacy, portability, and consistency
@@ -316,21 +180,47 @@ make docs-check     # prove generated documentation matches its authorities
 make release-check  # build release assets in isolation and verify them
 ```
 
+`python3 scripts/check_all.py` is the same gate as `make check`. It validates
+the repository; it does not send documents anywhere.
+
 Before contributing, read [CONTRIBUTING.md](CONTRIBUTING.md) and the public
 [contributor contract](AGENTS.md). New workflows need a bounded job, an explicit
 human-review boundary, synthetic failure cases, objective checks, and a truthful
-evidence gap. Breadth without evidence is not a release criterion.
+evidence gap.
+
+```text
+map/             167 job-model task pages. Source: catalog/job-model-167.tsv
+skills/          151 independently installable Agent Skill packages
+contexts/        modality and therapeutic-area context files
+collections/     editable status authority
+catalog/         derived registry (do not edit by hand)
+evals/           synthetic suites; historical records under evals/benchmark/
+shared/          tools, modules, assets, contracts
+examples/        worked synthetic examples
+docs/ site/      documentation and GitHub Pages source
+.claude-plugin/  Claude Code marketplace manifest
+plugin.json      Agent Plugins 1.0.0 manifest
+```
+
+Collections own package status. `catalog/catalog.json` and `docs/CATALOG.md` are
+generated views; the quality gate fails if they drift.
 
 ## Docs
 
-[Claim ledger](CLAIM-LEDGER.md) · [Roadmap](ROADMAP.md) ·
-[Hosts](docs/HOSTS.md) · [Lifecycle](docs/LIFECYCLE.md) ·
-[Catalog](docs/CATALOG.md) · [Boundaries](docs/BOUNDARIES.md) ·
-[Authoring](docs/AUTHORING-A-SKILL.md) · [Architecture](docs/ARCHITECTURE.md) ·
-[Compatibility](docs/COMPATIBILITY.md) · [Governance](.github/GOVERNANCE.md) ·
-[Privacy](docs/PRIVACY.md) · [Glossary](docs/GLOSSARY.md) ·
-[Job tree](docs/JOB-TREE.md) · [References](REFERENCES.md) ·
-[Security](SECURITY.md) · [Citation](CITATION.cff)
+**Use** — [Hosts](docs/HOSTS.md) · [Lifecycle](docs/LIFECYCLE.md) ·
+[Compatibility](docs/COMPATIBILITY.md) · [Boundaries](docs/BOUNDARIES.md) ·
+[Privacy](docs/PRIVACY.md)
+
+**Evidence** — [Claim ledger](CLAIM-LEDGER.md) · [Catalog](docs/CATALOG.md) ·
+[Job tree](docs/JOB-TREE.md) · [Roadmap](ROADMAP.md)
+
+**Build** — [Authoring](docs/AUTHORING-A-SKILL.md) ·
+[Architecture](docs/ARCHITECTURE.md) · [Governance](.github/GOVERNANCE.md) ·
+[Glossary](docs/GLOSSARY.md) · [References](REFERENCES.md)
+
+**Meta** — [Agent Skills](https://agentskills.io/specification) ·
+[Agent Plugins](https://agent-plugins.org/) · [Security](SECURITY.md) ·
+[Citation](CITATION.cff)
 
 ## License
 
