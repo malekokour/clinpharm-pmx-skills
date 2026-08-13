@@ -8,10 +8,18 @@ who review documents and analyses.
 > *It reviews, reconciles, and prepares evidence. It never selects a dose, signs
 > off, or submits.*
 
-[![Quality](https://github.com/malekokour/clinpharm-pmx-skills/actions/workflows/quality.yml/badge.svg)](https://github.com/malekokour/clinpharm-pmx-skills/actions/workflows/quality.yml)
-[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-specification-0B7A75.svg)](https://agentskills.io/specification)
 [![License: MIT](https://img.shields.io/badge/License-MIT-0B7A75.svg)](LICENSE)
+[![Skills](https://img.shields.io/badge/skills-151%20released-0B7A75.svg)](CLAIM-LEDGER.md)
+[![Tasks](https://img.shields.io/badge/tasks-167%20mapped-0B7A75.svg)](map/)
+[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-specification-0B7A75.svg)](https://agentskills.io/specification)
+
+[![Quality](https://github.com/malekokour/clinpharm-pmx-skills/actions/workflows/quality.yml/badge.svg)](https://github.com/malekokour/clinpharm-pmx-skills/actions/workflows/quality.yml)
+[![CodeQL](https://github.com/malekokour/clinpharm-pmx-skills/actions/workflows/codeql.yml/badge.svg)](https://github.com/malekokour/clinpharm-pmx-skills/actions/workflows/codeql.yml)
 [![Roadmap](https://img.shields.io/badge/roadmap-Now%20%2F%20Next%20%2F%20Later-0B7A75.svg)](ROADMAP.md)
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Malek%20Okour-0A66C2.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/malek-okour-73020520/)
+[![GitHub](https://img.shields.io/badge/GitHub-malekokour-181717.svg?logo=github&logoColor=white)](https://github.com/malekokour)
+[![Cite](https://img.shields.io/badge/Cite-CITATION.cff-0B7A75.svg)](CITATION.cff)
 
 > [!IMPORTANT]
 > **Skills review, reconcile, verify, structure, and flag. Qualified humans
