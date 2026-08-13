@@ -5,10 +5,15 @@ The map is Layer 1 of the product: the profession made navigable, usable with no
 AI and no install. It is generated from the coverage ledger, so a page cannot
 claim coverage the ledger does not record.
 
-Public-safety: the ledger lives in the private workspace, but only four fields
-per row reach the page — the task name, its place in the tree, its artifact
-class, and how it is covered. No private material crosses the boundary, and the
-script fails rather than guessing if the ledger is unreachable.
+The index is the interactive job tree: Band → Domain → Subdomain → L3. Visual
+language follows the 2026-08-10 accordion (native <details>, no JavaScript).
+Coverage colours are live from current_disposition — never copied from that
+dated HTML, which froze at 28 covered / 54 partial / 74 nothing / 11 out of
+scope. Partial and "outside v1 scope" are not live states. The two class=boundary
+rows stay labelled "Outside this product" at the leaf.
+
+Public-safety: only ledger fields reach the page — the task name, its place in
+the tree, its artifact class, and how it is covered.
 
 Site constraints this output must satisfy (scripts/check_site_gates.py):
   no JavaScript · no iframes · no external resources · no trackers ·
@@ -21,8 +26,10 @@ from __future__ import annotations
 
 import csv
 import html
+import json
 import re
 import sys
+from collections import OrderedDict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -37,6 +44,16 @@ CLASS_COPY = {
                                              "workflow of its own.")),
     "boundary": ("Outside this product", ("Real professional work, deliberately not "
                                          "covered here. Named rather than hidden.")),
+}
+
+BAND_COPY = {
+    "A": ("Foundations",
+          "Knowledge and methods applied to everything below. Not ranked by "
+          "frequency — this is substrate, not activity."),
+    "B": ("The development arc",
+          "Sequential. Each domain fires at its own point in a programme's life."),
+    "C": ("Cross-cutting obligations",
+          "Apply at every stage of the development arc, not at one point in it."),
 }
 
 PAGE = """<!DOCTYPE html>
@@ -79,29 +96,27 @@ INDEX = """<!DOCTYPE html>
 <title>The map — ClinPharm PMx Skills</title>
 <link rel="stylesheet" href="../styles.css">
 </head>
-<body>
-<a href="#main">Skip to main content</a>
-<main id="main">
-<h1>The map of clinical pharmacology and pharmacometrics</h1>
-<p>{total} tasks across {bands} bands, {domains} domains and {subdomains}
-subdomains. Every one is either covered by something that runs, or named as work
-this product deliberately does not do. Open a domain, then a subdomain, to reach
-an L3 task page.</p>
-<p>{skills} are skills. {contexts} are contexts that attach to a skill rather
-than running on their own. {refs} are shared references other skills read.
-{bounds} are outside this product and say so.</p>
-<h2>What is built today</h2>
-<p>The map above describes the profession. This is what currently ships against
-it, regenerated from the collections rather than written by hand:</p>
-<ul>
-<li><strong>{released} released</strong> — the evaluation gate passed</li>
-<li><strong>{built} built</strong> — the package validates; the gate has not run</li>
-<li><strong>{packages} packages</strong> across {colls} collections</li>
-</ul>
-<p>The gap between {packages} and {skills} is the work remaining. It is stated
-rather than implied, and no date is attached to it.</p>
+<body class="job-tree-page">
+<a class="skip-link" href="#main">Skip to main content</a>
+<main id="main" class="job-tree">
+<p class="tree-brand"><a href="../index.html">ClinPharm PMx Skills</a> · the job map</p>
+<header>
+<p class="eyebrow">Coverage map · regenerated from the ledger</p>
+<h1>The clinical pharmacology job</h1>
+<p class="standfirst">{total} tasks across {bands} bands, {domains} domains, and {subdomains} sub-domains. Open a domain, then a sub-domain, to reach a task. Each task is coloured by whether a shipped skill actually carries it.</p>
+</header>
+<div class="root">
+<span class="rn">ClinPharm PMx Skills</span>
+<span class="tally">
+<span class="t ok"><b>{carried}</b>carried</span>
+<span class="t gap"><b>{uncarried}</b>nothing built</span>
+</span>
+<span class="rc">{total} tasks · {released} released packages · {built} built</span>
+</div>
+<p class="ctl-note">Native disclosure — no JavaScript. Coverage is regenerated from the ledger whenever the map is built, so a dated snapshot cannot silently become this page.</p>
 {body}
-<p><a href="../index.html">Back to ClinPharm PMx Skills</a></p>
+<p class="tree-back"><a href="../index.html">Back to ClinPharm PMx Skills</a></p>
+<footer>Generated from <code>catalog/job-model-167.tsv</code>. Skills review, reconcile, verify, structure, and flag. They never select a dose, sign off, or submit.</footer>
 </main>
 </body>
 </html>
@@ -110,6 +125,99 @@ rather than implied, and no date is attached to it.</p>
 
 def slug(s: str) -> str:
     return re.sub(r"-+", "-", re.sub(r"[^a-z0-9]+", "-", s.lower())).strip("-")
+
+
+def leaf_state(row: dict[str, str]) -> tuple[str, str]:
+    """Return (css-suffix, label) from live ledger fields only."""
+    if row["class"] == "boundary":
+        return "oos", "Outside this product"
+    if row["current_disposition"] == "skill":
+        return "ok", "Skill covers it"
+    return "gap", "Nothing built"
+
+
+def build_tree(rows: list[dict[str, str]]) -> str:
+    """Accordion tree. Order follows the ledger. No JavaScript."""
+    bands: OrderedDict[str, OrderedDict[str, OrderedDict[str, list]]] = OrderedDict()
+    domain_no: dict[str, str] = {}
+    sub_no: dict[tuple[str, str], str] = {}
+    for r in rows:
+        parts = r["locator"].split("/")
+        domain_no[r["domain"]] = parts[1]
+        sub_no[(r["domain"], r["subdomain"])] = parts[2]
+        bands.setdefault(r["band"], OrderedDict()).setdefault(
+            r["domain"], OrderedDict()
+        ).setdefault(r["subdomain"], []).append(r)
+
+    out: list[str] = ['<div class="tree">']
+    for band, domains in bands.items():
+        title, blurb = BAND_COPY[band]
+        band_rows = [r for subs in domains.values() for tasks in subs.values() for r in tasks]
+        n_ok = sum(1 for r in band_rows if leaf_state(r)[0] == "ok")
+        n_gap = sum(1 for r in band_rows if leaf_state(r)[0] == "gap")
+        n_oos = sum(1 for r in band_rows if leaf_state(r)[0] == "oos")
+        n = len(band_rows)
+        out.append(
+            f'<div class="band"><span class="bl">Band {html.escape(band)}</span>'
+            f'<span class="bn">{html.escape(title)}</span>'
+            f'<span class="bd">{html.escape(blurb)}</span>'
+            f'<span class="bnums"><b class="c-ok">{n_ok}</b>'
+            f'<b class="c-gap">{n_gap}</b>'
+            f'<b class="c-oos">{n_oos}</b>'
+            f'<span class="bt">{n}</span></span></div>'
+        )
+        for domain, subs in domains.items():
+            domain_rows = [r for tasks in subs.values() for r in tasks]
+            n_ok = sum(1 for r in domain_rows if leaf_state(r)[0] == "ok")
+            n_gap = sum(1 for r in domain_rows if leaf_state(r)[0] == "gap")
+            n_oos = sum(1 for r in domain_rows if leaf_state(r)[0] == "oos")
+            n = len(domain_rows)
+            empty = " empty" if n_ok == 0 else ""
+            ok_w = (100.0 * n_ok / n) if n else 0
+            gap_w = (100.0 * n_gap / n) if n else 0
+            oos_w = (100.0 * n_oos / n) if n else 0
+            out.append(f'<details class="branch{empty}">')
+            out.append("<summary>")
+            out.append('<span class="tick"></span>')
+            out.append(f'<span class="letter">{html.escape(domain_no[domain])}</span>')
+            out.append(f'<span class="dname">{html.escape(domain)}</span>')
+            out.append(
+                f'<span class="bar" aria-hidden="true">'
+                f'<i class="b-ok" style="width:{ok_w:.2f}%"></i>'
+                f'<i class="b-gap" style="width:{gap_w:.2f}%"></i>'
+                f'<i class="b-oos" style="width:{oos_w:.2f}%"></i></span>'
+            )
+            out.append(
+                f'<span class="nums"><b class="c-ok">{n_ok}</b>'
+                f'<b class="c-gap">{n_gap}</b>'
+                f'<b class="c-oos">{n_oos}</b></span>'
+            )
+            out.append(f'<span class="n">{n}</span>')
+            out.append("</summary>")
+            out.append('<div class="subs">')
+            for subdomain, tasks in subs.items():
+                out.append('<details class="sub">')
+                out.append(
+                    f'<summary><span class="tick"></span>'
+                    f'<span class="sn">{html.escape(sub_no[(domain, subdomain)])}</span>'
+                    f'<span class="sname">{html.escape(subdomain)}</span>'
+                    f'<span class="sn-count">{len(tasks)}</span></summary>'
+                )
+                out.append('<ul class="leaves">')
+                for r in tasks:
+                    state, label = leaf_state(r)
+                    href = slug(r["task_L3"]) + ".html"
+                    out.append(
+                        f'<li class="leaf s-{state}">'
+                        f'<span class="dot"></span>'
+                        f'<a class="lname" href="{html.escape(href)}">'
+                        f'{html.escape(r["task_L3"])}</a>'
+                        f'<span class="lstate">{html.escape(label)}</span></li>'
+                    )
+                out.append("</ul></details>")
+            out.append("</div></details>")
+    out.append("</div>")
+    return "\n".join(out)
 
 
 def main() -> int:
@@ -139,45 +247,6 @@ def main() -> int:
             class_label=label, class_note=note, coverage=cov_txt,
         )
 
-    # Nested accordion: Band → Domain → Subdomain → L3 links.
-    # Uses <details>/<summary> only — no JavaScript (site gates).
-    bands: dict[str, dict[str, dict[str, list]]] = {}
-    for r in rows:
-        bands.setdefault(r["band"], {}).setdefault(r["domain"], {}).setdefault(
-            r["subdomain"], []
-        ).append(r)
-    body: list[str] = []
-    for band, domains in bands.items():
-        body.append(f'<section class="map-band" aria-label="Band {html.escape(band)}">')
-        body.append(f"<h2>Band {html.escape(band)}</h2>")
-        for domain, subs in domains.items():
-            n_tasks = sum(len(tasks) for tasks in subs.values())
-            body.append('<details class="map-domain">')
-            body.append(
-                f"<summary><span class=\"map-label\">{html.escape(domain)}</span>"
-                f"<span class=\"map-count\">{n_tasks} tasks</span></summary>"
-            )
-            for subdomain, tasks in subs.items():
-                body.append('<details class="map-subdomain">')
-                body.append(
-                    f"<summary><span class=\"map-label\">{html.escape(subdomain)}</span>"
-                    f"<span class=\"map-count\">{len(tasks)}</span></summary>"
-                )
-                body.append("<ul>")
-                for r in tasks:
-                    body.append(
-                        f'<li><a href="{slug(r["task_L3"])}.html">'
-                        f'{html.escape(r["task_L3"])}</a> — {html.escape(r["class"])}</li>'
-                    )
-                body.append("</ul>")
-                body.append("</details>")
-            body.append("</details>")
-        body.append("</section>")
-
-    # Live status, read from the collections — the source of record for package
-    # status. Never typed: a hand-written tally is the defect this product's status
-    # vocabulary exists to prevent.
-    import json
     status: dict[str, int] = {}
     colls = sorted((ROOT / "collections").glob("*/collection.json"))
     for cf in colls:
@@ -186,17 +255,17 @@ def main() -> int:
                 status[s.get("status", "unknown")] = status.get(s.get("status", "unknown"), 0) + 1
 
     counts = {k: sum(1 for r in rows if r["class"] == k) for k in CLASS_COPY}
+    carried = sum(1 for r in rows if r["current_disposition"] == "skill")
     pages["index.html"] = INDEX.format(
         released=status.get("released", 0),
         built=status.get("built", 0),
-        packages=sum(status.values()),
-        colls=len(colls),
-        total=len(rows), bands=len({r["band"] for r in rows}),
+        total=len(rows),
+        bands=len({r["band"] for r in rows}),
         domains=len({r["domain"] for r in rows}),
-        subdomains=len({r["subdomain"] for r in rows}),
-        skills=counts["skill"], contexts=counts["context"],
-        refs=counts["shared-reference"], bounds=counts["boundary"],
-        body="\n".join(body),
+        subdomains=len({(r["band"], r["domain"], r["subdomain"]) for r in rows}),
+        carried=carried,
+        uncarried=len(rows) - carried,
+        body=build_tree(rows),
     )
 
     if check:
@@ -221,7 +290,8 @@ def main() -> int:
     for n, t in pages.items():
         (OUT / n).write_text(t, encoding="utf-8")
     print(f"wrote {len(pages) - 1} task pages + index into site/map/ "
-          f"({counts['skill']} skills, {counts['context']} contexts, "
+          f"({carried} carried, {len(rows) - carried} open; "
+          f"{counts['skill']} skills, {counts['context']} contexts, "
           f"{counts['shared-reference']} references, {counts['boundary']} boundaries)")
     return 0
 

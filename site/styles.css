@@ -73,7 +73,26 @@ h3 { margin: 10px 0; font-size: 1.35rem; }
 .cards article { padding: 30px; border: 1px solid var(--line); border-radius: 18px; background: white; box-shadow: 0 18px 50px rgba(16,42,67,.06); }
 .cards .number { color: var(--teal); font-size: .8rem; font-weight: 850; letter-spacing: .12em; }
 .demo { display: grid; grid-template-columns: .8fr 1.2fr; gap: 45px; align-items: center; max-width: none; padding-inline: clamp(32px, 6vw, 100px); background: var(--mint); }
+#map { background: var(--mint); }
 #story { background: var(--blue); }
+.map-stills {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: none;
+  margin: 0 auto;
+  padding: 0 clamp(32px, 6vw, 100px) 92px;
+  background: var(--mint);
+}
+.map-stills img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 24px 70px rgba(16,42,67,.16);
+}
 .story-stills {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -176,11 +195,117 @@ code { padding: .12em .35em; border-radius: 4px; background: var(--blue); font-s
   .map-media .map-still { display: block; }
 }
 
+/* Job-tree map (site/map/index.html). Visual language from the 2026-08-10
+   accordion; colours and counts come from the live ledger, not that snapshot. */
+body.job-tree-page {
+  background: var(--ground, #f4f6f5);
+  color: #121a18;
+  font-family: Charter, "Iowan Old Style", Georgia, serif;
+}
+body.job-tree-page section { max-width: none; margin: 0; padding: 0; }
+.job-tree {
+  --ground: #f4f6f5; --raise: #ffffff; --sunk: #eceeed; --ink: #121a18;
+  --ink-2: #3f4a48; --ink-3: #6d7876; --rule: #d9dedc; --accent: #0d6a60;
+  --accent-soft: #e2efed; --ok: #2c7a5b; --gap: #a8392c; --oos: #66736f;
+  --display: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  max-width: 960px; margin: 0 auto; padding: 40px 18px 80px;
+  display: flex; flex-direction: column; gap: 18px;
+  color: var(--ink); background: var(--ground);
+}
+@media (prefers-color-scheme: dark) {
+  body.job-tree-page { background: #0e1413; color: #e9edeb; }
+  .job-tree {
+    --ground: #0e1413; --raise: #161e1c; --sunk: #121917; --ink: #e9edeb;
+    --ink-2: #b4bebb; --ink-3: #84908d; --rule: #28322f; --accent: #4fb3a6;
+    --accent-soft: #153029; --ok: #5cc191; --gap: #e2796a; --oos: #a6b0ad;
+  }
+}
+.job-tree .tree-brand { margin: 0; font-family: var(--display); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.job-tree .tree-brand a { color: var(--accent); text-decoration: none; }
+.job-tree .tree-brand a:hover, .job-tree .tree-brand a:focus-visible { text-decoration: underline; }
+.job-tree header { display: flex; flex-direction: column; gap: 8px; }
+.job-tree .eyebrow { font-family: var(--display); font-size: 10.5px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin: 0; }
+.job-tree h1 { max-width: none; font-family: var(--display); font-size: clamp(24px, 3.4vw, 33px); font-weight: 800; letter-spacing: -.025em; margin: 0; line-height: 1.12; }
+.job-tree .standfirst { margin: 0; color: var(--ink-2); max-width: 66ch; font-size: 15.5px; }
+.job-tree .root { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; background: var(--raise); border: 1.5px solid var(--accent); border-radius: 5px; padding: 14px 18px; }
+.job-tree .rn { font-family: var(--display); font-size: 16px; font-weight: 800; flex: 1; }
+.job-tree .rc { font-family: var(--mono); font-size: 12.5px; color: var(--ink-3); }
+.job-tree .tally { display: flex; gap: 14px; flex-wrap: wrap; }
+.job-tree .t { display: flex; align-items: baseline; gap: 6px; font-family: var(--display); font-size: 12px; font-weight: 600; color: var(--ink-2); }
+.job-tree .t b { font-size: 17px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.job-tree .t.ok b { color: var(--ok); }
+.job-tree .t.gap b { color: var(--gap); }
+.job-tree .ctl-note { font-family: var(--display); font-size: 11.5px; color: var(--ink-3); margin: 0; }
+.job-tree .tree { display: flex; flex-direction: column; gap: 5px; }
+.job-tree .band { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; padding: 16px 4px 7px; border-bottom: 1.5px solid var(--accent); margin-top: 14px; }
+.job-tree .band:first-child { margin-top: 0; }
+.job-tree .bl { font-family: var(--display); font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); padding: 3px 8px; border-radius: 2px; }
+.job-tree .bn { font-family: var(--display); font-size: 15px; font-weight: 800; letter-spacing: -.01em; }
+.job-tree .bd { font-size: 13px; color: var(--ink-3); flex: 1 1 260px; }
+.job-tree .bnums { display: flex; gap: 8px; font-family: var(--mono); font-size: 11.5px; font-variant-numeric: tabular-nums; align-items: baseline; }
+.job-tree .bt { color: var(--ink-3); }
+.job-tree .c-ok { color: var(--ok); }
+.job-tree .c-gap { color: var(--gap); }
+.job-tree .c-oos { color: var(--oos); }
+.job-tree .branch { position: relative; background: var(--raise); border: 1px solid var(--rule); border-radius: 4px; margin-left: 22px; }
+.job-tree .branch::before { content: ""; position: absolute; left: -13px; top: 22px; width: 13px; height: 1.5px; background: var(--rule); }
+.job-tree .branch[open] { border-color: var(--accent); }
+.job-tree summary { display: flex; align-items: center; gap: 11px; padding: 10px 14px; cursor: pointer; list-style: none; border-radius: 4px; }
+.job-tree summary::-webkit-details-marker { display: none; }
+.job-tree summary:hover, .job-tree summary:focus-visible { background: var(--sunk); }
+.job-tree summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.job-tree .tick { width: 0; height: 0; border-left: 6px solid var(--ink-3); border-top: 4.5px solid transparent; border-bottom: 4.5px solid transparent; transition: transform .15s; flex: none; }
+.job-tree details[open] > summary .tick { transform: rotate(90deg); border-left-color: var(--accent); }
+.job-tree .letter { font-family: var(--mono); font-size: 11.5px; font-weight: 700; color: var(--accent); background: var(--accent-soft); min-width: 26px; height: 22px; border-radius: 11px; display: grid; place-items: center; flex: none; padding: 0 6px; }
+.job-tree .dname { font-family: var(--display); font-size: 14.5px; font-weight: 700; flex: 1; min-width: 0; }
+.job-tree .bar { display: flex; width: 120px; height: 7px; border-radius: 4px; overflow: hidden; background: var(--rule); flex: none; }
+.job-tree .bar i { display: block; height: 100%; }
+.job-tree .b-ok { background: var(--ok); }
+.job-tree .b-gap { background: var(--gap); }
+.job-tree .b-oos { background: var(--oos); }
+.job-tree .nums { display: flex; gap: 7px; font-family: var(--mono); font-size: 11.5px; font-variant-numeric: tabular-nums; flex: none; }
+.job-tree .n { font-family: var(--mono); font-size: 11px; color: var(--ink-3); width: 24px; text-align: right; flex: none; }
+.job-tree .branch.empty .dname::after { content: " nothing covered"; font-family: var(--display); font-size: 9.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--gap); margin-left: 9px; }
+.job-tree .subs { padding: 2px 12px 10px 26px; display: flex; flex-direction: column; gap: 2px; position: relative; }
+.job-tree .subs::before { content: ""; position: absolute; left: 16px; top: 0; bottom: 10px; width: 1.5px; background: var(--rule); }
+.job-tree .sub { position: relative; border-radius: 3px; }
+.job-tree .sub::before { content: ""; position: absolute; left: -10px; top: 15px; width: 10px; height: 1.5px; background: var(--rule); }
+.job-tree .sub > summary { padding: 5px 10px; gap: 9px; }
+.job-tree .sn { font-family: var(--mono); font-size: 11px; color: var(--ink-3); flex: none; }
+.job-tree .sname { font-family: var(--display); font-size: 13px; font-weight: 700; color: var(--ink-2); flex: 1; }
+.job-tree .sn-count { font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); flex: none; }
+.job-tree .sub[open] > summary .sname { color: var(--ink); }
+.job-tree .leaves { list-style: none; margin: 0; padding: 1px 8px 8px 26px; position: relative; display: flex; flex-direction: column; gap: 1px; }
+.job-tree .leaves::before { content: ""; position: absolute; left: 14px; top: 0; bottom: 9px; width: 1.5px; background: var(--rule); }
+.job-tree .leaf { position: relative; display: flex; flex-wrap: wrap; gap: 5px 10px; align-items: baseline; padding: 4px 4px 4px 12px; border-radius: 3px; font-size: 13.5px; }
+.job-tree .leaf::before { content: ""; position: absolute; left: -12px; top: 11px; width: 12px; height: 1.5px; background: var(--rule); }
+.job-tree .leaf:hover { background: var(--sunk); }
+.job-tree .dot { width: 7px; height: 7px; border-radius: 50%; display: block; align-self: center; flex: none; }
+.job-tree .s-ok .dot { background: var(--ok); }
+.job-tree .s-gap .dot { background: var(--gap); }
+.job-tree .s-oos .dot { background: var(--oos); }
+.job-tree a.lname { font-family: var(--display); font-size: 13.5px; font-weight: 600; color: var(--ink); flex: 1 1 210px; text-decoration: none; }
+.job-tree .s-gap a.lname { color: var(--ink-2); }
+.job-tree .s-oos a.lname { color: var(--oos); }
+.job-tree a.lname:hover, .job-tree a.lname:focus-visible { color: var(--accent); text-decoration: underline; }
+.job-tree .lstate { font-family: var(--display); font-size: 10px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; flex: none; }
+.job-tree .s-ok .lstate { color: var(--ok); }
+.job-tree .s-gap .lstate { color: var(--gap); }
+.job-tree .s-oos .lstate { color: var(--oos); }
+.job-tree .tree-back { margin: 8px 0 0; font-family: var(--display); }
+.job-tree footer { border-top: 1px solid var(--rule); padding-top: 16px; font-size: 12.5px; color: var(--ink-3); }
+.job-tree footer code { background: var(--accent-soft); color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  .job-tree .tick { transition: none; }
+}
+
 @media (max-width: 850px) {
   nav { display: none; }
   .hero, .demo { grid-template-columns: 1fr; }
   .hero { padding-top: 70px; }
-  .cards, .evidence-grid, .departments, .story-stills { grid-template-columns: 1fr; }
+  .cards, .evidence-grid, .departments, .story-stills, .map-stills { grid-template-columns: 1fr; }
   section { padding: 68px 22px; }
   footer { flex-direction: column; }
   .map-subdomain { margin-left: 0; }

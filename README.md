@@ -70,14 +70,23 @@ evaluations; none publishes the shape of the job those skills are for, so none
 can tell you what fraction of your work it touches. This one can, and the answer
 today is *less than a third*.
 
-![One subdomain: Study delivery / Design. Each task maps to a skill.](site/assets/job-to-skill-mapping.gif)
+The live tree — native disclosure, no JavaScript. Open a domain, then a
+sub-domain. Coverage is regenerated from the ledger, so a dated snapshot cannot
+silently become this page.
 
-That is the product: a job, then a task, then a skill you can run. Open the
-same path in [`map/`](map/): [A](map/bands/A.md) · [B](map/bands/B.md) ·
-[C](map/bands/C.md). Live tree:
-[malekokour.github.io/clinpharm-pmx-skills](https://malekokour.github.io/clinpharm-pmx-skills).
-Machine-readable: [`map/job-model.json`](map/job-model.json). Generated from
-[`catalog/job-model-167.tsv`](catalog/job-model-167.tsv).
+![The live job map: three bands and fifteen domains, each row coloured by whether a skill carries it.](site/assets/job-map.png)
+
+![Study delivery opened to Design. Covered work sits next to the gaps.](site/assets/job-map-open.png)
+
+Click through:
+[malekokour.github.io/clinpharm-pmx-skills/map/](https://malekokour.github.io/clinpharm-pmx-skills/map/).
+GitHub Markdown view: [`map/`](map/) · [A](map/bands/A.md) · [B](map/bands/B.md) ·
+[C](map/bands/C.md). Machine-readable: [`map/job-model.json`](map/job-model.json).
+Generated from [`catalog/job-model-167.tsv`](catalog/job-model-167.tsv).
+
+One subdomain, zoomed — a job, then a task, then a skill you can run:
+
+![One subdomain: Study delivery / Design. Each task maps to a skill.](site/assets/job-to-skill-mapping.gif)
 
 ## How it was built
 
