@@ -104,6 +104,19 @@ def main() -> int:
     run("Portable frontmatter", [python, "scripts/check_portable_frontmatter.py"])
     run("Package portability", [python, "scripts/check_portability.py"])
     run("Contract tests", [python, "-m", "unittest", "discover", "-s", "tests", "-v"])
+    # Two content scanners, deliberately both. `privacy_scan.py` covers the whole
+    # enumerated public surface; this one covers what is specific to *skill
+    # packages* — a package is instructions, so an injection shape inside one is a
+    # supply-chain problem rather than a typo, and no generic secret scanner has
+    # an opinion about it.
+    #
+    # It lives at the repository root, not in `scripts/`, so a visitor deciding
+    # whether to install 151 packages from a stranger can find it where that
+    # decision is made. That placement is why it was missed: added 2026-08-13 and
+    # invoked by nothing — not this file, not the Makefile, not `quality.yml` —
+    # for its first day. A scanner no gate runs cannot fail, so it offered exactly
+    # the reassurance its own docstring warns against.
+    run("Skill package scan", [python, "scan_skills.py"])
     run("Public-release privacy scan", [python, "scripts/privacy_scan.py"])
     run(
         "Python compilation",
