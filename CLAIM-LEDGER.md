@@ -17,7 +17,7 @@ record, and `make check` fails if any public surface disagrees.
 | `assertions` | **4,510** | `evals/*/cases/*.yaml` |
 | `inputs` | **147** | `evals/*/cases/*.yaml` |
 | `scripts` | **67** | `skills/*/scripts/*.py` |
-| `tests` | **228** | `tests/*.py` |
+| `tests` | **230** | `tests/*.py` |
 
 ## What the two status words mean
 

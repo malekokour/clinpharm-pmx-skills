@@ -146,7 +146,7 @@ Three claims that are often blurred stay separate here:
    closeout are required before a package becomes `released`.
 
 As of 2026-08-13, the public quality surface contains **151 evaluation suites,
-1,197 cases, 4,510 assertions, 147 declared inputs, 67 portable scripts, and 228
+1,197 cases, 4,510 assertions, 147 declared inputs, 67 portable scripts, and 230
 repository tests**. Those are engineering denominators—not a clinical-performance
 claim. Every one of them is re-derived from its source of record in
 [`CLAIM-LEDGER.md`](CLAIM-LEDGER.md), and the build fails if this

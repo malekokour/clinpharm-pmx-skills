@@ -1,0 +1,74 @@
+{
+  "_comment": "Public regulatory documents this library is validated against. The PDFs are not committed \u2014 fetch them with scripts/fetch_validation_corpus.py and compare the sha256 to confirm you have the same bytes.",
+  "documents": [
+    {
+      "doc_id": "fda-nda-209529-clinpharm",
+      "source": "FDA (Drugs@FDA)",
+      "title": "Clinical Pharmacology and Biopharmaceutics Review(s), NDA 209529",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2020/209529Orig1s000ClinPharmR.pdf",
+      "sha256": "83d1c8a964750e88c97a9de993c4c5147468e93a9d3f5891dc308c978762e52d",
+      "bytes": 7316306,
+      "text_characters": 250818,
+      "validates": [
+        "review-renal-impairment",
+        "review-hepatic-impairment"
+      ],
+      "rationale": "A full CP review containing a dedicated renal impairment assessment, so a skill's findings can be compared against what an FDA reviewer actually wrote about the same study."
+    },
+    {
+      "doc_id": "fda-nda-215859-clinpharm",
+      "source": "FDA (Drugs@FDA)",
+      "title": "Clinical Pharmacology and Biopharmaceutics Review(s), NDA 215859",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2022/215859Orig1s000ClinPharmR.pdf",
+      "sha256": "a4c308a3648bdc7d04ae3b571bdf2a7a5b16961d7204db55040c9902b8880cae",
+      "bytes": 10510958,
+      "text_characters": 228829,
+      "validates": [
+        "review-renal-impairment",
+        "review-exposure-response-relationships"
+      ],
+      "rationale": "Carries renal dosing conclusions tied to eGFR bands, which is exactly the reconciliation a review skill claims to perform."
+    },
+    {
+      "doc_id": "fda-nda-202293-clinpharm",
+      "source": "FDA (Drugs@FDA)",
+      "title": "Clinical Pharmacology and Biopharmaceutics Review(s), NDA 202293",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2014/202293orig1s000clinpharmr.pdf",
+      "sha256": "4a64e203063e80b48a68daa31442f53252bd8752afabef0710b8c85bea032d7c",
+      "bytes": 6991392,
+      "text_characters": 243558,
+      "validates": [
+        "review-renal-impairment",
+        "review-exposure-response-relationships"
+      ],
+      "rationale": "Contains renal impairment PK and PD figures, giving a case where exposure and effect must be reconciled rather than read off."
+    },
+    {
+      "doc_id": "fda-nda-204671-clinpharm",
+      "source": "FDA (Drugs@FDA)",
+      "title": "Clinical Pharmacology and Biopharmaceutics Review(s), NDA 204671",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2013/204671Orig1s000ClinPharmR.pdf",
+      "sha256": "5eeb9ef8ac4436c6320b8566b4ff9840d57626a4d02a48cbeb7d4229ccbf1d35",
+      "bytes": 15205790,
+      "text_characters": 675515,
+      "validates": [
+        "review-renal-impairment",
+        "review-ddi-evidence"
+      ],
+      "rationale": "Combines renal impairment with a co-administration dosing consequence, so a skill has to keep two threads straight."
+    },
+    {
+      "doc_id": "fda-nda-207923-clinpharm",
+      "source": "FDA (Drugs@FDA)",
+      "title": "Clinical Pharmacology and Biopharmaceutics Review(s), NDA 207923",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2015/207923Orig1s000ClinPharmR.pdf",
+      "sha256": "e1ff500a5d75d65bcf7cf6c12fe090511eefa9a9082ad03b6b08a3944fc9e975",
+      "bytes": 5374996,
+      "text_characters": 304685,
+      "validates": [
+        "review-renal-impairment"
+      ],
+      "rationale": "Held back from the first scoring round as an unseen document for the independent human trial, so stage 2 is not judging findings it has already read."
+    }
+  ]
+}

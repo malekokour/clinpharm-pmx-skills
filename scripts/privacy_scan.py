@@ -112,6 +112,34 @@ PATIENT_IDENTIFIER_PATTERNS = [
         re.IGNORECASE,
     ),
 ]
+#: Words that turn a regulated claim into a disclaimer when they sit immediately
+#: before it.
+#:
+#: This list was ``("not ", "never ", "do not ")`` and missed **"nothing"**,
+#: which is how `VALIDATION.md` — a page whose entire job is to state what this
+#: library does *not* claim — was flagged for the sentence "Nothing here is
+#: clinically validated, and nothing here will claim to be."
+#:
+#: The shape recurs across this repository: `scan_skills.py` needs the same
+#: distinction for prompt-injection strings, and `check_claim_consistency.py`
+#: needs it for banned claims. A document that forbids a phrase has to write the
+#: phrase. Three scanners, one problem.
+#:
+#: Kept deliberately narrow, and matched only in the 40 characters immediately
+#: before the phrase. A negation anywhere in the paragraph would let "this is
+#: not a toy, our packages are clinically validated" through, which is a worse
+#: failure than the false positive it fixes.
+CLAIM_NEGATIONS = (
+    "not ",
+    "never ",
+    "do not ",
+    "nothing ",
+    "no ",
+    "cannot ",
+    "neither ",
+    "without ",
+)
+
 UNSUPPORTED_CLAIM_PATTERNS = [
     re.compile(r"\b(?:is|are)\s+(?:a\s+)?GxP[- ]validated\b", re.IGNORECASE),
     re.compile(r"\bclinically " + r"validated\b", re.IGNORECASE),
@@ -209,8 +237,8 @@ def inspect_text(label: str, text: str, findings: list[dict[str, str]]) -> None:
             break
     for pattern in UNSUPPORTED_CLAIM_PATTERNS:
         for match in pattern.finditer(text):
-            prefix = text[max(0, match.start() - 32) : match.start()].casefold()
-            if not any(negation in prefix for negation in ("not ", "never ", "do not ")):
+            prefix = text[max(0, match.start() - 40) : match.start()].casefold()
+            if not any(negation in prefix for negation in CLAIM_NEGATIONS):
                 findings.append({"path": label, "rule": "unsupported-regulated-claim"})
                 return
 

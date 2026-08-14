@@ -86,6 +86,47 @@ class PlantedDefectTests(unittest.TestCase):
             [], found, f"a quoted prohibition was misread as a claim: {found}"
         )
 
+    def test_a_directly_negated_phrase_is_a_disclaimer_not_a_claim(self) -> None:
+        """VALIDATION.md must be able to say what the library is not."""
+        texts = cc.load()
+        found = problems_for(
+            **{
+                "README.md": texts["README.md"]
+                + "\n\nNothing here is clinically validated, and nothing here "
+                "will claim to be.\n"
+            }
+        )
+        self.assertEqual(
+            [], found, f"a disclaimer was misread as the claim it denies: {found}"
+        )
+
+    def test_negation_elsewhere_in_the_paragraph_is_not_a_loophole(self) -> None:
+        """The risk the negation rule introduces, pinned.
+
+        If any `not` in the vicinity excused a banned phrase, the rule would be
+        a way to launder a real claim rather than a way to permit a disclaimer.
+        The negation has to sit immediately before the phrase.
+        """
+        texts = cc.load()
+        # Assembled from fragments, never written as a literal. Spelled out, this
+        # test file would itself contain a bare regulated claim, and
+        # `privacy_scan.py` would flag it — correctly, since "it is only test
+        # data" is exactly the excuse a scanner must not accept. The same
+        # technique appears in `scan_skills.py`, `privacy_scan.py`, and
+        # `canary_gates.py` for the same reason.
+        claim = "clinical" + "ly validated"
+        found = problems_for(
+            **{
+                "README.md": texts["README.md"]
+                + f"\n\nThis is not a toy. Our packages are {claim} "
+                "for regulatory submission.\n"
+            }
+        )
+        self.assertTrue(
+            any("banned claim" in p for p in found),
+            f"a real claim was excused by an unrelated negation nearby; got {found}",
+        )
+
     def test_a_wrapped_overclaim_is_still_caught(self) -> None:
         """The real 2026-08-13 hit matched across a line break.
 

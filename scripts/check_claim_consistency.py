@@ -197,6 +197,24 @@ QUOTED = re.compile(r"[\"“”'`*]")
 #: sentence stays inside this; an unrelated paragraph does not.
 WINDOW = 160
 
+#: A banned phrase immediately *negated* is a disclaimer, not a claim.
+#:
+#: `VALIDATION.md` exists to say what this library is not, and it cannot do that
+#: without writing the words down. The first version of this gate flagged its
+#: disclaimer — correctly noticing the phrase, wrongly reading its polarity.
+#: (The sentence is not quoted here: this file would then contain the bare claim
+#: and `privacy_scan.py` would flag *it*, which is the same lesson one level up.)
+#:
+#: Deliberately tight. The negation must sit in the ~40 characters immediately
+#: *before* the phrase, which is where English puts it. A loose rule would let
+#: "not" anywhere in the paragraph launder an actual claim, and that is a worse
+#: failure than the false positive it fixes.
+NEGATED_BEFORE = re.compile(
+    r"(?i)\b(?:no|not|nothing|never|neither|nor|without|cannot|"
+    r"does\s+not|is\s+not|are\s+not|will\s+not|has\s+not|have\s+not)\b"
+    r"[^.!?\n]{0,40}$"
+)
+
 
 def classify(text: str, start: int, end: int) -> str:
     """Return 'bare' (a real overclaim) or 'quoted-prohibition' (documentation).
@@ -206,7 +224,10 @@ def classify(text: str, start: int, end: int) -> str:
     `CLAIM-LEDGER.md` matched as ``'passes every\\ngate'``, which a line-based
     classifier splits in half and misses on both halves.
     """
-    around = text[max(0, start - WINDOW) : end + WINDOW]
+    before = text[max(0, start - WINDOW) : start]
+    if NEGATED_BEFORE.search(before):
+        return "quoted-prohibition"
+    around = before + text[start : end + WINDOW]
     if QUOTED.search(around) and PROHIBITION.search(around):
         return "quoted-prohibition"
     return "bare"

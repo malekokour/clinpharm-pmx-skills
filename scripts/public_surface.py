@@ -77,6 +77,12 @@ PUBLIC_ROOT_FILES: frozenset[str] = frozenset(
         # Moved here from `docs/` on 2026-08-13. A visitor checking whether the
         # published numbers are honest should not have to open a subdirectory.
         "CLAIM-LEDGER.md",
+        # Added 2026-08-14, in answer to the first substantive question the
+        # library received in public: whether the skills were validated by
+        # humans or only produced by AI. It sits at the root, beside the claim
+        # ledger, for the same reason that one does — a reader deciding whether
+        # to trust 151 packages should not have to go looking.
+        "VALIDATION.md",
         "CODE_OF_CONDUCT.md",
         "CONTRIBUTING.md",
         "LICENSE",
