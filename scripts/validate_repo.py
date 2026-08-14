@@ -974,7 +974,15 @@ def check_docx(files: list[Path]) -> None:
 
 def main() -> int:
     files = public_files()
-    source = "git ls-files" if _git_tracked() is not None else "public allowlist"
+    # The label has to match what was actually enumerated. It read "git
+    # ls-files" while the enumeration also included untracked-but-not-ignored
+    # files — a small thing, and exactly the kind of small thing that makes a
+    # PASS line unreliable as evidence.
+    source = (
+        "git ls-files, plus untracked and not ignored"
+        if _git_tracked() is not None
+        else "public allowlist"
+    )
     skill_dirs = discover_skills()
     catalogs = load_collections()
 
