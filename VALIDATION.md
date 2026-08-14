@@ -59,7 +59,7 @@ python3 scripts/fetch_validation_corpus.py --verify # confirm identical bytes
 ```
 
 Every document's **SHA-256 is recorded** in
-[`validation/corpus-manifest.json`](validation/corpus-manifest.json). The PDFs
+[`catalog/validation-corpus.json`](catalog/validation-corpus.json). The PDFs
 themselves are not committed — they belong to the regulators who published them,
 and the digest is what makes the result reproducible.
 
