@@ -22,11 +22,22 @@ who review documents and analyses.
 > scientific disagreement, edits a controlled document, or replaces clinical,
 > pharmacometric, medical, regulatory, or quality judgment.
 
-## Getting started
+## Getting started — pick your door
 
-Host-by-host steps: [`docs/HOSTS.md`](docs/HOSTS.md).
+| | Start here | Needs |
+|---|---|---|
+| 🟢 **"Just let me try it"** | [**`docs/START-HERE.md`**](docs/START-HERE.md) — 60 seconds, copy and paste | An AI chat window. **No GitHub account, no install, no terminal** |
+| 🔵 **"Load the whole library into my AI tool"** | [Install](#install-the-library-desktop-agents) below | A download and two commands |
+| ⚫ **"Show me the code"** | [`docs/`](docs/) · [`AGENTS.md`](AGENTS.md) | — |
 
-### Paste a block (any web chat — no clone)
+**New here, and not a software person? Take the green door.** Everything else on
+this page assumes a comfort with GitHub that you do not need in order to use
+this.
+
+**Wondering whether an AI wrote all this and nobody checked?** That is the right
+question — [`VALIDATION.md`](VALIDATION.md) answers it without hedging.
+
+### The 60-second route, in full
 
 1. Open [`skills/verify-nca-outputs/PASTE.md`](skills/verify-nca-outputs/PASTE.md).
 2. Paste it into Claude, ChatGPT, or any ordinary chat.

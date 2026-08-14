@@ -153,7 +153,29 @@ def _git_tracked() -> list[Path] | None:
     output = _git("ls-files", "-z")
     if output is None:
         return None
-    return [ROOT / n for n in output.split("\0") if n]
+    names = [n for n in output.split("\0") if n]
+
+    # Untracked-but-not-ignored files count too.
+    #
+    # `ls-files` alone lists only *tracked* files, so a newly written document
+    # was invisible to every check downstream of this function — including the
+    # broken-link check. On 2026-08-14 `make check` passed locally over a broken
+    # link in a new `VALIDATION.md` that CI then rejected on all four runners,
+    # because CI always works from a committed tree.
+    #
+    # That is a false green at exactly the moment the check matters most: adding
+    # a new file is the likeliest way to introduce a broken link. It was also
+    # self-concealing — re-running the gate after the CI failure reproduced the
+    # green, because the fix had by then been committed.
+    #
+    # `--others --exclude-standard` adds untracked files while still honouring
+    # `.gitignore`, so build output and local scratch stay out. The local gate
+    # now sees what CI will see, one commit earlier.
+    others = _git("ls-files", "-z", "--others", "--exclude-standard")
+    if others is not None:
+        names.extend(n for n in others.split("\0") if n)
+
+    return [ROOT / n for n in names]
 
 
 def _allowlist_walk() -> list[Path]:
